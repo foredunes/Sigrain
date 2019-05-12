@@ -26,13 +26,14 @@ namespace Sisgrain
 {
     public partial class MainForm : Form
     {
-        public static string AppName = "SIGRAIN";
+        public static string AppName = "Sigrain";
         public static string AppDescription = "Sistema de Informação Granulométrica";
         public static string AppVersion = "1.0";
         public string DatabaseFile = null;
         public string DefaultPath = null;
         public bool IsSave = false;
         public bool dev = false;
+        public bool createSetupFile = false;
 
         public bool fileMenuOpened = false;
 
@@ -62,8 +63,6 @@ namespace Sisgrain
             s.Peso20 = (decimal)15.5;
             s.Peso21 = (decimal)1;
             s.Peso22 = (decimal)3.75;
-
-
 
             InitializeComponent();
             this.Text = AppName + " - " + AppDescription;
@@ -545,6 +544,12 @@ namespace Sisgrain
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            //Criar Arquivo de script de setup
+            if (createSetupFile)
+            {
+                CreateSetupScriptFile.Execute();
+            }
+
             //HistogramaToolStripMenuItem_Click(sender, e);
             System.Windows.Forms.ToolTip ToolTip1 = new System.Windows.Forms.ToolTip();
             ToolTip1.SetToolTip(this.button1, this.button1.Tag.ToString());
