@@ -511,7 +511,7 @@ namespace Sisgrain.Classes
             List<decimal> percentis = getPercentis(sample);
             decimal media = 0;
             decimal selection = 0;
-            if (method == "Folk&Ward(1967)")
+            if (method == "Folk&Ward(1957)")
             {
                 media = (percentis[16] + percentis[50] + percentis[84]) / 3;
                 selection = ((percentis[84] - percentis[16]) / 4) + ((percentis[95] - percentis[5]) / 6.6m);
