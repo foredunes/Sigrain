@@ -86,7 +86,7 @@
             this.label7.Dock = System.Windows.Forms.DockStyle.Top;
             this.label7.Location = new System.Drawing.Point(0, 130);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(450, 82);
+            this.label7.Size = new System.Drawing.Size(450, 88);
             this.label7.TabIndex = 7;
             this.label7.Text = resources.GetString("label7.Text");
             this.label7.TextAlign = System.Drawing.ContentAlignment.TopCenter;

@@ -74,7 +74,7 @@ namespace Sisgrain
 
             if(dev == true)
             {
-                DatabaseFile = "teste.db";
+                DatabaseFile = "Teste.db";
 
 
                 DatabaseConnect database = new DatabaseConnect(DatabaseFile);
@@ -83,7 +83,7 @@ namespace Sisgrain
                 dataGridView.Visible = true;
                 defaultView.Visible = false;
 
-                this.Text = AppName + " (teste.db)";
+                this.Text = AppName + " (Teste.db)";
 
                 salvarComoToolStripMenuItem.Enabled = true;
                 fecharToolStripMenuItem.Enabled = true;
