@@ -1,4 +1,4 @@
-﻿namespace Sisgrain
+﻿namespace Sigrain
 {
     partial class MainForm
     {

@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sisgrain.Classes
+namespace Sigrain.Classes
 {
 
     /*Sample s = new Sample();

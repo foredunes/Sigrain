@@ -4,43 +4,43 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sisgrain.Classes
+namespace Sigrain.Classes
 {
     class Sample
     {
         public int Id { get; set; }
-        public string Amostra { get; set; }
-        public string Categoria { get; set; }
-        public string Descricao { get; set; }
-        public string Data { get; set; }
-        public decimal Carbonatos { get; set; }
+        public string Name { get; set; }
+        public string Category { get; set; }
+        public string Description { get; set; }
+        public string Date { get; set; }
+        public decimal Carbonates { get; set; }
         public decimal Latitude { get; set; }
         public decimal Longitude { get; set; }
-        public decimal Peso0 { get; set; }
-        public decimal Peso1 { get; set; }
-        public decimal Peso2 { get; set; }
-        public decimal Peso3 { get; set; }
-        public decimal Peso4 { get; set; }
-        public decimal Peso5 { get; set; }
-        public decimal Peso6 { get; set; }
-        public decimal Peso7 { get; set; }
-        public decimal Peso8 { get; set; }
-        public decimal Peso9 { get; set; }
-        public decimal Peso10 { get; set; }
-        public decimal Peso11 { get; set; }
-        public decimal Peso12 { get; set; }
-        public decimal Peso13 { get; set; }
-        public decimal Peso14 { get; set; }
-        public decimal Peso15 { get; set; }
-        public decimal Peso16 { get; set; }
-        public decimal Peso17 { get; set; }
-        public decimal Peso18 { get; set; }
-        public decimal Peso19 { get; set; }
-        public decimal Peso20 { get; set; }
-        public decimal Peso21 { get; set; }
-        public decimal Peso22 { get; set; }
-        public decimal Peso23 { get; set; }
-        public decimal Peso24 { get; set; }
-        public decimal Peso25 { get; set; }
+        public decimal Weight0 { get; set; }
+        public decimal Weight1 { get; set; }
+        public decimal Weight2 { get; set; }
+        public decimal Weight3 { get; set; }
+        public decimal Weight4 { get; set; }
+        public decimal Weight5 { get; set; }
+        public decimal Weight6 { get; set; }
+        public decimal Weight7 { get; set; }
+        public decimal Weight8 { get; set; }
+        public decimal Weight9 { get; set; }
+        public decimal Weight10 { get; set; }
+        public decimal Weight11 { get; set; }
+        public decimal Weight12 { get; set; }
+        public decimal Weight13 { get; set; }
+        public decimal Weight14 { get; set; }
+        public decimal Weight15 { get; set; }
+        public decimal Weight16 { get; set; }
+        public decimal Weight17 { get; set; }
+        public decimal Weight18 { get; set; }
+        public decimal Weight19 { get; set; }
+        public decimal Weight20 { get; set; }
+        public decimal Weight21 { get; set; }
+        public decimal Weight22 { get; set; }
+        public decimal Weight23 { get; set; }
+        public decimal Weight24 { get; set; }
+        public decimal Weight25 { get; set; }
     }
 }

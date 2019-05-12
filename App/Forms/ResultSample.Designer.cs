@@ -1,4 +1,4 @@
-﻿namespace Sisgrain.Forms
+﻿namespace Sigrain.Forms
 {
     partial class ResultSample
     {

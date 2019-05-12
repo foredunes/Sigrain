@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Sisgrain.Classes
+namespace Sigrain.Classes
 {
     class Functions
     {

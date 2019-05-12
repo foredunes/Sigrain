@@ -1,5 +1,5 @@
 ﻿using ExcelDataReader;
-using Sisgrain.Classes;
+using Sigrain.Classes;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,7 +11,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sisgrain.Classes
+namespace Sigrain.Classes
 {
     class Imports
     {
@@ -32,14 +32,14 @@ namespace Sisgrain.Classes
                         while (reader.Read())
                         {
                             Sample dados = new Sample();
-                            dados.Amostra = reader["Amostra"].ToString();
-                            dados.Categoria = reader["Tipo"].ToString();
-                            dados.Descricao = reader["Leg"].ToString();
-                            dados.Data = reader["Data"].ToString();
+                            dados.Name = reader["Amostra"].ToString();
+                            dados.Category = reader["Tipo"].ToString();
+                            dados.Description = reader["Leg"].ToString();
+                            dados.Date = reader["Data"].ToString();
 
                             if (reader["Carbonatos"].ToString() != "")
                             {
-                                dados.Carbonatos = Convert.ToDecimal(reader["Carbonatos"].ToString().Replace(".", ","));
+                                dados.Carbonates = Convert.ToDecimal(reader["Carbonatos"].ToString().Replace(".", ","));
                             }
 
                             if (reader["Latitude"].ToString() != "")
@@ -62,8 +62,8 @@ namespace Sisgrain.Classes
                 }
             }
 
-            //Carrega dados da tabela Pesos
-            strSQL = "SELECT * FROM Pesos";
+            //Carrega dados da tabela Weights
+            strSQL = "SELECT * FROM Weights";
             using (OleDbConnection connection = new OleDbConnection(connectionString))
             {
                 OleDbCommand command = new OleDbCommand(strSQL, connection);
@@ -74,140 +74,140 @@ namespace Sisgrain.Classes
                     {
                         while (reader.Read())
                         {
-                            Console.WriteLine(reader["Amostra"].ToString() + reader["Indice"].ToString() + reader["Peso"].ToString());
+                            Console.WriteLine(reader["Amostra"].ToString() + reader["Indice"].ToString() + reader["Weight"].ToString());
                             int i = 0;
                             foreach (var dados in listaDados)
                             {
-                                if (listaDados[i].Amostra == reader["Amostra"].ToString())
+                                if (listaDados[i].Name == reader["Amostra"].ToString())
                                 {
                                     if (reader["Indice"].ToString() == "1")
                                     {
-                                        listaDados[i].Peso0 = Convert.ToDecimal(reader["Peso"].ToString().Replace(".", ","));
+                                        listaDados[i].Weight0 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "2")
                                     {
-                                        listaDados[i].Peso1 = Convert.ToDecimal(reader["Peso"].ToString().Replace(".", ","));
+                                        listaDados[i].Weight1 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "3")
                                     {
-                                        listaDados[i].Peso2 = Convert.ToDecimal(reader["Peso"].ToString().Replace(".", ","));
+                                        listaDados[i].Weight2 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "4")
                                     {
-                                        listaDados[i].Peso3 = Convert.ToDecimal(reader["Peso"].ToString().Replace(".", ","));
+                                        listaDados[i].Weight3 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "5")
                                     {
-                                        listaDados[i].Peso4 = Convert.ToDecimal(reader["Peso"].ToString().Replace(".", ","));
+                                        listaDados[i].Weight4 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "6")
                                     {
-                                        listaDados[i].Peso5 = Convert.ToDecimal(reader["Peso"].ToString().Replace(".", ","));
+                                        listaDados[i].Weight5 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "7")
                                     {
-                                        listaDados[i].Peso6 = Convert.ToDecimal(reader["Peso"].ToString().Replace(".", ","));
+                                        listaDados[i].Weight6 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "8")
                                     {
-                                        listaDados[i].Peso7 = Convert.ToDecimal(reader["Peso"].ToString().Replace(".", ","));
+                                        listaDados[i].Weight7 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "9")
                                     {
-                                        listaDados[i].Peso8 = Convert.ToDecimal(reader["Peso"].ToString().Replace(".", ","));
+                                        listaDados[i].Weight8 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "10")
                                     {
-                                        listaDados[i].Peso9 = Convert.ToDecimal(reader["Peso"].ToString().Replace(".", ","));
+                                        listaDados[i].Weight9 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "11")
                                     {
-                                        listaDados[i].Peso10 = Convert.ToDecimal(reader["Peso"].ToString().Replace(".", ","));
+                                        listaDados[i].Weight10 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "12")
                                     {
-                                        listaDados[i].Peso11 = Convert.ToDecimal(reader["Peso"].ToString().Replace(".", ","));
+                                        listaDados[i].Weight11 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "13")
                                     {
-                                        listaDados[i].Peso12 = Convert.ToDecimal(reader["Peso"].ToString().Replace(".", ","));
+                                        listaDados[i].Weight12 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "14")
                                     {
-                                        listaDados[i].Peso13 = Convert.ToDecimal(reader["Peso"].ToString().Replace(".", ","));
+                                        listaDados[i].Weight13 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "15")
                                     {
-                                        listaDados[i].Peso14 = Convert.ToDecimal(reader["Peso"].ToString().Replace(".", ","));
+                                        listaDados[i].Weight14 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "16")
                                     {
-                                        listaDados[i].Peso15 = Convert.ToDecimal(reader["Peso"].ToString().Replace(".", ","));
+                                        listaDados[i].Weight15 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "17")
                                     {
-                                        listaDados[i].Peso16 = Convert.ToDecimal(reader["Peso"].ToString().Replace(".", ","));
+                                        listaDados[i].Weight16 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "18")
                                     {
-                                        listaDados[i].Peso17 = Convert.ToDecimal(reader["Peso"].ToString().Replace(".", ","));
+                                        listaDados[i].Weight17 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "19")
                                     {
-                                        listaDados[i].Peso18 = Convert.ToDecimal(reader["Peso"].ToString().Replace(".", ","));
+                                        listaDados[i].Weight18 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "20")
                                     {
-                                        listaDados[i].Peso19 = Convert.ToDecimal(reader["Peso"].ToString().Replace(".", ","));
+                                        listaDados[i].Weight19 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "21")
                                     {
-                                        listaDados[i].Peso20 = Convert.ToDecimal(reader["Peso"].ToString().Replace(".", ","));
+                                        listaDados[i].Weight20 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "22")
                                     {
-                                        listaDados[i].Peso21 = Convert.ToDecimal(reader["Peso"].ToString().Replace(".", ","));
+                                        listaDados[i].Weight21 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "23")
                                     {
-                                        listaDados[i].Peso22 = Convert.ToDecimal(reader["Peso"].ToString().Replace(".", ","));
+                                        listaDados[i].Weight22 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "24")
                                     {
-                                        listaDados[i].Peso23 = Convert.ToDecimal(reader["Peso"].ToString().Replace(".", ","));
+                                        listaDados[i].Weight23 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "25")
                                     {
-                                        listaDados[i].Peso24 = Convert.ToDecimal(reader["Peso"].ToString().Replace(".", ","));
+                                        listaDados[i].Weight24 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "26")
                                     {
-                                        listaDados[i].Peso25 = Convert.ToDecimal(reader["Peso"].ToString().Replace(".", ","));
+                                        listaDados[i].Weight25 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
                                 }
 
@@ -230,8 +230,8 @@ namespace Sisgrain.Classes
 
         public List<Sample> fromXlsFile(string FileName)
         {
-            int peso0, peso1, peso2, peso3, peso4, peso5, peso6, peso7, peso8, peso9, peso10, peso11, peso12, peso13, peso14, peso15, peso16, peso17, peso18, peso19, peso20, peso21, peso22, peso23, peso24, peso25;
-            peso0 = peso1 = peso2 = peso3 = peso4 = peso5 = peso6 = peso7 = peso8 = peso9 = peso10 = peso11 = peso12 = peso13 = peso14 = peso15 = peso16 = peso17 = peso18 = peso19 = peso20 = peso21 = peso22 = peso23 = peso24 = peso25 = 0;
+            int Weight0, Weight1, Weight2, Weight3, Weight4, Weight5, Weight6, Weight7, Weight8, Weight9, Weight10, Weight11, Weight12, Weight13, Weight14, Weight15, Weight16, Weight17, Weight18, Weight19, Weight20, Weight21, Weight22, Weight23, Weight24, Weight25;
+            Weight0 = Weight1 = Weight2 = Weight3 = Weight4 = Weight5 = Weight6 = Weight7 = Weight8 = Weight9 = Weight10 = Weight11 = Weight12 = Weight13 = Weight14 = Weight15 = Weight16 = Weight17 = Weight18 = Weight19 = Weight20 = Weight21 = Weight22 = Weight23 = Weight24 = Weight25 = 0;
             List<Sample> listaDados = new List<Sample>();
 
             using (var stream = File.Open(FileName, FileMode.Open, FileAccess.Read))
@@ -252,7 +252,7 @@ namespace Sisgrain.Classes
                                     {
                                         if (reader.GetDouble(v) == -4.0)
                                         {
-                                            peso0 = v;
+                                            Weight0 = v;
                                         }
                                     }
                                     catch { }
@@ -260,7 +260,7 @@ namespace Sisgrain.Classes
                                     {
                                         if (reader.GetDouble(v) == -3.5)
                                         {
-                                            peso1 = v;
+                                            Weight1 = v;
                                         }
                                     }
                                     catch { }
@@ -268,7 +268,7 @@ namespace Sisgrain.Classes
                                     {
                                         if (reader.GetDouble(v) == -3.0)
                                         {
-                                            peso2 = v;
+                                            Weight2 = v;
                                         }
                                     }
                                     catch { }
@@ -276,7 +276,7 @@ namespace Sisgrain.Classes
                                     {
                                         if (reader.GetDouble(v) == -2.5)
                                         {
-                                            peso3 = v;
+                                            Weight3 = v;
                                         }
                                     }
                                     catch { }
@@ -284,7 +284,7 @@ namespace Sisgrain.Classes
                                     {
                                         if (reader.GetDouble(v) == -2.0)
                                         {
-                                            peso4 = v;
+                                            Weight4 = v;
                                         }
                                     }
                                     catch { }
@@ -292,7 +292,7 @@ namespace Sisgrain.Classes
                                     {
                                         if (reader.GetDouble(v) == -1.5)
                                         {
-                                            peso5 = v;
+                                            Weight5 = v;
                                         }
                                     }
                                     catch { }
@@ -300,7 +300,7 @@ namespace Sisgrain.Classes
                                     {
                                         if (reader.GetDouble(v) == -1.0)
                                         {
-                                            peso6 = v;
+                                            Weight6 = v;
                                         }
                                     }
                                     catch { }
@@ -308,7 +308,7 @@ namespace Sisgrain.Classes
                                     {
                                         if (reader.GetDouble(v) == -0.5)
                                         {
-                                            peso7 = v;
+                                            Weight7 = v;
                                         }
                                     }
                                     catch { }
@@ -316,7 +316,7 @@ namespace Sisgrain.Classes
                                     {
                                         if (reader.GetDouble(v) == 0.0)
                                         {
-                                            peso8 = v;
+                                            Weight8 = v;
                                         }
                                     }
                                     catch { }
@@ -324,7 +324,7 @@ namespace Sisgrain.Classes
                                     {
                                         if (reader.GetDouble(v) == 0.5)
                                         {
-                                            peso9 = v;
+                                            Weight9 = v;
                                         }
                                     }
                                     catch { }
@@ -332,7 +332,7 @@ namespace Sisgrain.Classes
                                     {
                                         if (reader.GetDouble(v) == 1.0)
                                         {
-                                            peso10 = v;
+                                            Weight10 = v;
                                         }
                                     }
                                     catch { }
@@ -340,7 +340,7 @@ namespace Sisgrain.Classes
                                     {
                                         if (reader.GetDouble(v) == 1.5)
                                         {
-                                            peso11 = v;
+                                            Weight11 = v;
                                         }
                                     }
                                     catch { }
@@ -348,7 +348,7 @@ namespace Sisgrain.Classes
                                     {
                                         if (reader.GetDouble(v) == 2.0)
                                         {
-                                            peso12 = v;
+                                            Weight12 = v;
                                         }
                                     }
                                     catch { }
@@ -356,7 +356,7 @@ namespace Sisgrain.Classes
                                     {
                                         if (reader.GetDouble(v) == 2.5)
                                         {
-                                            peso13 = v;
+                                            Weight13 = v;
                                         }
                                     }
                                     catch { }
@@ -364,7 +364,7 @@ namespace Sisgrain.Classes
                                     {
                                         if (reader.GetDouble(v) == 3.0)
                                         {
-                                            peso14 = v;
+                                            Weight14 = v;
                                         }
                                     }
                                     catch { }
@@ -372,7 +372,7 @@ namespace Sisgrain.Classes
                                     {
                                         if (reader.GetDouble(v) == 3.5)
                                         {
-                                            peso15 = v;
+                                            Weight15 = v;
                                         }
                                     }
                                     catch { }
@@ -380,7 +380,7 @@ namespace Sisgrain.Classes
                                     {
                                         if (reader.GetDouble(v) == 4.0)
                                         {
-                                            peso16 = v;
+                                            Weight16 = v;
                                         }
                                     }
                                     catch { }
@@ -388,7 +388,7 @@ namespace Sisgrain.Classes
                                     {
                                         if (reader.GetDouble(v) == 4.5)
                                         {
-                                            peso17 = v;
+                                            Weight17 = v;
                                         }
                                     }
                                     catch { }
@@ -396,7 +396,7 @@ namespace Sisgrain.Classes
                                     {
                                         if (reader.GetDouble(v) == 5.0)
                                         {
-                                            peso18 = v;
+                                            Weight18 = v;
                                         }
                                     }
                                     catch { }
@@ -404,7 +404,7 @@ namespace Sisgrain.Classes
                                     {
                                         if (reader.GetDouble(v) == 6.0)
                                         {
-                                            peso19 = v;
+                                            Weight19 = v;
                                         }
                                     }
                                     catch { }
@@ -412,7 +412,7 @@ namespace Sisgrain.Classes
                                     {
                                         if (reader.GetDouble(v) == 7.0)
                                         {
-                                            peso20 = v;
+                                            Weight20 = v;
                                         }
                                     }
                                     catch { }
@@ -420,7 +420,7 @@ namespace Sisgrain.Classes
                                     {
                                         if (reader.GetDouble(v) == 8.0)
                                         {
-                                            peso21 = v;
+                                            Weight21 = v;
                                         }
                                     }
                                     catch { }
@@ -428,7 +428,7 @@ namespace Sisgrain.Classes
                                     {
                                         if (reader.GetDouble(v) == 9.0)
                                         {
-                                            peso22 = v;
+                                            Weight22 = v;
                                         }
                                     }
                                     catch { }
@@ -436,7 +436,7 @@ namespace Sisgrain.Classes
                                     {
                                         if (reader.GetDouble(v) == 10.0)
                                         {
-                                            peso23 = v;
+                                            Weight23 = v;
                                         }
                                     }
                                     catch { }
@@ -444,7 +444,7 @@ namespace Sisgrain.Classes
                                     {
                                         if (reader.GetDouble(v) == 11.0)
                                         {
-                                            peso24 = v;
+                                            Weight24 = v;
                                         }
                                     }
                                     catch { }
@@ -452,7 +452,7 @@ namespace Sisgrain.Classes
                                     {
                                         if (reader.GetDouble(v) == 12.0)
                                         {
-                                            peso25 = v;
+                                            Weight25 = v;
                                         }
                                     }
                                     catch { }
@@ -467,136 +467,136 @@ namespace Sisgrain.Classes
                                 if (reader.GetString(0).Length > 0)
                                 {
                                     Sample sample = new Sample();
-                                    sample.Amostra = reader.GetString(0);
-                                    sample.Data = DateTime.Now.ToString("dd/MM/yyyy");
+                                    sample.Name = reader.GetString(0);
+                                    sample.Date = DateTime.Now.ToString("dd/MM/yyyy");
                                     try
                                     {
-                                        sample.Peso0 = Convert.ToDecimal(reader.GetDouble(peso0));
+                                        sample.Weight0 = Convert.ToDecimal(reader.GetDouble(Weight0));
                                     }
                                     catch { }
                                     try
                                     {
-                                        sample.Peso1 = Convert.ToDecimal(reader.GetDouble(peso1));
+                                        sample.Weight1 = Convert.ToDecimal(reader.GetDouble(Weight1));
                                     }
                                     catch { }
                                     try
                                     {
-                                        sample.Peso2 = Convert.ToDecimal(reader.GetDouble(peso2));
+                                        sample.Weight2 = Convert.ToDecimal(reader.GetDouble(Weight2));
                                     }
                                     catch { }
                                     try
                                     {
-                                        sample.Peso3 = Convert.ToDecimal(reader.GetDouble(peso3));
+                                        sample.Weight3 = Convert.ToDecimal(reader.GetDouble(Weight3));
                                     }
                                     catch { }
                                     try
                                     {
-                                        sample.Peso4 = Convert.ToDecimal(reader.GetDouble(peso4));
+                                        sample.Weight4 = Convert.ToDecimal(reader.GetDouble(Weight4));
                                     }
                                     catch { }
                                     try
                                     {
-                                        sample.Peso5 = Convert.ToDecimal(reader.GetDouble(peso5));
+                                        sample.Weight5 = Convert.ToDecimal(reader.GetDouble(Weight5));
                                     }
                                     catch { }
                                     try
                                     {
-                                        sample.Peso6 = Convert.ToDecimal(reader.GetDouble(peso6));
+                                        sample.Weight6 = Convert.ToDecimal(reader.GetDouble(Weight6));
                                     }
                                     catch { }
                                     try
                                     {
-                                        sample.Peso7 = Convert.ToDecimal(reader.GetDouble(peso7));
+                                        sample.Weight7 = Convert.ToDecimal(reader.GetDouble(Weight7));
                                     }
                                     catch { }
                                     try
                                     {
-                                        sample.Peso8 = Convert.ToDecimal(reader.GetDouble(peso8));
+                                        sample.Weight8 = Convert.ToDecimal(reader.GetDouble(Weight8));
                                     }
                                     catch { }
                                     try
                                     {
-                                        sample.Peso9 = Convert.ToDecimal(reader.GetDouble(peso9));
+                                        sample.Weight9 = Convert.ToDecimal(reader.GetDouble(Weight9));
                                     }
                                     catch { }
                                     try
                                     {
-                                        sample.Peso10 = Convert.ToDecimal(reader.GetDouble(peso10));
+                                        sample.Weight10 = Convert.ToDecimal(reader.GetDouble(Weight10));
                                     }
                                     catch { }
                                     try
                                     {
-                                        sample.Peso11 = Convert.ToDecimal(reader.GetDouble(peso11));
+                                        sample.Weight11 = Convert.ToDecimal(reader.GetDouble(Weight11));
                                     }
                                     catch { }
                                     try
                                     {
-                                        sample.Peso12 = Convert.ToDecimal(reader.GetDouble(peso12));
+                                        sample.Weight12 = Convert.ToDecimal(reader.GetDouble(Weight12));
                                     }
                                     catch { }
                                     try
                                     {
-                                        sample.Peso13 = Convert.ToDecimal(reader.GetDouble(peso13));
+                                        sample.Weight13 = Convert.ToDecimal(reader.GetDouble(Weight13));
                                     }
                                     catch { }
                                     try
                                     {
-                                        sample.Peso14 = Convert.ToDecimal(reader.GetDouble(peso14));
+                                        sample.Weight14 = Convert.ToDecimal(reader.GetDouble(Weight14));
                                     }
                                     catch { }
                                     try
                                     {
-                                        sample.Peso15 = Convert.ToDecimal(reader.GetDouble(peso15));
+                                        sample.Weight15 = Convert.ToDecimal(reader.GetDouble(Weight15));
                                     }
                                     catch { }
                                     try
                                     {
-                                        sample.Peso16 = Convert.ToDecimal(reader.GetDouble(peso16));
+                                        sample.Weight16 = Convert.ToDecimal(reader.GetDouble(Weight16));
                                     }
                                     catch { }
                                     try
                                     {
-                                        sample.Peso17 = Convert.ToDecimal(reader.GetDouble(peso17));
+                                        sample.Weight17 = Convert.ToDecimal(reader.GetDouble(Weight17));
                                     }
                                     catch { }
                                     try
                                     {
-                                        sample.Peso18 = Convert.ToDecimal(reader.GetDouble(peso18));
+                                        sample.Weight18 = Convert.ToDecimal(reader.GetDouble(Weight18));
                                     }
                                     catch { }
                                     try
                                     {
-                                        sample.Peso19 = Convert.ToDecimal(reader.GetDouble(peso19));
+                                        sample.Weight19 = Convert.ToDecimal(reader.GetDouble(Weight19));
                                     }
                                     catch { }
                                     try
                                     {
-                                        sample.Peso20 = Convert.ToDecimal(reader.GetDouble(peso20));
+                                        sample.Weight20 = Convert.ToDecimal(reader.GetDouble(Weight20));
                                     }
                                     catch { }
                                     try
                                     {
-                                        sample.Peso21 = Convert.ToDecimal(reader.GetDouble(peso21));
+                                        sample.Weight21 = Convert.ToDecimal(reader.GetDouble(Weight21));
                                     }
                                     catch { }
                                     try
                                     {
-                                        sample.Peso22 = Convert.ToDecimal(reader.GetDouble(peso22));
+                                        sample.Weight22 = Convert.ToDecimal(reader.GetDouble(Weight22));
                                     }
                                     catch { }
                                     try
                                     {
-                                        sample.Peso23 = Convert.ToDecimal(reader.GetDouble(peso23));
+                                        sample.Weight23 = Convert.ToDecimal(reader.GetDouble(Weight23));
                                     }
                                     catch { }
                                     try
                                     {
-                                        sample.Peso24 = Convert.ToDecimal(reader.GetDouble(peso24));
+                                        sample.Weight24 = Convert.ToDecimal(reader.GetDouble(Weight24));
                                     }
                                     catch { }
                                     try
                                     {
-                                        sample.Peso25 = Convert.ToDecimal(reader.GetDouble(peso25));
+                                        sample.Weight25 = Convert.ToDecimal(reader.GetDouble(Weight25));
                                     }
                                     catch { }
 
@@ -623,7 +623,7 @@ namespace Sisgrain.Classes
             List<decimal> dmm = sampleTools.getDmmKeys();
 
             DatabaseConnect database = new DatabaseConnect(FileName);
-            string sql = "SELECT * FROM Amostras";
+            string sql = "SELECT * FROM Samples";
             Console.WriteLine(sql);
             SQLiteConnection conn = new SQLiteConnection(database.Connection);
             if (conn.State == ConnectionState.Closed)
@@ -633,18 +633,18 @@ namespace Sisgrain.Classes
             Sample sample = new Sample();
             while (dr.Read())
             {
-                sample.Amostra = dr["Amostra"].ToString();
-                sample.Categoria = dr["Categoria"].ToString();
-                sample.Data = dr["Data"].ToString();
-                sample.Descricao = dr["Descricao"].ToString();
+                sample.Name = dr["Name"].ToString();
+                sample.Category = dr["Category"].ToString();
+                sample.Date = dr["Date"].ToString();
+                sample.Description = dr["Description"].ToString();
                 sample.Latitude = Convert.ToDecimal(dr["Latitude"]);
                 sample.Longitude = Convert.ToDecimal(dr["Longitude"]);
-                sample.Carbonatos = Convert.ToDecimal(dr["Carbonatos"]);
+                sample.Carbonates = Convert.ToDecimal(dr["Carbonates"]);
 
                 for (int i = 0; i < phi.Count; i++)
                 {
-                    PropertyInfo pinfo = typeof(Sample).GetProperty("Peso" + i);
-                    pinfo.SetValue(sample, Convert.ToDecimal(dr["Peso" + i.ToString()]));
+                    PropertyInfo pinfo = typeof(Sample).GetProperty("Weight" + i);
+                    pinfo.SetValue(sample, Convert.ToDecimal(dr["Weight" + i.ToString()]));
                 }
 
                 listaDados.Add(sample);

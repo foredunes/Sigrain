@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Sisgrain
+namespace Sigrain
 {
     public partial class LoadingForm : Form
     {

@@ -1,4 +1,4 @@
-﻿namespace Sisgrain
+﻿namespace Sigrain
 {
     partial class LoadingForm
     {
@@ -33,8 +33,8 @@
             this.mainPanel = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.buttonMInimize = new Sisgrain.Classes.ButtonZ();
-            this.buttonExit = new Sisgrain.Classes.ButtonZ();
+            this.buttonMInimize = new Sigrain.Classes.ButtonZ();
+            this.buttonExit = new Sigrain.Classes.ButtonZ();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
@@ -173,8 +173,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private Sisgrain.Classes.ButtonZ buttonMInimize;
-        private Sisgrain.Classes.ButtonZ buttonExit;
+        private Sigrain.Classes.ButtonZ buttonMInimize;
+        private Sigrain.Classes.ButtonZ buttonExit;
         public System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
     }

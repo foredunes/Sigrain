@@ -1,4 +1,4 @@
-﻿using Sisgrain.Classes;
+﻿using Sigrain.Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Sisgrain.Forms
+namespace Sigrain.Forms
 {
     public partial class ResultSample : Form
     {

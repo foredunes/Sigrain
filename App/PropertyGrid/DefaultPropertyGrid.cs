@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
 
-namespace Sisgrain.PropertyGrid
+namespace Sigrain.PropertyGrid
 {
     class DefaultPropertyGrid
     {

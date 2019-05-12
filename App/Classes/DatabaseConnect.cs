@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Sisgrain.Classes
+namespace Sigrain.Classes
 {
     class DatabaseConnect
     {
@@ -36,60 +36,60 @@ namespace Sisgrain.Classes
             {
                 SQLiteConnection conn = new SQLiteConnection(Connection);
                 conn.Open();
-                CreateTableAmostras(conn);
+                CreateTableSamples(conn);
                 conn.Close();
             }
 
         }
         
-        private void CreateTableAmostras(SQLiteConnection conn)
+        private void CreateTableSamples(SQLiteConnection conn)
         {
             StringBuilder sql = new StringBuilder();
-            sql.AppendLine("CREATE TABLE IF NOT EXISTS Amostras (Id INTEGER PRIMARY KEY AUTOINCREMENT,");
-            sql.AppendLine("Amostra VARCHAR,");
-            sql.AppendLine("Categoria VARCHAR,");
-            sql.AppendLine("Descricao VARCHAR,");
-            sql.AppendLine("Data VARCHAR,");
-            sql.AppendLine("Carbonatos VARCHAR,");
+            sql.AppendLine("CREATE TABLE IF NOT EXISTS Samples (Id INTEGER PRIMARY KEY AUTOINCREMENT,");
+            sql.AppendLine("Name VARCHAR,");
+            sql.AppendLine("Category VARCHAR,");
+            sql.AppendLine("Description VARCHAR,");
+            sql.AppendLine("Date VARCHAR,");
+            sql.AppendLine("Carbonates VARCHAR,");
             sql.AppendLine("Latitude VARCHAR,");
             sql.AppendLine("Longitude VARCHAR,");
-            sql.AppendLine("Peso0 VARCHAR,");
-            sql.AppendLine("Peso1 VARCHAR,");
-            sql.AppendLine("Peso2 VARCHAR,");
-            sql.AppendLine("Peso3 VARCHAR,");
-            sql.AppendLine("Peso4 VARCHAR,");
-            sql.AppendLine("Peso5 VARCHAR,");
-            sql.AppendLine("Peso6 VARCHAR,");
-            sql.AppendLine("Peso7 VARCHAR,");
-            sql.AppendLine("Peso8 VARCHAR,");
-            sql.AppendLine("Peso9 VARCHAR,");
-            sql.AppendLine("Peso10 VARCHAR,");
-            sql.AppendLine("Peso11 VARCHAR,");
-            sql.AppendLine("Peso12 VARCHAR,");
-            sql.AppendLine("Peso13 VARCHAR,");
-            sql.AppendLine("Peso14 VARCHAR,");
-            sql.AppendLine("Peso15 VARCHAR,");
-            sql.AppendLine("Peso16 VARCHAR,");
-            sql.AppendLine("Peso17 VARCHAR,");
-            sql.AppendLine("Peso18 VARCHAR,");
-            sql.AppendLine("Peso19 VARCHAR,");
-            sql.AppendLine("Peso20 VARCHAR,");
-            sql.AppendLine("Peso21 VARCHAR,");
-            sql.AppendLine("Peso22 VARCHAR,");
-            sql.AppendLine("Peso23 VARCHAR,");
-            sql.AppendLine("Peso24 VARCHAR,");
-            sql.AppendLine("Peso25 VARCHAR");
+            sql.AppendLine("Weight0 VARCHAR,");
+            sql.AppendLine("Weight1 VARCHAR,");
+            sql.AppendLine("Weight2 VARCHAR,");
+            sql.AppendLine("Weight3 VARCHAR,");
+            sql.AppendLine("Weight4 VARCHAR,");
+            sql.AppendLine("Weight5 VARCHAR,");
+            sql.AppendLine("Weight6 VARCHAR,");
+            sql.AppendLine("Weight7 VARCHAR,");
+            sql.AppendLine("Weight8 VARCHAR,");
+            sql.AppendLine("Weight9 VARCHAR,");
+            sql.AppendLine("Weight10 VARCHAR,");
+            sql.AppendLine("Weight11 VARCHAR,");
+            sql.AppendLine("Weight12 VARCHAR,");
+            sql.AppendLine("Weight13 VARCHAR,");
+            sql.AppendLine("Weight14 VARCHAR,");
+            sql.AppendLine("Weight15 VARCHAR,");
+            sql.AppendLine("Weight16 VARCHAR,");
+            sql.AppendLine("Weight17 VARCHAR,");
+            sql.AppendLine("Weight18 VARCHAR,");
+            sql.AppendLine("Weight19 VARCHAR,");
+            sql.AppendLine("Weight20 VARCHAR,");
+            sql.AppendLine("Weight21 VARCHAR,");
+            sql.AppendLine("Weight22 VARCHAR,");
+            sql.AppendLine("Weight23 VARCHAR,");
+            sql.AppendLine("Weight24 VARCHAR,");
+            sql.AppendLine("Weight25 VARCHAR");
             sql.AppendLine(")");
             SQLiteCommand cmd = new SQLiteCommand(sql.ToString(), conn);
             try
             {
                 cmd.ExecuteNonQuery();
                 conn.Close();
-                Console.WriteLine("Tabela Amostras com sucesso!");
+                Console.WriteLine("Tabela Samples com sucesso!");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro ao criar tabela Amostras." + ex);
+                MessageBox.Show("Erro ao criar tabela Samples." + ex);
                 conn.Close();
             }
         }

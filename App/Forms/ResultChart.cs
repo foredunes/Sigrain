@@ -1,5 +1,5 @@
 ﻿using Microsoft.Office.Interop.Excel;
-using Sisgrain.Classes;
+using Sigrain.Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,9 +16,9 @@ using Axis = System.Windows.Forms.DataVisualization.Charting.Axis;
 using ChartArea = System.Windows.Forms.DataVisualization.Charting.ChartArea;
 using Rectangle = System.Drawing.Rectangle;
 using Series = System.Windows.Forms.DataVisualization.Charting.Series;
-using Sisgrain.PropertyGrid;
+using Sigrain.PropertyGrid;
 
-namespace Sisgrain.Forms
+namespace Sigrain.Forms
 {
     public partial class ResultChart : Form
     {

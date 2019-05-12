@@ -1,7 +1,7 @@
 ﻿using ExcelDataReader;
 using Microsoft.Office.Interop.Excel;
-using Sisgrain.Classes;
-using Sisgrain.Forms;
+using Sigrain.Classes;
+using Sigrain.Forms;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -22,7 +22,7 @@ using Series = System.Windows.Forms.DataVisualization.Charting.Series;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Runtime.InteropServices;
 
-namespace Sisgrain
+namespace Sigrain
 {
     public partial class MainForm : Form
     {
@@ -46,24 +46,6 @@ namespace Sisgrain
 
         public MainForm()
         {
-            Sample s = new Sample();
-            s.Amostra = "ROD";
-            s.Peso8 = (decimal)0.02;
-            s.Peso9 = (decimal)0.073;
-            s.Peso10 = (decimal)0.109;
-            s.Peso11 = (decimal)0.182;
-            s.Peso12 = (decimal)0.274;
-            s.Peso13 = (decimal)0.585;
-            s.Peso14 = (decimal)5.085;
-            s.Peso15 = (decimal)11.184;
-            s.Peso16 = (decimal)1.296;
-            s.Peso17 = (decimal)0;
-            s.Peso18 = (decimal)5.5;
-            s.Peso19 = (decimal)5;
-            s.Peso20 = (decimal)15.5;
-            s.Peso21 = (decimal)1;
-            s.Peso22 = (decimal)3.75;
-
             InitializeComponent();
             this.Text = AppName + " - " + AppDescription;
             dataGridView.Visible = false;
@@ -181,7 +163,7 @@ namespace Sisgrain
                 dataGridView.Rows.Clear();
 
                 DatabaseConnect database = new DatabaseConnect(DatabaseFile);
-                string sql = "SELECT * FROM Amostras";
+                string sql = "SELECT * FROM Samples";
                 SQLiteConnection conn = new SQLiteConnection(database.Connection);
                 if (conn.State == ConnectionState.Closed)
                     conn.Open();
@@ -194,87 +176,87 @@ namespace Sisgrain
                     {
                         this.dataGridView.Rows.Add(
                             Convert.ToInt32(dr["Id"]),
-                            dr["Amostra"].ToString().Replace(".", ","),
-                            dr["Categoria"].ToString().Replace(".", ","),
-                            dr["Descricao"].ToString().Replace(".", ","),
-                            dr["Data"].ToString().Replace(".", ","),
-                            dr["Carbonatos"].ToString().Replace(".", ","),
+                            dr["Name"].ToString().Replace(".", ","),
+                            dr["Category"].ToString().Replace(".", ","),
+                            dr["Description"].ToString().Replace(".", ","),
+                            dr["Date"].ToString().Replace(".", ","),
+                            dr["Carbonates"].ToString().Replace(".", ","),
                             dr["Latitude"].ToString().Replace(".", ","),
                             dr["Longitude"].ToString().Replace(".", ","),
-                            dr["Peso0"].ToString().Replace(".", ","),
-                            dr["Peso1"].ToString().Replace(".", ","),
-                            dr["Peso2"].ToString().Replace(".", ","),
-                            dr["Peso3"].ToString().Replace(".", ","),
-                            dr["Peso4"].ToString().Replace(".", ","),
-                            dr["Peso5"].ToString().Replace(".", ","),
-                            dr["Peso6"].ToString().Replace(".", ","),
-                            dr["Peso7"].ToString().Replace(".", ","),
-                            dr["Peso8"].ToString().Replace(".", ","),
-                            dr["Peso9"].ToString().Replace(".", ","),
-                            dr["Peso10"].ToString().Replace(".", ","),
-                            dr["Peso11"].ToString().Replace(".", ","),
-                            dr["Peso12"].ToString().Replace(".", ","),
-                            dr["Peso13"].ToString().Replace(".", ","),
-                            dr["Peso14"].ToString().Replace(".", ","),
-                            dr["Peso15"].ToString().Replace(".", ","),
-                            dr["Peso16"].ToString().Replace(".", ","),
-                            dr["Peso17"].ToString().Replace(".", ","),
-                            dr["Peso18"].ToString().Replace(".", ","),
-                            dr["Peso19"].ToString().Replace(".", ","),
-                            dr["Peso20"].ToString().Replace(".", ","),
-                            dr["Peso21"].ToString().Replace(".", ","),
-                            dr["Peso22"].ToString().Replace(".", ","),
-                            dr["Peso23"].ToString().Replace(".", ","),
-                            dr["Peso24"].ToString().Replace(".", ","),
-                            dr["Peso25"].ToString()
+                            dr["Weight0"].ToString().Replace(".", ","),
+                            dr["Weight1"].ToString().Replace(".", ","),
+                            dr["Weight2"].ToString().Replace(".", ","),
+                            dr["Weight3"].ToString().Replace(".", ","),
+                            dr["Weight4"].ToString().Replace(".", ","),
+                            dr["Weight5"].ToString().Replace(".", ","),
+                            dr["Weight6"].ToString().Replace(".", ","),
+                            dr["Weight7"].ToString().Replace(".", ","),
+                            dr["Weight8"].ToString().Replace(".", ","),
+                            dr["Weight9"].ToString().Replace(".", ","),
+                            dr["Weight10"].ToString().Replace(".", ","),
+                            dr["Weight11"].ToString().Replace(".", ","),
+                            dr["Weight12"].ToString().Replace(".", ","),
+                            dr["Weight13"].ToString().Replace(".", ","),
+                            dr["Weight14"].ToString().Replace(".", ","),
+                            dr["Weight15"].ToString().Replace(".", ","),
+                            dr["Weight16"].ToString().Replace(".", ","),
+                            dr["Weight17"].ToString().Replace(".", ","),
+                            dr["Weight18"].ToString().Replace(".", ","),
+                            dr["Weight19"].ToString().Replace(".", ","),
+                            dr["Weight20"].ToString().Replace(".", ","),
+                            dr["Weight21"].ToString().Replace(".", ","),
+                            dr["Weight22"].ToString().Replace(".", ","),
+                            dr["Weight23"].ToString().Replace(".", ","),
+                            dr["Weight24"].ToString().Replace(".", ","),
+                            dr["Weight25"].ToString()
                         );
                     }
                     else
                     {
-                        if (categoria == dr["Categoria"].ToString())
+                        if (categoria == dr["Category"].ToString())
                         {
                             this.dataGridView.Rows.Add(
                             Convert.ToInt32(dr["Id"]),
-                            dr["Amostra"].ToString().Replace(".", ","),
-                            dr["Categoria"].ToString().Replace(".", ","),
-                            dr["Descricao"].ToString().Replace(".", ","),
-                            dr["Data"].ToString().Replace(".", ","),
-                            dr["Carbonatos"].ToString().Replace(".", ","),
+                            dr["Name"].ToString().Replace(".", ","),
+                            dr["Category"].ToString().Replace(".", ","),
+                            dr["Description"].ToString().Replace(".", ","),
+                            dr["Date"].ToString().Replace(".", ","),
+                            dr["Carbonates"].ToString().Replace(".", ","),
                             dr["Latitude"].ToString().Replace(".", ","),
                             dr["Longitude"].ToString().Replace(".", ","),
-                            dr["Peso0"].ToString().Replace(".", ","),
-                            dr["Peso1"].ToString().Replace(".", ","),
-                            dr["Peso2"].ToString().Replace(".", ","),
-                            dr["Peso3"].ToString().Replace(".", ","),
-                            dr["Peso4"].ToString().Replace(".", ","),
-                            dr["Peso5"].ToString().Replace(".", ","),
-                            dr["Peso6"].ToString().Replace(".", ","),
-                            dr["Peso7"].ToString().Replace(".", ","),
-                            dr["Peso8"].ToString().Replace(".", ","),
-                            dr["Peso9"].ToString().Replace(".", ","),
-                            dr["Peso10"].ToString().Replace(".", ","),
-                            dr["Peso11"].ToString().Replace(".", ","),
-                            dr["Peso12"].ToString().Replace(".", ","),
-                            dr["Peso13"].ToString().Replace(".", ","),
-                            dr["Peso14"].ToString().Replace(".", ","),
-                            dr["Peso15"].ToString().Replace(".", ","),
-                            dr["Peso16"].ToString().Replace(".", ","),
-                            dr["Peso17"].ToString().Replace(".", ","),
-                            dr["Peso18"].ToString().Replace(".", ","),
-                            dr["Peso19"].ToString().Replace(".", ","),
-                            dr["Peso20"].ToString().Replace(".", ","),
-                            dr["Peso21"].ToString().Replace(".", ","),
-                            dr["Peso22"].ToString().Replace(".", ","),
-                            dr["Peso23"].ToString().Replace(".", ","),
-                            dr["Peso24"].ToString().Replace(".", ","),
-                            dr["Peso25"].ToString()
+                            dr["Weight0"].ToString().Replace(".", ","),
+                            dr["Weight1"].ToString().Replace(".", ","),
+                            dr["Weight2"].ToString().Replace(".", ","),
+                            dr["Weight3"].ToString().Replace(".", ","),
+                            dr["Weight4"].ToString().Replace(".", ","),
+                            dr["Weight5"].ToString().Replace(".", ","),
+                            dr["Weight6"].ToString().Replace(".", ","),
+                            dr["Weight7"].ToString().Replace(".", ","),
+                            dr["Weight8"].ToString().Replace(".", ","),
+                            dr["Weight9"].ToString().Replace(".", ","),
+                            dr["Weight10"].ToString().Replace(".", ","),
+                            dr["Weight11"].ToString().Replace(".", ","),
+                            dr["Weight12"].ToString().Replace(".", ","),
+                            dr["Weight13"].ToString().Replace(".", ","),
+                            dr["Weight14"].ToString().Replace(".", ","),
+                            dr["Weight15"].ToString().Replace(".", ","),
+                            dr["Weight16"].ToString().Replace(".", ","),
+                            dr["Weight17"].ToString().Replace(".", ","),
+                            dr["Weight18"].ToString().Replace(".", ","),
+                            dr["Weight19"].ToString().Replace(".", ","),
+                            dr["Weight20"].ToString().Replace(".", ","),
+                            dr["Weight21"].ToString().Replace(".", ","),
+                            dr["Weight22"].ToString().Replace(".", ","),
+                            dr["Weight23"].ToString().Replace(".", ","),
+                            dr["Weight24"].ToString().Replace(".", ","),
+                            dr["Weight25"].ToString()
                         );
                         }
                     }
 
-                    if (!listaCategorias.Contains(dr["Categoria"].ToString()) && dr["Categoria"].ToString() != "")
+                    if (!listaCategorias.Contains(dr["Category"].ToString()) && dr["Category"].ToString() != "")
                     {
-                        listaCategorias.Add(dr["Categoria"].ToString());
+                        listaCategorias.Add(dr["Category"].ToString());
                     }
 
                 }
@@ -309,7 +291,7 @@ namespace Sisgrain
             List<string> listaCategorias = new List<string>();
 
             DatabaseConnect database = new DatabaseConnect(DatabaseFile);
-            string sql = "SELECT * FROM Amostras";
+            string sql = "SELECT * FROM Samples";
             SQLiteConnection conn = new SQLiteConnection(database.Connection);
             if (conn.State == ConnectionState.Closed)
                 conn.Open();
@@ -317,9 +299,9 @@ namespace Sisgrain
             SQLiteDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                if (!listaCategorias.Contains(dr["Categoria"].ToString()))
+                if (!listaCategorias.Contains(dr["Category"].ToString()))
                 {
-                    listaCategorias.Add(dr["Categoria"].ToString());
+                    listaCategorias.Add(dr["Category"].ToString());
                 }
             }
 
@@ -416,7 +398,7 @@ namespace Sisgrain
                     {
                         //Insere dados no banco de dados
                         DatabaseConnect database = new DatabaseConnect(DatabaseFile);
-                        resultado = database.Insert(dados, "Amostras", false);
+                        resultado = database.Insert(dados, "Samples", false);
 
                         updateDataGrid(null, true);
                     }
@@ -431,7 +413,7 @@ namespace Sisgrain
                     {
                         //Insere dados no banco de dados
                         DatabaseConnect database = new DatabaseConnect(DatabaseFile);
-                        resultado = database.Insert(dados, "Amostras", false);
+                        resultado = database.Insert(dados, "Samples", false);
 
                         updateDataGrid(null, true);
                     }
@@ -447,7 +429,7 @@ namespace Sisgrain
                     {
                         //Insere dados no banco de dados
                         DatabaseConnect database = new DatabaseConnect(DatabaseFile);
-                        resultado = database.Insert(dados, "Amostras", false);
+                        resultado = database.Insert(dados, "Samples", false);
 
                         updateDataGrid(null, true);
                     }
@@ -600,7 +582,7 @@ namespace Sisgrain
             if(id != null)
             {
                 DatabaseConnect database = new DatabaseConnect(DatabaseFile);
-                string sql = "SELECT * FROM Amostras WHERE Id=" + id;
+                string sql = "SELECT * FROM Samples WHERE Id=" + id;
                 Console.WriteLine(sql);
                 SQLiteConnection conn = new SQLiteConnection(database.Connection);
                 if (conn.State == ConnectionState.Closed)
@@ -610,30 +592,30 @@ namespace Sisgrain
                 while (dr.Read())
                 {
                     form.textBoxId.Text = Convert.ToInt32(dr["Id"]).ToString();
-                    form.textBoxAmostra.Text = dr["Amostra"].ToString();
-                    form.comboBoxCategoria.Text = dr["Categoria"].ToString();
-                    form.textBoxDescricao.Text = dr["Descricao"].ToString();
-                    string data = dr["Data"].ToString();
+                    form.textBoxAmostra.Text = dr["Name"].ToString();
+                    form.comboBoxCategoria.Text = dr["Category"].ToString();
+                    form.textBoxDescricao.Text = dr["Description"].ToString();
+                    string data = dr["Date"].ToString();
                     DateTime oData = Convert.ToDateTime(data);
                     form.dateTimePickerData.Value = oData;
 
-                    form.numericUpDownCarbonato.Value = Convert.ToDecimal(dr["Carbonatos"]);
+                    form.numericUpDownCarbonato.Value = Convert.ToDecimal(dr["Carbonates"]);
                     form.numericUpDownLatitude.Value = Convert.ToDecimal(dr["Latitude"]);
                     form.numericUpDownLongitude.Value = Convert.ToDecimal(dr["Longitude"]);
 
                     SampleTools sampleTools = new SampleTools();
                     List<decimal> phi = sampleTools.getPhiKeys();
-                    Decimal pesoTotal = 0;
+                    Decimal WeightTotal = 0;
                     for (int i = 0; i < phi.Count; i++)
                     {
-                        decimal pesoName = Convert.ToDecimal(dr["Peso" + i.ToString()]);
-                        string pesoValue = pesoName.ToString("0.000", CultureInfo.CreateSpecificCulture("PT-BR"));
+                        decimal WeightName = Convert.ToDecimal(dr["Weight" + i.ToString()]);
+                        string WeightValue = WeightName.ToString("0.000", CultureInfo.CreateSpecificCulture("PT-BR"));
                         string key = phi[i].ToString("0.0", CultureInfo.CreateSpecificCulture("PT-BR"));
-                        form.dataGridView1.Rows.Insert(i, key, pesoValue);
-                        pesoTotal = pesoTotal + pesoName;
+                        form.dataGridView1.Rows.Insert(i, key, WeightValue);
+                        WeightTotal = WeightTotal + WeightName;
                     }
 
-                    form.labelPeso.Text = pesoTotal.ToString();
+                    form.labelPeso.Text = WeightTotal.ToString();
                 }
                 conn.Close();
             }
@@ -671,7 +653,7 @@ namespace Sisgrain
                 if (id != null)
                 {
                     DatabaseConnect database = new DatabaseConnect(DatabaseFile);
-                    string sql = "DELETE FROM Amostras WHERE Id=" + id;
+                    string sql = "DELETE FROM Samples WHERE Id=" + id;
                     Console.WriteLine(sql);
                     SQLiteConnection conn = new SQLiteConnection(database.Connection);
                     if (conn.State == ConnectionState.Closed)
@@ -831,7 +813,7 @@ namespace Sisgrain
                     List<decimal> dmm = sampleTools.getDmmKeys();
 
                     DatabaseConnect database = new DatabaseConnect(DatabaseFile);
-                    string sql = "SELECT * FROM Amostras WHERE Id=" + id;
+                    string sql = "SELECT * FROM Samples WHERE Id=" + id;
                     Console.WriteLine(sql);
                     SQLiteConnection conn = new SQLiteConnection(database.Connection);
                     if (conn.State == ConnectionState.Closed)
@@ -841,18 +823,18 @@ namespace Sisgrain
                     Sample sample = new Sample();
                     while (dr.Read())
                     {
-                        sample.Amostra = dr["Amostra"].ToString();
-                        sample.Categoria = dr["Categoria"].ToString();
-                        sample.Data = dr["Data"].ToString();
-                        sample.Descricao = dr["Descricao"].ToString();
+                        sample.Name = dr["Name"].ToString();
+                        sample.Category = dr["Category"].ToString();
+                        sample.Date = dr["Date"].ToString();
+                        sample.Description = dr["Description"].ToString();
                         sample.Latitude = Convert.ToDecimal(dr["Latitude"]);
                         sample.Longitude = Convert.ToDecimal(dr["Longitude"]);
-                        sample.Carbonatos = Convert.ToDecimal(dr["Carbonatos"]);
+                        sample.Carbonates = Convert.ToDecimal(dr["Carbonates"]);
 
                         for (int i = 0; i < phi.Count; i++)
                         {
-                            PropertyInfo pinfo = typeof(Sample).GetProperty("Peso" + i);
-                            pinfo.SetValue(sample, Convert.ToDecimal(dr["Peso" + i.ToString()]));
+                            PropertyInfo pinfo = typeof(Sample).GetProperty("Weight" + i);
+                            pinfo.SetValue(sample, Convert.ToDecimal(dr["Weight" + i.ToString()]));
                         }
 
                     }
@@ -860,33 +842,33 @@ namespace Sisgrain
 
                     //Insere as informações basicas
                     form.dataGridView1.Rows.Insert(0, "IDENTIFICAÇÃO DA AMOSTRA");
-                    form.dataGridView1.Rows.Insert(1, "Amostra", sample.Amostra.ToString());
-                    form.dataGridView1.Rows.Insert(2, "Categoria", sample.Categoria.ToString());
-                    form.dataGridView1.Rows.Insert(3, "Data", sample.Data.ToString());
-                    form.dataGridView1.Rows.Insert(4, "Descrição", sample.Descricao.ToString());
+                    form.dataGridView1.Rows.Insert(1, "Amostra", sample.Name.ToString());
+                    form.dataGridView1.Rows.Insert(2, "Categoria", sample.Category.ToString());
+                    form.dataGridView1.Rows.Insert(3, "Data", sample.Date.ToString());
+                    form.dataGridView1.Rows.Insert(4, "Descrição", sample.Description.ToString());
                     form.dataGridView1.Rows.Insert(5, "Latitude", sample.Latitude.ToString("0.00000", CultureInfo.CreateSpecificCulture("PT-BR")));
                     form.dataGridView1.Rows.Insert(6, "Longitude", sample.Longitude.ToString("0.00000", CultureInfo.CreateSpecificCulture("PT-BR")));
-                    form.dataGridView1.Rows.Insert(7, "Carbonatos", sample.Carbonatos.ToString("0.000", CultureInfo.CreateSpecificCulture("PT-BR")));
+                    form.dataGridView1.Rows.Insert(7, "Carbonatos", sample.Carbonates.ToString("0.000", CultureInfo.CreateSpecificCulture("PT-BR")));
 
-                    //Calcula o peso total
-                    decimal pesoTotal = sampleTools.getTotalWeight(sample);
-                    form.dataGridView1.Rows.Insert(8, "Peso total", pesoTotal.ToString());
+                    //Calcula o Weight total
+                    decimal WeightTotal = sampleTools.getTotalWeight(sample);
+                    form.dataGridView1.Rows.Insert(8, "Weight total", WeightTotal.ToString());
 
                     //Constroi a tabela de frequencias
                     form.dataGridView1.Rows.Insert(10, "FREQUÊNCIAS");
-                    form.dataGridView1.Rows.Insert(11, "PHI", "D(mm)", "PESO", "FREQUÊNCIA", "F. ACUMULADA", "Wentworth(1922)"/*, "Friedman(1978)", "Blott(2001)"*/);
+                    form.dataGridView1.Rows.Insert(11, "PHI", "D(mm)", "Weight", "FREQUÊNCIA", "F. ACUMULADA", "Wentworth(1922)"/*, "Friedman(1978)", "Blott(2001)"*/);
                     Decimal frequenciaAcumulada = 0;
                     for (int i = 0; i < phi.Count; i++)
                     {
-                        string pesoName = "Peso" + i;
-                        PropertyInfo pinfo = typeof(Sample).GetProperty(pesoName);
-                        decimal peso = Convert.ToDecimal(pinfo.GetValue(sample));
+                        string WeightName = "Weight" + i;
+                        PropertyInfo pinfo = typeof(Sample).GetProperty(WeightName);
+                        decimal Weight = Convert.ToDecimal(pinfo.GetValue(sample));
 
-                        string pesoValue = peso.ToString("0.000", CultureInfo.CreateSpecificCulture("PT-BR"));
+                        string WeightValue = Weight.ToString("0.000", CultureInfo.CreateSpecificCulture("PT-BR"));
                         string keyPhi = phi[i].ToString("0.0", CultureInfo.CreateSpecificCulture("PT-BR"));
                         string keyDmm = dmm[i].ToString("0.000", CultureInfo.CreateSpecificCulture("PT-BR"));
 
-                        Decimal frequencia = (Convert.ToDecimal(peso) / pesoTotal) * 100;
+                        Decimal frequencia = (Convert.ToDecimal(Weight) / WeightTotal) * 100;
                         string frequenciaStr = frequencia.ToString("0.000", CultureInfo.CreateSpecificCulture("PT-BR"));
 
                         frequenciaAcumulada = frequencia + frequenciaAcumulada;
@@ -896,7 +878,7 @@ namespace Sisgrain
                         string classificationsFriedman = sampleTools.getPhiClassifications("Friedman(1978)")[i];
                         string classificationsBlott = sampleTools.getPhiClassifications("Blott(2001)")[i];
 
-                        form.dataGridView1.Rows.Insert(i + 12, keyPhi, keyDmm, pesoValue, frequenciaStr, frequenciaAcumuladaStr, classificationsWentworth/*, classificationsFriedman, classificationsBlott*/);
+                        form.dataGridView1.Rows.Insert(i + 12, keyPhi, keyDmm, WeightValue, frequenciaStr, frequenciaAcumuladaStr, classificationsWentworth/*, classificationsFriedman, classificationsBlott*/);
                     }
 
                     //Constroi a tabela de percentis
@@ -984,24 +966,24 @@ namespace Sisgrain
 
                     decimal coquinas = 0;
                     decimal rodolitos = 0;
-                    decimal seixos = sample.Peso0 + sample.Peso1 + sample.Peso2 + sample.Peso3 + sample.Peso4;
-                    decimal granulos = sample.Peso5 + sample.Peso6;
-                    decimal sand = sample.Peso7 + sample.Peso8 + sample.Peso9 + sample.Peso10 + sample.Peso11 + sample.Peso12 + sample.Peso13 + sample.Peso14;
-                    decimal lama = sample.Peso15 + sample.Peso16 + sample.Peso17 + sample.Peso18 + sample.Peso19 + sample.Peso20 + sample.Peso21 + sample.Peso22 + sample.Peso23 + sample.Peso24 + sample.Peso25;
+                    decimal seixos = sample.Weight0 + sample.Weight1 + sample.Weight2 + sample.Weight3 + sample.Weight4;
+                    decimal granulos = sample.Weight5 + sample.Weight6;
+                    decimal sand = sample.Weight7 + sample.Weight8 + sample.Weight9 + sample.Weight10 + sample.Weight11 + sample.Weight12 + sample.Weight13 + sample.Weight14;
+                    decimal lama = sample.Weight15 + sample.Weight16 + sample.Weight17 + sample.Weight18 + sample.Weight19 + sample.Weight20 + sample.Weight21 + sample.Weight22 + sample.Weight23 + sample.Weight24 + sample.Weight25;
 
                     decimal median = statisticsFolk[1];
-                    decimal carbonatosP = sample.Carbonatos;
-                    decimal coquinasP = (100 * coquinas) / pesoTotal;
-                    decimal rodolitosP = (100 * rodolitos) / pesoTotal;
-                    decimal seixosP = (100 * seixos) / pesoTotal;
-                    decimal granulosP = (100 * granulos) / pesoTotal;
-                    decimal sandP = (100 * sand) / pesoTotal;
-                    decimal lamaP = (100 * lama) / pesoTotal;
+                    decimal carbonatosP = sample.Carbonates;
+                    decimal coquinasP = (100 * coquinas) / WeightTotal;
+                    decimal rodolitosP = (100 * rodolitos) / WeightTotal;
+                    decimal seixosP = (100 * seixos) / WeightTotal;
+                    decimal granulosP = (100 * granulos) / WeightTotal;
+                    decimal sandP = (100 * sand) / WeightTotal;
+                    decimal lamaP = (100 * lama) / WeightTotal;
                     decimal scrP = 100m - sandP - lamaP;
 
-                    decimal p05a20P = (100 * (sample.Peso7 + sample.Peso8 + sample.Peso9 + sample.Peso10))/pesoTotal;
-                    decimal p025a05P = (100 * (sample.Peso11 + sample.Peso12)) / pesoTotal;
-                    decimal p005a025P = (100 * (sample.Peso13 + sample.Peso14)) / pesoTotal;
+                    decimal p05a20P = (100 * (sample.Weight7 + sample.Weight8 + sample.Weight9 + sample.Weight10))/WeightTotal;
+                    decimal p025a05P = (100 * (sample.Weight11 + sample.Weight12)) / WeightTotal;
+                    decimal p005a025P = (100 * (sample.Weight13 + sample.Weight14)) / WeightTotal;
 
                     string sigla = sampleTools.getClassificationLarsonneur("sigla", sample);
                     string classification = sampleTools.getClassificationLarsonneur("classification", sample);
@@ -1103,7 +1085,7 @@ namespace Sisgrain
                         List<decimal> dmm = sampleTools.getDmmKeys();
 
                         DatabaseConnect database = new DatabaseConnect(DatabaseFile);
-                        string sql = "SELECT * FROM Amostras WHERE Id=" + id;
+                        string sql = "SELECT * FROM Samples WHERE Id=" + id;
                         Console.WriteLine(sql);
                         SQLiteConnection conn = new SQLiteConnection(database.Connection);
                         if (conn.State == ConnectionState.Closed)
@@ -1113,18 +1095,18 @@ namespace Sisgrain
                         while (dr.Read())
                         {
                             sample.Id = Convert.ToInt32(dr["Id"]);
-                            sample.Amostra = dr["Amostra"].ToString();
-                            sample.Categoria = dr["Categoria"].ToString();
-                            sample.Data = dr["Data"].ToString();
-                            sample.Descricao = dr["Descricao"].ToString();
+                            sample.Name = dr["Mame"].ToString();
+                            sample.Category = dr["Category"].ToString();
+                            sample.Date = dr["Date"].ToString();
+                            sample.Description = dr["Description"].ToString();
                             sample.Latitude = Convert.ToDecimal(dr["Latitude"]);
                             sample.Longitude = Convert.ToDecimal(dr["Longitude"]);
-                            sample.Carbonatos = Convert.ToDecimal(dr["Carbonatos"]);
+                            sample.Carbonates = Convert.ToDecimal(dr["Carbonates"]);
 
                             for (int i = 0; i < phi.Count; i++)
                             {
-                                PropertyInfo pinfo = typeof(Sample).GetProperty("Peso" + i);
-                                pinfo.SetValue(sample, Convert.ToDecimal(dr["Peso" + i.ToString()]));
+                                PropertyInfo pinfo = typeof(Sample).GetProperty("Weight" + i);
+                                pinfo.SetValue(sample, Convert.ToDecimal(dr["Weight" + i.ToString()]));
                             }
 
                         }
@@ -1219,9 +1201,9 @@ namespace Sisgrain
                     //insere a linha
                     form.dataGridView1.Rows.Insert(u + 1,
                         sample.Id.ToString(),
-                        sample.Amostra.ToString(),
-                        sample.Categoria.ToString(),
-                        sample.Data.ToString(),
+                        sample.Name.ToString(),
+                        sample.Category.ToString(),
+                        sample.Date.ToString(),
                         f.decimalToString(media),
                         f.decimalToString(mediana),
                         f.decimalToString(selection),
@@ -1353,7 +1335,7 @@ namespace Sisgrain
                     List<decimal> phi = sampleTools.getPhiKeys();
                     List<decimal> dmm = sampleTools.getDmmKeys();
                     DatabaseConnect database = new DatabaseConnect(DatabaseFile);
-                    string sql = "SELECT * FROM Amostras WHERE Id=" + id;
+                    string sql = "SELECT * FROM Samples WHERE Id=" + id;
                     Console.WriteLine(sql);
                     SQLiteConnection conn = new SQLiteConnection(database.Connection);
                     if (conn.State == ConnectionState.Closed)
@@ -1363,31 +1345,31 @@ namespace Sisgrain
                     Sample sample = new Sample();
                     while (dr.Read())
                     {
-                        sample.Amostra = dr["Amostra"].ToString();
-                        sample.Categoria = dr["Categoria"].ToString();
-                        sample.Data = dr["Data"].ToString();
-                        sample.Descricao = dr["Descricao"].ToString();
+                        sample.Name = dr["Name"].ToString();
+                        sample.Category = dr["Category"].ToString();
+                        sample.Date = dr["Date"].ToString();
+                        sample.Description = dr["Description"].ToString();
                         sample.Latitude = Convert.ToDecimal(dr["Latitude"]);
                         sample.Longitude = Convert.ToDecimal(dr["Longitude"]);
-                        sample.Carbonatos = Convert.ToDecimal(dr["Carbonatos"]);
+                        sample.Carbonates = Convert.ToDecimal(dr["Carbonates"]);
                         for (int i = 0; i < phi.Count; i++)
                         {
-                            PropertyInfo pinfo = typeof(Sample).GetProperty("Peso" + i);
-                            pinfo.SetValue(sample, Convert.ToDecimal(dr["Peso" + i.ToString()]));
+                            PropertyInfo pinfo = typeof(Sample).GetProperty("Weight" + i);
+                            pinfo.SetValue(sample, Convert.ToDecimal(dr["Weight" + i.ToString()]));
                         }
                     }
                     conn.Close();
-                    //Calcula o peso total
-                    decimal pesoTotal = sampleTools.getTotalWeight(sample);
+                    //Calcula o Weight total
+                    decimal WeightTotal = sampleTools.getTotalWeight(sample);
                     //Constroi a tabela de frequencias
                     int c = 2;
                     for (int i = 0; i < phi.Count; i++)
                     {
-                        string pesoName = "Peso" + i;
-                        PropertyInfo pinfo = typeof(Sample).GetProperty(pesoName);
-                        decimal peso = Convert.ToDecimal(pinfo.GetValue(sample));
+                        string WeightName = "Weight" + i;
+                        PropertyInfo pinfo = typeof(Sample).GetProperty(WeightName);
+                        decimal Weight = Convert.ToDecimal(pinfo.GetValue(sample));
                         string keyDmm = dmm[i].ToString("0.000", CultureInfo.CreateSpecificCulture("PT-BR"));
-                        Decimal frequencia = (Convert.ToDecimal(peso) / pesoTotal) * 100;
+                        Decimal frequencia = (Convert.ToDecimal(Weight) / WeightTotal) * 100;
                         //Adiciona os dados ao gráfico
                         dataPointSeries.Points.Add(Convert.ToDouble(frequencia));
                         //Substitui os labels do eixo x
@@ -1463,7 +1445,7 @@ namespace Sisgrain
                     
 
                         DatabaseConnect database = new DatabaseConnect(DatabaseFile);
-                        string sql = "SELECT * FROM Amostras WHERE Id=" + id;
+                        string sql = "SELECT * FROM Samples WHERE Id=" + id;
                         Console.WriteLine(sql);
                         SQLiteConnection conn = new SQLiteConnection(database.Connection);
                         if (conn.State == ConnectionState.Closed)
@@ -1474,23 +1456,23 @@ namespace Sisgrain
                         int c = 1;
                         while (dr.Read())
                         {
-                            sample.Amostra = dr["Amostra"].ToString();
-                            sample.Categoria = dr["Categoria"].ToString();
-                            sample.Data = dr["Data"].ToString();
-                            sample.Descricao = dr["Descricao"].ToString();
+                            sample.Name = dr["Name"].ToString();
+                            sample.Category = dr["Category"].ToString();
+                            sample.Date = dr["Date"].ToString();
+                            sample.Description = dr["Description"].ToString();
                             sample.Latitude = Convert.ToDecimal(dr["Latitude"]);
                             sample.Longitude = Convert.ToDecimal(dr["Longitude"]);
-                            sample.Carbonatos = Convert.ToDecimal(dr["Carbonatos"]);
+                            sample.Carbonates = Convert.ToDecimal(dr["Carbonates"]);
                             for (int i = 0; i < phi.Count; i++)
                             {
-                                PropertyInfo pinfo = typeof(Sample).GetProperty("Peso" + i);
-                                pinfo.SetValue(sample, Convert.ToDecimal(dr["Peso" + i.ToString()]));
+                                PropertyInfo pinfo = typeof(Sample).GetProperty("Weight" + i);
+                                pinfo.SetValue(sample, Convert.ToDecimal(dr["Weight" + i.ToString()]));
                             }
 
                             //Constroi colunas da tabela de dados
                             DataGridViewColumn dtColy = new DataGridViewColumn();
                             dtColy.Name =
-                            dtColy.DataPropertyName = "Y-"+sample.Amostra;
+                            dtColy.DataPropertyName = "Y-"+sample.Name;
                             dtColy.CellTemplate = new DataGridViewTextBoxCell();
                             dtColy.ReadOnly = true;
                             dtColy.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
@@ -1499,24 +1481,23 @@ namespace Sisgrain
                         }
                         conn.Close();
 
-                        //Calcula o peso total
-                        decimal pesoTotal = sampleTools.getTotalWeight(sample);
+                        //Calcula o Weight total
+                        decimal WeightTotal = sampleTools.getTotalWeight(sample);
 
                         //Constroi a tabela de frequencias
                         Decimal frequenciaAcumuladaAnterior = 0;
                         Decimal frequenciaAcumulada = 0;
                         for (int i = 0; i < phi.Count; i++)
                         {
-                            string pesoName = "Peso" + i;
-                            PropertyInfo pinfo = typeof(Sample).GetProperty(pesoName);
-                            decimal peso = Convert.ToDecimal(pinfo.GetValue(sample));
+                            string WeightName = "Weight" + i;
+                            PropertyInfo pinfo = typeof(Sample).GetProperty(WeightName);
+                            decimal Weight = Convert.ToDecimal(pinfo.GetValue(sample));
                             string keyDmm = dmm[i].ToString("0.000", CultureInfo.CreateSpecificCulture("PT-BR"));
-                            Decimal frequencia = (Convert.ToDecimal(peso) / pesoTotal) * 100;
+                            Decimal frequencia = (Convert.ToDecimal(Weight) / WeightTotal) * 100;
                             frequenciaAcumuladaAnterior = frequenciaAcumulada;
                             frequenciaAcumulada = frequencia + frequenciaAcumulada;
                             x[i] = phi[i];
                             y[i] = frequenciaAcumulada;
-                            Console.WriteLine(i + "aaaa" + x[i].ToString() + ", " + y[i].ToString());
                             //Adiciona dados para a tabela
                             //form.dataGridView1.Rows.Insert(i, f.decimalToString(phi[i], 1), f.decimalToString(frequenciaAcumulada));
                             form.dataGridView1.Rows[i].Cells[1].Value = f.decimalToString(frequenciaAcumulada);
@@ -1525,7 +1506,7 @@ namespace Sisgrain
 
                         //Serie 0
                         form.chart1.Series.Add(new Series());
-                        form.chart1.Series[r].LegendText = sample.Amostra;
+                        form.chart1.Series[r].LegendText = sample.Name;
                         form.chart1.Series[r].ChartType = SeriesChartType.Line;
                         form.chart1.Series[r].IsValueShownAsLabel = false;
                         form.chart1.Series[r].Points.DataBindXY(x, y);
@@ -1619,7 +1600,7 @@ namespace Sisgrain
                         List<decimal> dmm = sampleTools.getDmmKeys();
 
                         DatabaseConnect database = new DatabaseConnect(DatabaseFile);
-                        string sql = "SELECT * FROM Amostras WHERE Id=" + id;
+                        string sql = "SELECT * FROM Samples WHERE Id=" + id;
                         Console.WriteLine(sql);
                         SQLiteConnection conn = new SQLiteConnection(database.Connection);
                         if (conn.State == ConnectionState.Closed)
@@ -1629,17 +1610,17 @@ namespace Sisgrain
                         Sample sample = new Sample();
                         while (dr.Read())
                         {
-                            sample.Amostra = dr["Amostra"].ToString();
-                            sample.Categoria = dr["Categoria"].ToString();
-                            sample.Data = dr["Data"].ToString();
-                            sample.Descricao = dr["Descricao"].ToString();
+                            sample.Name = dr["Name"].ToString();
+                            sample.Category = dr["Category"].ToString();
+                            sample.Date = dr["Date"].ToString();
+                            sample.Description = dr["Description"].ToString();
                             sample.Latitude = Convert.ToDecimal(dr["Latitude"]);
                             sample.Longitude = Convert.ToDecimal(dr["Longitude"]);
-                            sample.Carbonatos = Convert.ToDecimal(dr["Carbonatos"]);
+                            sample.Carbonates = Convert.ToDecimal(dr["Carbonates"]);
                             for (int i = 0; i < phi.Count; i++)
                             {
-                                PropertyInfo pinfo = typeof(Sample).GetProperty("Peso" + i);
-                                pinfo.SetValue(sample, Convert.ToDecimal(dr["Peso" + i.ToString()]));
+                                PropertyInfo pinfo = typeof(Sample).GetProperty("Weight" + i);
+                                pinfo.SetValue(sample, Convert.ToDecimal(dr["Weight" + i.ToString()]));
                             }
 
                             //Obtem os valores de areia, silte e argila
@@ -1662,7 +1643,7 @@ namespace Sisgrain
                                 decimal x3 = x1 - x2;
                                 x[r] = x3 + 10;
                                 y[r] = y1 + 10;
-                                l[r] = sample.Amostra;
+                                l[r] = sample.Name;
                             }
 
                             if(formType == "folk")
@@ -1673,10 +1654,10 @@ namespace Sisgrain
                                 decimal x3 = x1 - x2;
                                 x[r] = x3 + 10;
                                 y[r] = y1 + 10;
-                                l[r] = sample.Amostra;
+                                l[r] = sample.Name;
                             }
 
-                            form.dataGridView1.Rows.Insert(r, sample.Amostra, f.decimalToString(x[r]), f.decimalToString(y[r]));
+                            form.dataGridView1.Rows.Insert(r, sample.Name, f.decimalToString(x[r]), f.decimalToString(y[r]));
 
                             
                         }
@@ -1952,7 +1933,7 @@ namespace Sisgrain
                         List<decimal> dmm = sampleTools.getDmmKeys();
 
                         DatabaseConnect database = new DatabaseConnect(DatabaseFile);
-                        string sql = "SELECT * FROM Amostras WHERE Id=" + id;
+                        string sql = "SELECT * FROM Samples WHERE Id=" + id;
                         Console.WriteLine(sql);
                         SQLiteConnection conn = new SQLiteConnection(database.Connection);
                         if (conn.State == ConnectionState.Closed)
@@ -1962,17 +1943,17 @@ namespace Sisgrain
                         Sample sample = new Sample();
                         while (dr.Read())
                         {
-                            sample.Amostra = dr["Amostra"].ToString();
-                            sample.Categoria = dr["Categoria"].ToString();
-                            sample.Data = dr["Data"].ToString();
-                            sample.Descricao = dr["Descricao"].ToString();
+                            sample.Name = dr["Name"].ToString();
+                            sample.Category = dr["Category"].ToString();
+                            sample.Date = dr["Date"].ToString();
+                            sample.Description = dr["Description"].ToString();
                             sample.Latitude = Convert.ToDecimal(dr["Latitude"]);
                             sample.Longitude = Convert.ToDecimal(dr["Longitude"]);
-                            sample.Carbonatos = Convert.ToDecimal(dr["Carbonatos"]);
+                            sample.Carbonates = Convert.ToDecimal(dr["Carbonates"]);
                             for (int i = 0; i < phi.Count; i++)
                             {
-                                PropertyInfo pinfo = typeof(Sample).GetProperty("Peso" + i);
-                                pinfo.SetValue(sample, Convert.ToDecimal(dr["Peso" + i.ToString()]));
+                                PropertyInfo pinfo = typeof(Sample).GetProperty("Weight" + i);
+                                pinfo.SetValue(sample, Convert.ToDecimal(dr["Weight" + i.ToString()]));
                             }
 
                             //Obtem média, mediana, selecionamento, assimetria e curtose
@@ -2009,7 +1990,7 @@ namespace Sisgrain
                             if (ordered == "curtose")
                                 y[r] = curtose;
 
-                            l[r] = sample.Amostra;
+                            l[r] = sample.Name;
 
                             form.dataGridView1.Rows.Insert(r, l[r], f.decimalToString(x[r]), f.decimalToString(y[r]));
 
@@ -2174,7 +2155,7 @@ namespace Sisgrain
 
         private void SobreToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Forms.Abount form = new Forms.Abount();
+            Abount form = new Abount();
             form.ShowDialog();
         }
     }

@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Sisgrain.Classes
+namespace Sigrain.Classes
 {
     class SampleTools
     {
@@ -310,8 +310,8 @@ namespace Sisgrain.Classes
 
         public decimal getTotalWeight(Sample sample)
         {
-            //peso total
-            Decimal totalWeight = sample.Peso0 + sample.Peso1 + sample.Peso2 + sample.Peso3 + sample.Peso4 + sample.Peso5 + sample.Peso6 + sample.Peso7 + sample.Peso8 + sample.Peso9 + sample.Peso10 + sample.Peso11 + sample.Peso12 + sample.Peso13 + sample.Peso14 + sample.Peso15 + sample.Peso16 + sample.Peso17 + sample.Peso18 + sample.Peso19 + sample.Peso20 + sample.Peso21 + sample.Peso22 + sample.Peso23 + sample.Peso24 + sample.Peso25;
+            //Weight total
+            Decimal totalWeight = sample.Weight0 + sample.Weight1 + sample.Weight2 + sample.Weight3 + sample.Weight4 + sample.Weight5 + sample.Weight6 + sample.Weight7 + sample.Weight8 + sample.Weight9 + sample.Weight10 + sample.Weight11 + sample.Weight12 + sample.Weight13 + sample.Weight14 + sample.Weight15 + sample.Weight16 + sample.Weight17 + sample.Weight18 + sample.Weight19 + sample.Weight20 + sample.Weight21 + sample.Weight22 + sample.Weight23 + sample.Weight24 + sample.Weight25;
             return (totalWeight);
         }
 
@@ -323,7 +323,7 @@ namespace Sisgrain.Classes
 
             for (int i = 0; i < 26; i++)
             {
-                PropertyInfo pinfo = typeof(Sample).GetProperty("Peso" + i);
+                PropertyInfo pinfo = typeof(Sample).GetProperty("Weight" + i);
                 decimal weight = (decimal)pinfo.GetValue(sample);
                 weights.Add(weight);
             }
@@ -339,7 +339,7 @@ namespace Sisgrain.Classes
 
             for (int i = 0; i < 26; i++)
             {
-                PropertyInfo pinfo = typeof(Sample).GetProperty("Peso" + i);
+                PropertyInfo pinfo = typeof(Sample).GetProperty("Weight" + i);
                 decimal weight = (decimal)pinfo.GetValue(sample);
                 decimal frequency = (weight / totalWeight) * 100;
                 frequencies.Add(frequency);
@@ -365,7 +365,7 @@ namespace Sisgrain.Classes
 
             for (int i = 0; i < 26; i++)
             {
-                PropertyInfo pinfo = typeof(Sample).GetProperty("Peso" + i);
+                PropertyInfo pinfo = typeof(Sample).GetProperty("Weight" + i);
                 decimal weight = (decimal)pinfo.GetValue(sample);
                 decimal frequency = ((weight / totalWeight) * 100) + oldFrequency;
                 frequenciesAcc.Add(frequency);
@@ -575,7 +575,7 @@ namespace Sisgrain.Classes
 
             for (int i = 0; i < 26; i++)
             {
-                PropertyInfo pinfo = typeof(Sample).GetProperty("Peso" + i);
+                PropertyInfo pinfo = typeof(Sample).GetProperty("Weight" + i);
                 decimal weight = (decimal)pinfo.GetValue(sample);
                 decimal frequency = ((weight / totalWeight) * 100) + oldFrequency;
                 frequenciesAcc.Add(frequency);
@@ -594,28 +594,28 @@ namespace Sisgrain.Classes
         public string getClassificationLarsonneur(string r, Sample sample)
         {
             List<decimal> statisticsFolk = getStatisticsByMehtod("Folk&Ward(1957)", sample);
-            decimal pesoTotal = getTotalWeight(sample);
+            decimal WeightTotal = getTotalWeight(sample);
 
             decimal coquinas = 0;
             decimal rodolitos = 0;
-            decimal seixos = sample.Peso0 + sample.Peso1 + sample.Peso2 + sample.Peso3 + sample.Peso4;
-            decimal granulos = sample.Peso5 + sample.Peso6;
-            decimal sand = sample.Peso7 + sample.Peso8 + sample.Peso9 + sample.Peso10 + sample.Peso11 + sample.Peso12 + sample.Peso13 + sample.Peso14;
-            decimal lama = sample.Peso15 + sample.Peso16 + sample.Peso17 + sample.Peso18 + sample.Peso19 + sample.Peso20 + sample.Peso21 + sample.Peso22 + sample.Peso23 + sample.Peso24 + sample.Peso25;
+            decimal seixos = sample.Weight0 + sample.Weight1 + sample.Weight2 + sample.Weight3 + sample.Weight4;
+            decimal granulos = sample.Weight5 + sample.Weight6;
+            decimal sand = sample.Weight7 + sample.Weight8 + sample.Weight9 + sample.Weight10 + sample.Weight11 + sample.Weight12 + sample.Weight13 + sample.Weight14;
+            decimal lama = sample.Weight15 + sample.Weight16 + sample.Weight17 + sample.Weight18 + sample.Weight19 + sample.Weight20 + sample.Weight21 + sample.Weight22 + sample.Weight23 + sample.Weight24 + sample.Weight25;
 
             decimal median = statisticsFolk[1];
-            decimal carbonatosP = sample.Carbonatos;
-            decimal coquinasP = (100 * coquinas) / pesoTotal;
-            decimal rodolitosP = (100 * rodolitos) / pesoTotal;
-            decimal seixosP = (100 * seixos) / pesoTotal;
-            decimal granulosP = (100 * granulos) / pesoTotal;
-            decimal sandP = (100 * sand) / pesoTotal;
-            decimal lamaP = (100 * lama) / pesoTotal;
+            decimal carbonatosP = sample.Carbonates;
+            decimal coquinasP = (100 * coquinas) / WeightTotal;
+            decimal rodolitosP = (100 * rodolitos) / WeightTotal;
+            decimal seixosP = (100 * seixos) / WeightTotal;
+            decimal granulosP = (100 * granulos) / WeightTotal;
+            decimal sandP = (100 * sand) / WeightTotal;
+            decimal lamaP = (100 * lama) / WeightTotal;
             decimal scrP = 100m - sandP - lamaP;
 
-            decimal p05a20P = (100 * (sample.Peso7 + sample.Peso8 + sample.Peso9 + sample.Peso10)) / pesoTotal;
-            decimal p025a05P = (100 * (sample.Peso11 + sample.Peso12)) / pesoTotal;
-            decimal p005a025P = (100 * (sample.Peso13 + sample.Peso14)) / pesoTotal;
+            decimal p05a20P = (100 * (sample.Weight7 + sample.Weight8 + sample.Weight9 + sample.Weight10)) / WeightTotal;
+            decimal p025a05P = (100 * (sample.Weight11 + sample.Weight12)) / WeightTotal;
+            decimal p005a025P = (100 * (sample.Weight13 + sample.Weight14)) / WeightTotal;
 
             string sigla = "";
             string classification = "";
