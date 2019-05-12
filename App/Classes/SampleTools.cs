@@ -591,7 +591,7 @@ namespace Sisgrain.Classes
             return new Decimal();
         }
 
-        public string getClassLarsonneur(string r, Sample sample)
+        public string getClassificationLarsonneur(string r, Sample sample)
         {
             List<decimal> statisticsFolk = getStatisticsByMehtod("Folk&Ward(1957)", sample);
             decimal pesoTotal = getTotalWeight(sample);
