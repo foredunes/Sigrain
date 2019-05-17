@@ -1047,7 +1047,7 @@ namespace Sigrain
                 }
 
                 //Constroi amostra
-                form.dataGridView1.Rows.Insert(0, "Id", "Amostra", "Categoria", "Data", "Media", "Mediana", "Seleção", "Assimetria", "Curtose", "Classificação pela média", "Classificação pelo Selecionamento", "Classificação pela Assimetria", "Classificação pela Custose", "Larsonneur(1977)/Dias(1996)", "phi5", "phi16", "phi25", "phi50", "phi75", "phi84", "phi95");
+                form.dataGridView1.Rows.Insert(0, "Id", "Amostra", "Categoria", "Data", "Latitude", "Longitude", "Peso total", "Media", "Mediana", "Seleção", "Assimetria", "Curtose", "Classificação pela média", "Classificação pelo Selecionamento", "Classificação pela Assimetria", "Classificação pela Custose", "Larsonneur(1977)/Dias(1996)", "phi5", "phi16", "phi25", "phi50", "phi75", "phi84", "phi95");
 
                 /*form.dataGridView1.Columns[0].HeaderText = "Id";
                 form.dataGridView1.Columns[1].HeaderText = "Amostra";
@@ -1204,6 +1204,9 @@ namespace Sigrain
                         sample.Name.ToString(),
                         sample.Category.ToString(),
                         sample.Date.ToString(),
+                        sample.Latitude,
+                        sample.Longitude,
+                        sampleTools.getTotalWeight(sample),
                         f.decimalToString(media),
                         f.decimalToString(mediana),
                         f.decimalToString(selection),
