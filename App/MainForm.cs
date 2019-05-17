@@ -852,11 +852,11 @@ namespace Sigrain
 
                     //Calcula o Weight total
                     decimal WeightTotal = sampleTools.getTotalWeight(sample);
-                    form.dataGridView1.Rows.Insert(8, "Weight total", WeightTotal.ToString());
+                    form.dataGridView1.Rows.Insert(8, "Peso total", WeightTotal.ToString());
 
                     //Constroi a tabela de frequencias
                     form.dataGridView1.Rows.Insert(10, "FREQUÊNCIAS");
-                    form.dataGridView1.Rows.Insert(11, "PHI", "D(mm)", "Weight", "FREQUÊNCIA", "F. ACUMULADA", "Wentworth(1922)"/*, "Friedman(1978)", "Blott(2001)"*/);
+                    form.dataGridView1.Rows.Insert(11, "PHI", "D(mm)", "PESO", "FREQUÊNCIA", "F. ACUMULADA", "Wentworth(1922)"/*, "Friedman(1978)", "Blott(2001)"*/);
                     Decimal frequenciaAcumulada = 0;
                     for (int i = 0; i < phi.Count; i++)
                     {
@@ -1095,7 +1095,7 @@ namespace Sigrain
                         while (dr.Read())
                         {
                             sample.Id = Convert.ToInt32(dr["Id"]);
-                            sample.Name = dr["Mame"].ToString();
+                            sample.Name = dr["Name"].ToString();
                             sample.Category = dr["Category"].ToString();
                             sample.Date = dr["Date"].ToString();
                             sample.Description = dr["Description"].ToString();
