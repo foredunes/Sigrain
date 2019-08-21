@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sigrain.Classes
+namespace Sigran.Classes
 {
     class CreateSetupScriptFile
     {

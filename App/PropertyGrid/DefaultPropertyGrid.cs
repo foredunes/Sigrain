@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
 
-namespace Sigrain.PropertyGrid
+namespace Sigran.PropertyGrid
 {
     class DefaultPropertyGrid
     {
@@ -176,6 +176,26 @@ namespace Sigrain.PropertyGrid
             set { _DepthGridAxisX = value; }
         }
 
+        double _MinimumAxisX = 0;
+        [Category("Eixo Horizontal")]
+        [Description("Define o valor mínimo do eixo X.")]
+        [DisplayName("Valor mìnimo eixo X")]
+        public double MinimumAxisX
+        {
+            get { return _MinimumAxisX; }
+            set { _MinimumAxisX = value; }
+        }
+
+        double _MaximumAxisX = 100;
+        [Category("Eixo Horizontal")]
+        [Description("Define o valor máximo do eixo X.")]
+        [DisplayName("Valor máximo eixo X")]
+        public double MaximumAxisX
+        {
+            get { return _MaximumAxisX; }
+            set { _MaximumAxisX = value; }
+        }
+
         //EIXO VERTICAL Y
         string _TitleAxisY = "Texto do eixo Y";
         [Category("Eixo Vertical")]
@@ -255,6 +275,26 @@ namespace Sigrain.PropertyGrid
         {
             get { return _DepthGridAxisY; }
             set { _DepthGridAxisY = value; }
+        }
+
+        double _MinimumAxisY = 0;
+        [Category("Eixo Vertical")]
+        [Description("Define o valor mínimo do eixo Y.")]
+        [DisplayName("Valor mìnimo eixo Y")]
+        public double MinimumAxisY
+        {
+            get { return _MinimumAxisY; }
+            set { _MinimumAxisY = value; }
+        }
+
+        double _MaximumAxisY = 100;
+        [Category("Eixo Vertical")]
+        [Description("Define o valor máximo do eixo Y.")]
+        [DisplayName("Valor máximo eixo Y")]
+        public double MaximumAxisY
+        {
+            get { return _MaximumAxisY; }
+            set { _MaximumAxisY = value; }
         }
 
     }

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Sigrain.Properties {
+namespace Sigran.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

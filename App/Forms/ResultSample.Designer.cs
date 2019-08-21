@@ -1,4 +1,4 @@
-﻿namespace Sigrain.Forms
+﻿namespace Sigran.Forms
 {
     partial class ResultSample
     {
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.arquivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,14 +40,19 @@
             this.copiarTodaATabelaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gráficosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.frequênciaAcumuladaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.copiarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.copiarTodaATabelaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 27);
             this.dataGridView1.Name = "dataGridView1";
@@ -111,14 +117,16 @@
             // 
             this.copiarToolStripMenuItem.Name = "copiarToolStripMenuItem";
             this.copiarToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copiarToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.copiarToolStripMenuItem.Size = new System.Drawing.Size(296, 24);
             this.copiarToolStripMenuItem.Text = "Copiar";
             this.copiarToolStripMenuItem.Click += new System.EventHandler(this.CopiarToolStripMenuItem_Click);
             // 
             // copiarTodaATabelaToolStripMenuItem
             // 
             this.copiarTodaATabelaToolStripMenuItem.Name = "copiarTodaATabelaToolStripMenuItem";
-            this.copiarTodaATabelaToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.copiarTodaATabelaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.C)));
+            this.copiarTodaATabelaToolStripMenuItem.Size = new System.Drawing.Size(296, 24);
             this.copiarTodaATabelaToolStripMenuItem.Text = "Copiar toda a tabela";
             this.copiarTodaATabelaToolStripMenuItem.Click += new System.EventHandler(this.CopiarTodaATabelaToolStripMenuItem_Click);
             // 
@@ -138,6 +146,31 @@
             this.frequênciaAcumuladaToolStripMenuItem.Size = new System.Drawing.Size(224, 24);
             this.frequênciaAcumuladaToolStripMenuItem.Text = "Frequência acumulada";
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copiarToolStripMenuItem1,
+            this.copiarTodaATabelaToolStripMenuItem1});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(255, 48);
+            // 
+            // copiarToolStripMenuItem1
+            // 
+            this.copiarToolStripMenuItem1.Name = "copiarToolStripMenuItem1";
+            this.copiarToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
+            this.copiarToolStripMenuItem1.Size = new System.Drawing.Size(254, 22);
+            this.copiarToolStripMenuItem1.Text = "Copiar";
+            this.copiarToolStripMenuItem1.Click += new System.EventHandler(this.CopiarToolStripMenuItem1_Click);
+            // 
+            // copiarTodaATabelaToolStripMenuItem1
+            // 
+            this.copiarTodaATabelaToolStripMenuItem1.Name = "copiarTodaATabelaToolStripMenuItem1";
+            this.copiarTodaATabelaToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.C)));
+            this.copiarTodaATabelaToolStripMenuItem1.Size = new System.Drawing.Size(254, 22);
+            this.copiarTodaATabelaToolStripMenuItem1.Text = "Copiar toda a tabela";
+            this.copiarTodaATabelaToolStripMenuItem1.Click += new System.EventHandler(this.CopiarTodaATabelaToolStripMenuItem1_Click);
+            // 
             // ResultSample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -154,6 +187,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -171,5 +205,8 @@
         private System.Windows.Forms.ToolStripMenuItem frequênciaAcumuladaToolStripMenuItem;
         public System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ToolStripMenuItem copiarTodaATabelaToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem copiarToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem copiarTodaATabelaToolStripMenuItem1;
     }
 }

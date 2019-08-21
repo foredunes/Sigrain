@@ -1,24 +1,14 @@
-﻿using Microsoft.Office.Interop.Excel;
-using Sigrain.Classes;
+﻿using Sigrain.Classes;
+using Sigran.Classes;
+using Sigran.PropertyGrid;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-using Axis = System.Windows.Forms.DataVisualization.Charting.Axis;
-using ChartArea = System.Windows.Forms.DataVisualization.Charting.ChartArea;
-using Rectangle = System.Drawing.Rectangle;
-using Series = System.Windows.Forms.DataVisualization.Charting.Series;
-using Sigrain.PropertyGrid;
 
-namespace Sigrain.Forms
+namespace Sigran.Forms
 {
     public partial class ResultChart : Form
     {
@@ -36,6 +26,9 @@ namespace Sigrain.Forms
 
         private void ResultChart_Load(object sender, EventArgs e)
         {
+            if (Type == "histogram")
+                editarLegendaToolStripMenuItem.Visible = false;
+
             splitContainer1.Panel1Collapsed = true;
             propertyGrid1.Dock = dataGridView1.Dock = DockStyle.Fill;
 
@@ -46,16 +39,36 @@ namespace Sigrain.Forms
                 //Configurações da janela
                 Text = Text + " - Histograma";
 
+                chart1.Series[1].BorderWidth = 0;
+                chart1.Series[1].MarkerBorderWidth = 0;
+                chart1.Series[1]["PointWidth"] = "1";
+
                 //Configurações do gráfico
                 chart1.ChartAreas[0].AxisX.Title = "phi";
                 chart1.ChartAreas[0].AxisY.Title = "Frequência (%)";
-                chart1.ChartAreas[0].AxisY.Interval = 5;
+                chart1.ChartAreas[0].AxisY.Interval = 10;
                 chart1.ChartAreas[0].AxisY.IntervalAutoMode = IntervalAutoMode.FixedCount;
+                chart1.ChartAreas[0].AxisY.Minimum = 0;
+                chart1.ChartAreas[0].AxisY.Maximum = 100;
                 chart1.ChartAreas[0].AxisX.IsMarginVisible = true;
                 chart1.ChartAreas[0].AxisY.IsMarginVisible = true;
                 chart1.ChartAreas[0].AxisX.Minimum = 0;
                 chart1.ChartAreas[0].AxisX.Maximum = 27;
                 chart1.Legends.Remove(chart1.Legends[0]);
+                //altera a cor do ponto de maior valor
+                double maximumValue = 0;
+                int idMaximumValue = 0;
+                int c = 0;
+                foreach (DataPoint dp in chart1.Series[1].Points)
+                {
+                    if(dp.YValues[0] > maximumValue)
+                    {
+                        maximumValue = dp.YValues[0];
+                        idMaximumValue = c;
+                    }
+                    c++;
+                }
+                chart1.Series[1].Points[idMaximumValue].Color = Color.Red;
                 //Titulo do gráfico
                 Title title = chart1.Titles.Add("Histograma");
                 title.Font = new System.Drawing.Font("Arial", 16, FontStyle.Bold);
@@ -163,7 +176,15 @@ namespace Sigrain.Forms
                 chart1.ChartAreas[0].BackImage = @"resources\folk-bg.jpg";
             }
 
-            if (Type == "sherpard" || Type == "pejrup" || Type == "folk")
+            if (Type == "folkThicks")
+            {
+                //Configurações da janela
+                Text = Text + " - Diagrama de Folk";
+                //Background imagem
+                chart1.ChartAreas[0].BackImage = @"resources\folk-grosseiros-bg.jpg";
+            }
+
+            if (Type == "sherpard" || Type == "pejrup" || Type == "folk" || Type == "folkThicks")
             {
                 //Configurações do gráfico
                 chart1.ChartAreas[0].AxisY.IntervalAutoMode = IntervalAutoMode.FixedCount;
@@ -251,7 +272,6 @@ namespace Sigrain.Forms
                     chart1.Series[0].Points[i].MarkerStyle = MarkerStyle.Circle;
                 }
             }
-
         }
 
         private void CreateDetailedGrid()
@@ -423,21 +443,25 @@ namespace Sigrain.Forms
 
                 pg.TitleAxisX = chart1.ChartAreas[0].AxisX.Title;
                 pg.DepthAxisX = chart1.ChartAreas[0].AxisX.LineWidth;
-                pg.IntervalAxisX = chart1.ChartAreas[0].AxisX.MajorTickMark.Interval;
+                pg.IntervalAxisX = chart1.ChartAreas[0].AxisX.MajorGrid.Interval;
                 pg.SubdivisionsAxisX = chart1.ChartAreas[0].AxisX.MinorTickMark.Enabled;
                 pg.ColorAxisX = chart1.ChartAreas[0].AxisX.LineColor;
                 pg.GridAxisX = chart1.ChartAreas[0].AxisX.MajorGrid.Enabled;
                 pg.DepthGridAxisX = chart1.ChartAreas[0].AxisX.MajorGrid.LineWidth;
                 pg.ColorGridAxisX = chart1.ChartAreas[0].AxisX.MajorGrid.LineColor;
+                pg.MinimumAxisX = chart1.ChartAreas[0].AxisX.Minimum;
+                pg.MaximumAxisX = chart1.ChartAreas[0].AxisX.Maximum;
 
                 pg.TitleAxisY = chart1.ChartAreas[0].AxisY.Title;
                 pg.DepthAxisY = chart1.ChartAreas[0].AxisY.LineWidth;
-                pg.IntervalAxisY = chart1.ChartAreas[0].AxisY.MajorTickMark.Interval;
+                pg.IntervalAxisY = chart1.ChartAreas[0].AxisY.MajorGrid.Interval;
                 pg.SubdivisionsAxisY = chart1.ChartAreas[0].AxisY.MinorTickMark.Enabled;
                 pg.ColorAxisY = chart1.ChartAreas[0].AxisY.LineColor;
                 pg.GridAxisY = chart1.ChartAreas[0].AxisY.MajorGrid.Enabled;
                 pg.DepthGridAxisY = chart1.ChartAreas[0].AxisY.MajorGrid.LineWidth;
                 pg.ColorGridAxisY = chart1.ChartAreas[0].AxisY.MajorGrid.LineColor;
+                pg.MinimumAxisY = chart1.ChartAreas[0].AxisY.Minimum;
+                pg.MaximumAxisY = chart1.ChartAreas[0].AxisY.Maximum;
 
                 int serie = 1;
                 pg.ColorSerie = chart1.Series[serie].Color;
@@ -451,6 +475,21 @@ namespace Sigrain.Forms
                 if (chart1.Series[serie].BorderDashStyle == ChartDashStyle.Dot)
                     pg.BorderStyleSerie = "Pontilhada";
                 pg.BorderDepthSerie = chart1.Series[1].BorderWidth;
+
+                //obtem a cor do ponto de maior valor
+                double maximumValue = 0;
+                int idMaximumValue = 0;
+                int c = 0;
+                foreach (DataPoint dp in chart1.Series[1].Points)
+                {
+                    if (dp.YValues[0] > maximumValue)
+                    {
+                        maximumValue = dp.YValues[0];
+                        idMaximumValue = c;
+                    }
+                    c++;
+                }
+                pg.ColorMaximumColumn = chart1.Series[1].Points[idMaximumValue].Color;
 
                 propertyGrid1.SelectedObject = pg;
             }
@@ -474,21 +513,25 @@ namespace Sigrain.Forms
 
                 pg.TitleAxisX = chart1.ChartAreas[0].AxisX.Title;
                 pg.DepthAxisX = chart1.ChartAreas[0].AxisX.LineWidth;
-                pg.IntervalAxisX = chart1.ChartAreas[0].AxisX.MajorTickMark.Interval;
+                pg.IntervalAxisX = chart1.ChartAreas[0].AxisX.MajorGrid.Interval;
                 pg.SubdivisionsAxisX = chart1.ChartAreas[0].AxisX.MinorTickMark.Enabled;
                 pg.ColorAxisX = chart1.ChartAreas[0].AxisX.LineColor;
                 pg.GridAxisX = chart1.ChartAreas[0].AxisX.MajorGrid.Enabled;
                 pg.DepthGridAxisX = chart1.ChartAreas[0].AxisX.MajorGrid.LineWidth;
                 pg.ColorGridAxisX = chart1.ChartAreas[0].AxisX.MajorGrid.LineColor;
+                pg.MinimumAxisX = chart1.ChartAreas[0].AxisX.Minimum;
+                pg.MaximumAxisX = chart1.ChartAreas[0].AxisX.Maximum;
 
                 pg.TitleAxisY = chart1.ChartAreas[0].AxisY.Title;
                 pg.DepthAxisY = chart1.ChartAreas[0].AxisY.LineWidth;
-                pg.IntervalAxisY = chart1.ChartAreas[0].AxisY.MajorTickMark.Interval;
+                pg.IntervalAxisY = chart1.ChartAreas[0].AxisY.MajorGrid.Interval;
                 pg.SubdivisionsAxisY = chart1.ChartAreas[0].AxisY.MinorTickMark.Enabled;
                 pg.ColorAxisY = chart1.ChartAreas[0].AxisY.LineColor;
                 pg.GridAxisY = chart1.ChartAreas[0].AxisY.MajorGrid.Enabled;
                 pg.DepthGridAxisY = chart1.ChartAreas[0].AxisY.MajorGrid.LineWidth;
                 pg.ColorGridAxisY = chart1.ChartAreas[0].AxisY.MajorGrid.LineColor;
+                pg.MinimumAxisY = chart1.ChartAreas[0].AxisY.Minimum;
+                pg.MaximumAxisY = chart1.ChartAreas[0].AxisY.Maximum;
 
                 pg.SizeMarketsSeries = chart1.Series[0].MarkerSize;
                 if(chart1.Annotations.Count > 0)
@@ -521,7 +564,7 @@ namespace Sigrain.Forms
                 }
             }
 
-            if (Type == "sherpard" || Type == "pejrup" || Type == "folk")
+            if (Type == "sherpard" || Type == "pejrup" || Type == "folk" || Type == "folkThicks")
             {
                 ThernaryDiagramPropertyGrid pg = new ThernaryDiagramPropertyGrid();
                 pg.BackgroundColor = chart1.BackColor;
@@ -598,21 +641,25 @@ namespace Sigrain.Forms
 
                 pg.TitleAxisX = chart1.ChartAreas[0].AxisX.Title;
                 pg.DepthAxisX = chart1.ChartAreas[0].AxisX.LineWidth;
-                pg.IntervalAxisX = chart1.ChartAreas[0].AxisX.MajorTickMark.Interval;
+                pg.IntervalAxisX = chart1.ChartAreas[0].AxisX.MajorGrid.Interval;
                 pg.SubdivisionsAxisX = chart1.ChartAreas[0].AxisX.MinorTickMark.Enabled;
                 pg.ColorAxisX = chart1.ChartAreas[0].AxisX.LineColor;
                 pg.GridAxisX = chart1.ChartAreas[0].AxisX.MajorGrid.Enabled;
                 pg.DepthGridAxisX = chart1.ChartAreas[0].AxisX.MajorGrid.LineWidth;
                 pg.ColorGridAxisX = chart1.ChartAreas[0].AxisX.MajorGrid.LineColor;
+                pg.MinimumAxisX = chart1.ChartAreas[0].AxisX.Minimum;
+                pg.MaximumAxisX = chart1.ChartAreas[0].AxisX.Maximum;
 
                 pg.TitleAxisY = chart1.ChartAreas[0].AxisY.Title;
                 pg.DepthAxisY = chart1.ChartAreas[0].AxisY.LineWidth;
-                pg.IntervalAxisY = chart1.ChartAreas[0].AxisY.MajorTickMark.Interval;
+                pg.IntervalAxisY = chart1.ChartAreas[0].AxisY.MajorGrid.Interval;
                 pg.SubdivisionsAxisY = chart1.ChartAreas[0].AxisY.MinorTickMark.Enabled;
                 pg.ColorAxisY = chart1.ChartAreas[0].AxisY.LineColor;
                 pg.GridAxisY = chart1.ChartAreas[0].AxisY.MajorGrid.Enabled;
                 pg.DepthGridAxisY = chart1.ChartAreas[0].AxisY.MajorGrid.LineWidth;
                 pg.ColorGridAxisY = chart1.ChartAreas[0].AxisY.MajorGrid.LineColor;
+                pg.MinimumAxisY = chart1.ChartAreas[0].AxisY.Minimum;
+                pg.MaximumAxisY = chart1.ChartAreas[0].AxisY.Maximum;
 
                 if (chart1.Series[0].Points[0].LabelForeColor != Color.Transparent)
                 {
@@ -680,7 +727,7 @@ namespace Sigrain.Forms
 
                 chart1.ChartAreas[0].AxisX.Title = pg.TitleAxisX;
                 chart1.ChartAreas[0].AxisX.LineWidth = pg.DepthAxisX;
-                chart1.ChartAreas[0].AxisX.MajorTickMark.Interval = pg.IntervalAxisX;
+                chart1.ChartAreas[0].AxisX.MajorGrid.Interval = pg.IntervalAxisX;
                 chart1.ChartAreas[0].AxisX.MinorTickMark.Enabled = pg.SubdivisionsAxisX;
                 chart1.ChartAreas[0].AxisX.LineColor = pg.ColorAxisX;
                 chart1.ChartAreas[0].AxisX.MajorTickMark.LineColor = pg.ColorAxisX;
@@ -688,10 +735,12 @@ namespace Sigrain.Forms
                 chart1.ChartAreas[0].AxisX.MajorGrid.Enabled = pg.GridAxisX;
                 chart1.ChartAreas[0].AxisX.MajorGrid.LineWidth = pg.DepthGridAxisX;
                 chart1.ChartAreas[0].AxisX.MajorGrid.LineColor = pg.ColorGridAxisX;
+                chart1.ChartAreas[0].AxisX.Minimum = pg.MinimumAxisX;
+                chart1.ChartAreas[0].AxisX.Maximum = pg.MaximumAxisX;
 
                 chart1.ChartAreas[0].AxisY.Title = pg.TitleAxisY;
                 chart1.ChartAreas[0].AxisY.LineWidth = pg.DepthAxisY;
-                chart1.ChartAreas[0].AxisY.MajorTickMark.Interval = pg.IntervalAxisY;
+                chart1.ChartAreas[0].AxisY.MajorGrid.Interval = pg.IntervalAxisY;
                 chart1.ChartAreas[0].AxisY.MinorTickMark.Enabled = pg.SubdivisionsAxisY;
                 chart1.ChartAreas[0].AxisY.LineColor = pg.ColorAxisY;
                 chart1.ChartAreas[0].AxisY.MajorTickMark.LineColor = pg.ColorAxisY;
@@ -699,6 +748,8 @@ namespace Sigrain.Forms
                 chart1.ChartAreas[0].AxisY.MajorGrid.Enabled = pg.GridAxisY;
                 chart1.ChartAreas[0].AxisY.MajorGrid.LineWidth = pg.DepthGridAxisY;
                 chart1.ChartAreas[0].AxisY.MajorGrid.LineColor = pg.ColorGridAxisY;
+                chart1.ChartAreas[0].AxisY.Minimum = pg.MinimumAxisY;
+                chart1.ChartAreas[0].AxisY.Maximum = pg.MaximumAxisY;
 
                 int serie = 1;
                 chart1.Series[serie].Color = pg.ColorSerie;
@@ -712,6 +763,21 @@ namespace Sigrain.Forms
                 if (pg.BorderStyleSerie == "Pontilhada")
                     chart1.Series[serie].BorderDashStyle = ChartDashStyle.Dot;
                 chart1.Series[1].BorderWidth = pg.BorderDepthSerie;
+
+                //obtem a cor do ponto de maior valor
+                double maximumValue = 0;
+                int idMaximumValue = 0;
+                int c = 0;
+                foreach (DataPoint dp in chart1.Series[1].Points)
+                {
+                    if (dp.YValues[0] > maximumValue)
+                    {
+                        maximumValue = dp.YValues[0];
+                        idMaximumValue = c;
+                    }
+                    c++;
+                }
+                chart1.Series[1].Points[idMaximumValue].Color = pg.ColorMaximumColumn;
             }
 
             if (Type == "frequencyAcc")
@@ -733,7 +799,7 @@ namespace Sigrain.Forms
 
                 chart1.ChartAreas[0].AxisX.Title = pg.TitleAxisX;
                 chart1.ChartAreas[0].AxisX.LineWidth = pg.DepthAxisX;
-                chart1.ChartAreas[0].AxisX.MajorTickMark.Interval = pg.IntervalAxisX;
+                chart1.ChartAreas[0].AxisX.MajorGrid.Interval = pg.IntervalAxisX;
                 chart1.ChartAreas[0].AxisX.MinorTickMark.Enabled = pg.SubdivisionsAxisX;
                 chart1.ChartAreas[0].AxisX.LineColor = pg.ColorAxisX;
                 chart1.ChartAreas[0].AxisX.MajorTickMark.LineColor = pg.ColorAxisX;
@@ -741,10 +807,12 @@ namespace Sigrain.Forms
                 chart1.ChartAreas[0].AxisX.MajorGrid.Enabled = pg.GridAxisX;
                 chart1.ChartAreas[0].AxisX.MajorGrid.LineWidth = pg.DepthGridAxisX;
                 chart1.ChartAreas[0].AxisX.MajorGrid.LineColor = pg.ColorGridAxisX;
+                chart1.ChartAreas[0].AxisX.Minimum = pg.MinimumAxisX;
+                chart1.ChartAreas[0].AxisX.Maximum = pg.MaximumAxisX;
 
                 chart1.ChartAreas[0].AxisY.Title = pg.TitleAxisY;
                 chart1.ChartAreas[0].AxisY.LineWidth = pg.DepthAxisY;
-                chart1.ChartAreas[0].AxisY.MajorTickMark.Interval = pg.IntervalAxisY;
+                chart1.ChartAreas[0].AxisY.MajorGrid.Interval = pg.IntervalAxisY;
                 chart1.ChartAreas[0].AxisY.MinorTickMark.Enabled = pg.SubdivisionsAxisY;
                 chart1.ChartAreas[0].AxisY.LineColor = pg.ColorAxisY;
                 chart1.ChartAreas[0].AxisY.MajorTickMark.LineColor = pg.ColorAxisY;
@@ -752,8 +820,10 @@ namespace Sigrain.Forms
                 chart1.ChartAreas[0].AxisY.MajorGrid.Enabled = pg.GridAxisY;
                 chart1.ChartAreas[0].AxisY.MajorGrid.LineWidth = pg.DepthGridAxisY;
                 chart1.ChartAreas[0].AxisY.MajorGrid.LineColor = pg.ColorGridAxisY;
+                chart1.ChartAreas[0].AxisY.Minimum = pg.MinimumAxisY;
+                chart1.ChartAreas[0].AxisY.Maximum = pg.MaximumAxisY;
 
-                
+
 
                 for (int ss = 0; ss < chart1.Series.Count; ss++)
                 {
@@ -801,7 +871,7 @@ namespace Sigrain.Forms
                 }
             }
 
-            if (Type == "sherpard" || Type == "pejrup" || Type == "folk")
+            if (Type == "sherpard" || Type == "pejrup" || Type == "folk" || Type == "folkThicks")
             {
                 ThernaryDiagramPropertyGrid pg = (ThernaryDiagramPropertyGrid) propertyGrid1.SelectedObject;
                 chart1.BackColor = pg.BackgroundColor;
@@ -896,7 +966,7 @@ namespace Sigrain.Forms
 
                 chart1.ChartAreas[0].AxisX.Title = pg.TitleAxisX;
                 chart1.ChartAreas[0].AxisX.LineWidth = pg.DepthAxisX;
-                chart1.ChartAreas[0].AxisX.MajorTickMark.Interval = pg.IntervalAxisX;
+                chart1.ChartAreas[0].AxisX.MajorGrid.Interval = pg.IntervalAxisX;
                 chart1.ChartAreas[0].AxisX.MinorTickMark.Enabled = pg.SubdivisionsAxisX;
                 chart1.ChartAreas[0].AxisX.LineColor = pg.ColorAxisX;
                 chart1.ChartAreas[0].AxisX.MajorTickMark.LineColor = pg.ColorAxisX;
@@ -904,10 +974,12 @@ namespace Sigrain.Forms
                 chart1.ChartAreas[0].AxisX.MajorGrid.Enabled = pg.GridAxisX;
                 chart1.ChartAreas[0].AxisX.MajorGrid.LineWidth = pg.DepthGridAxisX;
                 chart1.ChartAreas[0].AxisX.MajorGrid.LineColor = pg.ColorGridAxisX;
+                chart1.ChartAreas[0].AxisX.Minimum = pg.MinimumAxisX;
+                chart1.ChartAreas[0].AxisX.Maximum = pg.MaximumAxisX;
 
                 chart1.ChartAreas[0].AxisY.Title = pg.TitleAxisY;
                 chart1.ChartAreas[0].AxisY.LineWidth = pg.DepthAxisY;
-                chart1.ChartAreas[0].AxisY.MajorTickMark.Interval = pg.IntervalAxisY;
+                chart1.ChartAreas[0].AxisY.MajorGrid.Interval = pg.IntervalAxisY;
                 chart1.ChartAreas[0].AxisY.MinorTickMark.Enabled = pg.SubdivisionsAxisY;
                 chart1.ChartAreas[0].AxisY.LineColor = pg.ColorAxisY;
                 chart1.ChartAreas[0].AxisY.MajorTickMark.LineColor = pg.ColorAxisY;
@@ -915,6 +987,8 @@ namespace Sigrain.Forms
                 chart1.ChartAreas[0].AxisY.MajorGrid.Enabled = pg.GridAxisY;
                 chart1.ChartAreas[0].AxisY.MajorGrid.LineWidth = pg.DepthGridAxisY;
                 chart1.ChartAreas[0].AxisY.MajorGrid.LineColor = pg.ColorGridAxisY;
+                chart1.ChartAreas[0].AxisY.Minimum = pg.MinimumAxisY;
+                chart1.ChartAreas[0].AxisY.Maximum = pg.MaximumAxisY;
 
                 for (int i = 0; i < chart1.Series[0].Points.Count; i++)
                     chart1.Series[0].Points[i].MarkerSize = pg.MarkersSize;
@@ -975,9 +1049,6 @@ namespace Sigrain.Forms
                     }
 
                 }
-
-
-
             }
         }
 
@@ -1036,6 +1107,39 @@ namespace Sigrain.Forms
         private void SalvarTabelaDeDadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             f.exportDatagridToFile(dataGridView1, true);
+        }
+
+        private void EditarLegendaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            chart1.ApplyPaletteColors();
+            EditLegend form = new EditLegend();
+            form.parentForm = this;
+            form.type = Type;
+            int i = 0;
+            if (Type == "frequencyAcc")
+            {
+                foreach (var serie in chart1.Series)
+                {
+                    if (i < chart1.Series.Count - 1)
+                    {
+                        form.dataGridView1.Rows.Add(i.ToString(), serie.LegendText, serie.BorderWidth, serie.Color.ToString());
+                        form.dataGridView1.Rows[i].Cells[3].Style.BackColor = serie.Color;
+                    }
+                    i++;
+                }
+            }
+            else
+            {
+                
+                foreach (var point in chart1.Series[0].Points)
+                {
+                    form.dataGridView1.Rows.Add(i.ToString(), point.Label, point.MarkerSize, point.MarkerColor.ToString());
+                    form.dataGridView1.Rows[i].Cells[3].Style.BackColor = point.MarkerColor;
+                    i++;
+                }
+            }
+                
+            form.ShowDialog();
         }
     }
 }

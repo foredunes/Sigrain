@@ -1,4 +1,5 @@
 ﻿using Sigrain.Classes;
+using Sigran.Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Sigrain.Forms
+namespace Sigran.Forms
 {
     public partial class ResultSample : Form
     {
@@ -82,14 +83,35 @@ namespace Sigrain.Forms
 
         private void ExportarPlanilhaToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            NoNullDataGrid();
             f.exportDatagridToFile(dataGridView1);
+        }
 
-
+        private void NoNullDataGrid()
+        {
+            for (int i = 0; i < dataGridView1.Columns.Count; i++)
+            {
+                for (int j = 0; j < dataGridView1.Rows.Count; j++)
+                {
+                    if(dataGridView1.Rows[j].Cells[i].Value == null)
+                        dataGridView1.Rows[j].Cells[i].Value = "";
+                }
+            }
         }
 
         private void SairToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void CopiarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            CopiarToolStripMenuItem_Click(sender, e);
+        }
+
+        private void CopiarTodaATabelaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            CopiarTodaATabelaToolStripMenuItem_Click(sender, e);
         }
     }
 }

@@ -1,13 +1,13 @@
-﻿using Sigrain.Forms;
+﻿using Sigran.Forms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Sigrain;
+using Sigran;
 
 
-namespace Sigrain
+namespace Sigran
 {
     static class Program
     {

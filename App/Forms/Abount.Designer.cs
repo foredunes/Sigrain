@@ -1,4 +1,4 @@
-﻿namespace Sigrain.Forms
+﻿namespace Sigran.Forms
 {
     partial class Abount
     {
@@ -40,7 +40,7 @@
             // label1
             // 
             this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Image = ((System.Drawing.Image)(resources.GetObject("label1.Image")));
+            this.label1.Image = global::Sigran.Properties.Resources.logo400x100;
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(450, 100);

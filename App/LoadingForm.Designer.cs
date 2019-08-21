@@ -1,4 +1,4 @@
-﻿namespace Sigrain
+﻿namespace Sigran
 {
     partial class LoadingForm
     {
@@ -73,7 +73,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(90, 173);
+            this.label4.Location = new System.Drawing.Point(93, 173);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(261, 19);
             this.label4.TabIndex = 55;
@@ -144,9 +144,9 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(104, 111);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(247, 78);
+            this.label2.Size = new System.Drawing.Size(231, 78);
             this.label2.TabIndex = 1;
-            this.label2.Text = "SIGRAIN";
+            this.label2.Text = "SIGRAN";
             // 
             // LoadingForm
             // 

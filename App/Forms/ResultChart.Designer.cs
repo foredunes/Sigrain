@@ -1,4 +1,4 @@
-﻿namespace Sigrain.Forms
+﻿namespace Sigran.Forms
 {
     partial class ResultChart
     {
@@ -29,32 +29,33 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.arquivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salvarGráficoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.salvarTabelaDeDadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editarLegendaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.copiarCélulasSelecionadasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copiarTodasAsCélulasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.salvarTabelaDeDadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -64,7 +65,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.arquivoToolStripMenuItem,
             this.dadosToolStripMenuItem,
-            this.editarToolStripMenuItem});
+            this.editarToolStripMenuItem,
+            this.editarLegendaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 27);
@@ -86,20 +88,28 @@
             // 
             this.salvarGráficoToolStripMenuItem.Name = "salvarGráficoToolStripMenuItem";
             this.salvarGráficoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.salvarGráficoToolStripMenuItem.Size = new System.Drawing.Size(212, 24);
+            this.salvarGráficoToolStripMenuItem.Size = new System.Drawing.Size(290, 24);
             this.salvarGráficoToolStripMenuItem.Text = "Salvar gráfico";
             this.salvarGráficoToolStripMenuItem.Click += new System.EventHandler(this.SalvarGráficoToolStripMenuItem_Click);
+            // 
+            // salvarTabelaDeDadosToolStripMenuItem
+            // 
+            this.salvarTabelaDeDadosToolStripMenuItem.Name = "salvarTabelaDeDadosToolStripMenuItem";
+            this.salvarTabelaDeDadosToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
+            this.salvarTabelaDeDadosToolStripMenuItem.Size = new System.Drawing.Size(290, 24);
+            this.salvarTabelaDeDadosToolStripMenuItem.Text = "Exportar tabela de dados";
+            this.salvarTabelaDeDadosToolStripMenuItem.Click += new System.EventHandler(this.SalvarTabelaDeDadosToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(209, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(287, 6);
             // 
             // sairToolStripMenuItem
             // 
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
             this.sairToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(212, 24);
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(290, 24);
             this.sairToolStripMenuItem.Text = "Sair";
             this.sairToolStripMenuItem.Click += new System.EventHandler(this.SairToolStripMenuItem_Click);
             // 
@@ -113,9 +123,16 @@
             // editarToolStripMenuItem
             // 
             this.editarToolStripMenuItem.Name = "editarToolStripMenuItem";
-            this.editarToolStripMenuItem.Size = new System.Drawing.Size(59, 23);
-            this.editarToolStripMenuItem.Text = "Editar";
+            this.editarToolStripMenuItem.Size = new System.Drawing.Size(174, 23);
+            this.editarToolStripMenuItem.Text = "Propriedades do gráfico";
             this.editarToolStripMenuItem.Click += new System.EventHandler(this.EditarToolStripMenuItem_Click);
+            // 
+            // editarLegendaToolStripMenuItem
+            // 
+            this.editarLegendaToolStripMenuItem.Name = "editarLegendaToolStripMenuItem";
+            this.editarLegendaToolStripMenuItem.Size = new System.Drawing.Size(115, 23);
+            this.editarLegendaToolStripMenuItem.Text = "Editar legenda";
+            this.editarLegendaToolStripMenuItem.Click += new System.EventHandler(this.EditarLegendaToolStripMenuItem_Click);
             // 
             // splitContainer1
             // 
@@ -162,23 +179,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(195, 150);
             this.dataGridView1.TabIndex = 1;
             // 
-            // chart1
-            // 
-            chartArea7.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea7);
-            this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend7.Name = "Legend1";
-            this.chart1.Legends.Add(legend7);
-            this.chart1.Location = new System.Drawing.Point(10, 0);
-            this.chart1.Name = "chart1";
-            series7.ChartArea = "ChartArea1";
-            series7.Legend = "Legend1";
-            series7.Name = "Series1";
-            this.chart1.Series.Add(series7);
-            this.chart1.Size = new System.Drawing.Size(571, 413);
-            this.chart1.TabIndex = 2;
-            this.chart1.Text = "chart1";
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -198,19 +198,28 @@
             // copiarTodasAsCélulasToolStripMenuItem
             // 
             this.copiarTodasAsCélulasToolStripMenuItem.Name = "copiarTodasAsCélulasToolStripMenuItem";
-            this.copiarTodasAsCélulasToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift)
+            this.copiarTodasAsCélulasToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.C)));
             this.copiarTodasAsCélulasToolStripMenuItem.Size = new System.Drawing.Size(268, 22);
             this.copiarTodasAsCélulasToolStripMenuItem.Text = "Copiar todas as células";
             this.copiarTodasAsCélulasToolStripMenuItem.Click += new System.EventHandler(this.CopiarTodasAsCélulasToolStripMenuItem_Click);
             // 
-            // salvarTabelaDeDadosToolStripMenuItem
+            // chart1
             // 
-            this.salvarTabelaDeDadosToolStripMenuItem.Name = "salvarTabelaDeDadosToolStripMenuItem";
-            this.salvarTabelaDeDadosToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
-            this.salvarTabelaDeDadosToolStripMenuItem.Size = new System.Drawing.Size(290, 24);
-            this.salvarTabelaDeDadosToolStripMenuItem.Text = "Exportar tabela de dados";
-            this.salvarTabelaDeDadosToolStripMenuItem.Click += new System.EventHandler(this.SalvarTabelaDeDadosToolStripMenuItem_Click);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
+            this.chart1.Location = new System.Drawing.Point(10, 0);
+            this.chart1.Name = "chart1";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart1.Series.Add(series2);
+            this.chart1.Size = new System.Drawing.Size(571, 413);
+            this.chart1.TabIndex = 2;
+            this.chart1.Text = "chart1";
             // 
             // ResultChart
             // 
@@ -232,8 +241,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -256,5 +265,6 @@
         private System.Windows.Forms.ToolStripMenuItem copiarCélulasSelecionadasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem copiarTodasAsCélulasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salvarTabelaDeDadosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editarLegendaToolStripMenuItem;
     }
 }

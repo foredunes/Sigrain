@@ -1,4 +1,4 @@
-﻿namespace Sigrain.Forms
+﻿namespace Sigran.Forms
 {
     partial class SampleForm
     {
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.labelPeso = new System.Windows.Forms.Label();
@@ -55,6 +56,11 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Phi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Pesos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStripEdit = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.copiarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.colarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.limparToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -67,6 +73,7 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCarbonato)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.contextMenuStripEdit.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -365,6 +372,7 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Phi,
             this.Pesos});
+            this.dataGridView1.ContextMenuStrip = this.contextMenuStripEdit;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 10);
             this.dataGridView1.Name = "dataGridView1";
@@ -386,6 +394,45 @@
             this.Pesos.HeaderText = "Pesos";
             this.Pesos.Name = "Pesos";
             this.Pesos.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // contextMenuStripEdit
+            // 
+            this.contextMenuStripEdit.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copiarToolStripMenuItem,
+            this.colarToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.limparToolStripMenuItem});
+            this.contextMenuStripEdit.Name = "contextMenuStripEdit";
+            this.contextMenuStripEdit.Size = new System.Drawing.Size(181, 98);
+            // 
+            // copiarToolStripMenuItem
+            // 
+            this.copiarToolStripMenuItem.Name = "copiarToolStripMenuItem";
+            this.copiarToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
+            this.copiarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.copiarToolStripMenuItem.Text = "Copiar";
+            this.copiarToolStripMenuItem.Click += new System.EventHandler(this.CopiarToolStripMenuItem_Click);
+            // 
+            // colarToolStripMenuItem
+            // 
+            this.colarToolStripMenuItem.Name = "colarToolStripMenuItem";
+            this.colarToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
+            this.colarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.colarToolStripMenuItem.Text = "Colar";
+            this.colarToolStripMenuItem.Click += new System.EventHandler(this.ColarToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            // 
+            // limparToolStripMenuItem
+            // 
+            this.limparToolStripMenuItem.Name = "limparToolStripMenuItem";
+            this.limparToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
+            this.limparToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.limparToolStripMenuItem.Text = "Limpar";
+            this.limparToolStripMenuItem.Click += new System.EventHandler(this.LimparToolStripMenuItem_Click);
             // 
             // SampleForm
             // 
@@ -414,6 +461,7 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCarbonato)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.contextMenuStripEdit.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -447,5 +495,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Pesos;
         public System.Windows.Forms.Button buttonCanelar;
         public System.Windows.Forms.Button buttonSalvar;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripEdit;
+        private System.Windows.Forms.ToolStripMenuItem copiarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem colarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem limparToolStripMenuItem;
     }
 }

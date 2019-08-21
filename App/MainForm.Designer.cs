@@ -1,4 +1,4 @@
-﻿namespace Sigrain
+﻿namespace Sigran
 {
     partial class MainForm
     {
@@ -37,6 +37,8 @@
             this.salvarComoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fecharToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.configuraçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.importarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -59,19 +61,9 @@
             this.shepardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pejrupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.diagramaDeFolkToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.diagramaDeFolkGrosseirosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.médiaXSelecionamentoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.médiaXAssimetriaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.médiaXCurtoseToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.selecionamentoXMédiaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.selecionamentoXAssimetriaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.selecionamentoXCurtoseToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.assimetriaXMédiaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.assimetriaXSelecionamentoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.assimetriaXCurtoseToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.curtoseXMédiaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.curtoseXSelecionamentoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.curtoseXAssimetriaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.bivariadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.multiGráficosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ajudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exibirAjudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -86,8 +78,14 @@
             this.copiarCélulasSelecionadasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copiarTodaATabelaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.button15 = new System.Windows.Forms.Button();
+            this.button16 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.button12 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
@@ -102,10 +100,6 @@
             this.otto1939ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.button5 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -153,21 +147,15 @@
             this.Peso25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sqLiteCommandBuilder1 = new System.Data.SQLite.SQLiteCommandBuilder();
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.médiaXSelecionamentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.médiaXAssimetriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.médiaXCurtoseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.selecionamentoXMédiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.selecionamentoXAssimetriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.selecionamentoXCurtoseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.assimetriaXMédiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.assimetriaXSelecionamentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.assimetriaXCurtoseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.curtoseXMédiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.curtoseXSelecionamentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.curtoseXAssimetriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.curtoseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.assimetriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.médiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.medianaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.selecionamentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -190,7 +178,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(0);
-            this.menuStrip1.Size = new System.Drawing.Size(800, 31);
+            this.menuStrip1.Size = new System.Drawing.Size(914, 31);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -203,6 +191,8 @@
             this.salvarComoToolStripMenuItem,
             this.fecharToolStripMenuItem,
             this.toolStripSeparator4,
+            this.configuraçõesToolStripMenuItem,
+            this.toolStripSeparator8,
             this.importarToolStripMenuItem,
             this.exportarToolStripMenuItem,
             this.toolStripSeparator1,
@@ -238,7 +228,7 @@
             // 
             this.salvarComoToolStripMenuItem.Enabled = false;
             this.salvarComoToolStripMenuItem.Name = "salvarComoToolStripMenuItem";
-            this.salvarComoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift)
+            this.salvarComoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.S)));
             this.salvarComoToolStripMenuItem.Size = new System.Drawing.Size(240, 24);
             this.salvarComoToolStripMenuItem.Text = "Salvar como";
@@ -257,6 +247,18 @@
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(237, 6);
+            // 
+            // configuraçõesToolStripMenuItem
+            // 
+            this.configuraçõesToolStripMenuItem.Name = "configuraçõesToolStripMenuItem";
+            this.configuraçõesToolStripMenuItem.Size = new System.Drawing.Size(240, 24);
+            this.configuraçõesToolStripMenuItem.Text = "Configurações";
+            this.configuraçõesToolStripMenuItem.Click += new System.EventHandler(this.ConfiguraçõesToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(237, 6);
             // 
             // importarToolStripMenuItem
             // 
@@ -362,13 +364,13 @@
             this.processarSelecionadaToolStripMenuItem.Name = "processarSelecionadaToolStripMenuItem";
             this.processarSelecionadaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
             this.processarSelecionadaToolStripMenuItem.Size = new System.Drawing.Size(422, 24);
-            this.processarSelecionadaToolStripMenuItem.Text = "Processar selecionada";
+            this.processarSelecionadaToolStripMenuItem.Text = "Processar amostra selecionada";
             this.processarSelecionadaToolStripMenuItem.Click += new System.EventHandler(this.ProcessarSelecionadaToolStripMenuItem_Click);
             // 
             // processárVáriasAmostrasToolStripMenuItem
             // 
             this.processárVáriasAmostrasToolStripMenuItem.Name = "processárVáriasAmostrasToolStripMenuItem";
-            this.processárVáriasAmostrasToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift)
+            this.processárVáriasAmostrasToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.P)));
             this.processárVáriasAmostrasToolStripMenuItem.Size = new System.Drawing.Size(422, 24);
             this.processárVáriasAmostrasToolStripMenuItem.Text = "Processár várias amostras selecionadas";
@@ -388,19 +390,9 @@
             this.shepardToolStripMenuItem,
             this.pejrupToolStripMenuItem,
             this.diagramaDeFolkToolStripMenuItem1,
+            this.diagramaDeFolkGrosseirosToolStripMenuItem1,
             this.toolStripSeparator7,
-            this.médiaXSelecionamentoToolStripMenuItem1,
-            this.médiaXAssimetriaToolStripMenuItem1,
-            this.médiaXCurtoseToolStripMenuItem1,
-            this.selecionamentoXMédiaToolStripMenuItem1,
-            this.selecionamentoXAssimetriaToolStripMenuItem1,
-            this.selecionamentoXCurtoseToolStripMenuItem1,
-            this.assimetriaXMédiaToolStripMenuItem1,
-            this.assimetriaXSelecionamentoToolStripMenuItem1,
-            this.assimetriaXCurtoseToolStripMenuItem1,
-            this.curtoseXMédiaToolStripMenuItem1,
-            this.curtoseXSelecionamentoToolStripMenuItem1,
-            this.curtoseXAssimetriaToolStripMenuItem1});
+            this.bivariadoToolStripMenuItem});
             this.gráficosParaAAmostraSelecionadaToolStripMenuItem.Name = "gráficosParaAAmostraSelecionadaToolStripMenuItem";
             this.gráficosParaAAmostraSelecionadaToolStripMenuItem.Size = new System.Drawing.Size(422, 24);
             this.gráficosParaAAmostraSelecionadaToolStripMenuItem.Text = "Gráficos para a amostra selecionada";
@@ -409,7 +401,7 @@
             // 
             this.histogramaToolStripMenuItem.Name = "histogramaToolStripMenuItem";
             this.histogramaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.H)));
-            this.histogramaToolStripMenuItem.Size = new System.Drawing.Size(266, 24);
+            this.histogramaToolStripMenuItem.Size = new System.Drawing.Size(317, 24);
             this.histogramaToolStripMenuItem.Text = "Histograma";
             this.histogramaToolStripMenuItem.Click += new System.EventHandler(this.HistogramaToolStripMenuItem_Click);
             // 
@@ -417,20 +409,20 @@
             // 
             this.frequênciaAcumuladaToolStripMenuItem.Name = "frequênciaAcumuladaToolStripMenuItem";
             this.frequênciaAcumuladaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F)));
-            this.frequênciaAcumuladaToolStripMenuItem.Size = new System.Drawing.Size(266, 24);
+            this.frequênciaAcumuladaToolStripMenuItem.Size = new System.Drawing.Size(317, 24);
             this.frequênciaAcumuladaToolStripMenuItem.Text = "Frequência acumulada";
             this.frequênciaAcumuladaToolStripMenuItem.Click += new System.EventHandler(this.FrequênciaAcumuladaToolStripMenuItem_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(263, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(314, 6);
             // 
             // shepardToolStripMenuItem
             // 
             this.shepardToolStripMenuItem.Name = "shepardToolStripMenuItem";
             this.shepardToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.S)));
-            this.shepardToolStripMenuItem.Size = new System.Drawing.Size(266, 24);
+            this.shepardToolStripMenuItem.Size = new System.Drawing.Size(317, 24);
             this.shepardToolStripMenuItem.Text = "Diagrama de Shepard";
             this.shepardToolStripMenuItem.Click += new System.EventHandler(this.ShepardToolStripMenuItem_Click);
             // 
@@ -438,106 +430,38 @@
             // 
             this.pejrupToolStripMenuItem.Name = "pejrupToolStripMenuItem";
             this.pejrupToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.P)));
-            this.pejrupToolStripMenuItem.Size = new System.Drawing.Size(266, 24);
+            this.pejrupToolStripMenuItem.Size = new System.Drawing.Size(317, 24);
             this.pejrupToolStripMenuItem.Text = "Diagrama de Pejrup";
             this.pejrupToolStripMenuItem.Click += new System.EventHandler(this.PejrupToolStripMenuItem_Click);
             // 
             // diagramaDeFolkToolStripMenuItem1
             // 
             this.diagramaDeFolkToolStripMenuItem1.Name = "diagramaDeFolkToolStripMenuItem1";
-            this.diagramaDeFolkToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F)));
-            this.diagramaDeFolkToolStripMenuItem1.Size = new System.Drawing.Size(266, 24);
-            this.diagramaDeFolkToolStripMenuItem1.Text = "Diagrama de Folk";
+            this.diagramaDeFolkToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.O)));
+            this.diagramaDeFolkToolStripMenuItem1.Size = new System.Drawing.Size(317, 24);
+            this.diagramaDeFolkToolStripMenuItem1.Text = "Diagrama de Folk (Finos)";
             this.diagramaDeFolkToolStripMenuItem1.Click += new System.EventHandler(this.DiagramaDeFolkToolStripMenuItem1_Click);
+            // 
+            // diagramaDeFolkGrosseirosToolStripMenuItem1
+            // 
+            this.diagramaDeFolkGrosseirosToolStripMenuItem1.Name = "diagramaDeFolkGrosseirosToolStripMenuItem1";
+            this.diagramaDeFolkGrosseirosToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.P)));
+            this.diagramaDeFolkGrosseirosToolStripMenuItem1.Size = new System.Drawing.Size(317, 24);
+            this.diagramaDeFolkGrosseirosToolStripMenuItem1.Text = "Diagrama de Folk (Grosseiros)";
+            this.diagramaDeFolkGrosseirosToolStripMenuItem1.Click += new System.EventHandler(this.DiagramaDeFolkGrosseirosToolStripMenuItem1_Click);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(263, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(314, 6);
             // 
-            // médiaXSelecionamentoToolStripMenuItem1
+            // bivariadoToolStripMenuItem
             // 
-            this.médiaXSelecionamentoToolStripMenuItem1.Name = "médiaXSelecionamentoToolStripMenuItem1";
-            this.médiaXSelecionamentoToolStripMenuItem1.Size = new System.Drawing.Size(266, 24);
-            this.médiaXSelecionamentoToolStripMenuItem1.Text = "Média x Selecionamento";
-            this.médiaXSelecionamentoToolStripMenuItem1.Click += new System.EventHandler(this.MédiaXSelecionamentoToolStripMenuItem1_Click);
-            // 
-            // médiaXAssimetriaToolStripMenuItem1
-            // 
-            this.médiaXAssimetriaToolStripMenuItem1.Name = "médiaXAssimetriaToolStripMenuItem1";
-            this.médiaXAssimetriaToolStripMenuItem1.Size = new System.Drawing.Size(266, 24);
-            this.médiaXAssimetriaToolStripMenuItem1.Text = "Média x Assimetria";
-            this.médiaXAssimetriaToolStripMenuItem1.Click += new System.EventHandler(this.MédiaXAssimetriaToolStripMenuItem1_Click);
-            // 
-            // médiaXCurtoseToolStripMenuItem1
-            // 
-            this.médiaXCurtoseToolStripMenuItem1.Name = "médiaXCurtoseToolStripMenuItem1";
-            this.médiaXCurtoseToolStripMenuItem1.Size = new System.Drawing.Size(266, 24);
-            this.médiaXCurtoseToolStripMenuItem1.Text = "Média x Curtose";
-            this.médiaXCurtoseToolStripMenuItem1.Click += new System.EventHandler(this.MédiaXCurtoseToolStripMenuItem1_Click);
-            // 
-            // selecionamentoXMédiaToolStripMenuItem1
-            // 
-            this.selecionamentoXMédiaToolStripMenuItem1.Name = "selecionamentoXMédiaToolStripMenuItem1";
-            this.selecionamentoXMédiaToolStripMenuItem1.Size = new System.Drawing.Size(266, 24);
-            this.selecionamentoXMédiaToolStripMenuItem1.Text = "Selecionamento x Média";
-            this.selecionamentoXMédiaToolStripMenuItem1.Click += new System.EventHandler(this.SelecionamentoXMédiaToolStripMenuItem1_Click);
-            // 
-            // selecionamentoXAssimetriaToolStripMenuItem1
-            // 
-            this.selecionamentoXAssimetriaToolStripMenuItem1.Name = "selecionamentoXAssimetriaToolStripMenuItem1";
-            this.selecionamentoXAssimetriaToolStripMenuItem1.Size = new System.Drawing.Size(266, 24);
-            this.selecionamentoXAssimetriaToolStripMenuItem1.Text = "Selecionamento x Assimetria";
-            this.selecionamentoXAssimetriaToolStripMenuItem1.Click += new System.EventHandler(this.SelecionamentoXAssimetriaToolStripMenuItem1_Click);
-            // 
-            // selecionamentoXCurtoseToolStripMenuItem1
-            // 
-            this.selecionamentoXCurtoseToolStripMenuItem1.Name = "selecionamentoXCurtoseToolStripMenuItem1";
-            this.selecionamentoXCurtoseToolStripMenuItem1.Size = new System.Drawing.Size(266, 24);
-            this.selecionamentoXCurtoseToolStripMenuItem1.Text = "Selecionamento x Curtose";
-            this.selecionamentoXCurtoseToolStripMenuItem1.Click += new System.EventHandler(this.SelecionamentoXCurtoseToolStripMenuItem1_Click);
-            // 
-            // assimetriaXMédiaToolStripMenuItem1
-            // 
-            this.assimetriaXMédiaToolStripMenuItem1.Name = "assimetriaXMédiaToolStripMenuItem1";
-            this.assimetriaXMédiaToolStripMenuItem1.Size = new System.Drawing.Size(266, 24);
-            this.assimetriaXMédiaToolStripMenuItem1.Text = "Assimetria x Média";
-            this.assimetriaXMédiaToolStripMenuItem1.Click += new System.EventHandler(this.AssimetriaXMédiaToolStripMenuItem1_Click);
-            // 
-            // assimetriaXSelecionamentoToolStripMenuItem1
-            // 
-            this.assimetriaXSelecionamentoToolStripMenuItem1.Name = "assimetriaXSelecionamentoToolStripMenuItem1";
-            this.assimetriaXSelecionamentoToolStripMenuItem1.Size = new System.Drawing.Size(266, 24);
-            this.assimetriaXSelecionamentoToolStripMenuItem1.Text = "Assimetria x Selecionamento";
-            this.assimetriaXSelecionamentoToolStripMenuItem1.Click += new System.EventHandler(this.AssimetriaXSelecionamentoToolStripMenuItem1_Click);
-            // 
-            // assimetriaXCurtoseToolStripMenuItem1
-            // 
-            this.assimetriaXCurtoseToolStripMenuItem1.Name = "assimetriaXCurtoseToolStripMenuItem1";
-            this.assimetriaXCurtoseToolStripMenuItem1.Size = new System.Drawing.Size(266, 24);
-            this.assimetriaXCurtoseToolStripMenuItem1.Text = "Assimetria x Curtose";
-            this.assimetriaXCurtoseToolStripMenuItem1.Click += new System.EventHandler(this.AssimetriaXCurtoseToolStripMenuItem1_Click);
-            // 
-            // curtoseXMédiaToolStripMenuItem1
-            // 
-            this.curtoseXMédiaToolStripMenuItem1.Name = "curtoseXMédiaToolStripMenuItem1";
-            this.curtoseXMédiaToolStripMenuItem1.Size = new System.Drawing.Size(266, 24);
-            this.curtoseXMédiaToolStripMenuItem1.Text = "Curtose x Média";
-            this.curtoseXMédiaToolStripMenuItem1.Click += new System.EventHandler(this.CurtoseXMédiaToolStripMenuItem1_Click);
-            // 
-            // curtoseXSelecionamentoToolStripMenuItem1
-            // 
-            this.curtoseXSelecionamentoToolStripMenuItem1.Name = "curtoseXSelecionamentoToolStripMenuItem1";
-            this.curtoseXSelecionamentoToolStripMenuItem1.Size = new System.Drawing.Size(266, 24);
-            this.curtoseXSelecionamentoToolStripMenuItem1.Text = "Curtose x Selecionamento";
-            this.curtoseXSelecionamentoToolStripMenuItem1.Click += new System.EventHandler(this.CurtoseXSelecionamentoToolStripMenuItem1_Click);
-            // 
-            // curtoseXAssimetriaToolStripMenuItem1
-            // 
-            this.curtoseXAssimetriaToolStripMenuItem1.Name = "curtoseXAssimetriaToolStripMenuItem1";
-            this.curtoseXAssimetriaToolStripMenuItem1.Size = new System.Drawing.Size(266, 24);
-            this.curtoseXAssimetriaToolStripMenuItem1.Text = "Curtose x Assimetria";
-            this.curtoseXAssimetriaToolStripMenuItem1.Click += new System.EventHandler(this.CurtoseXAssimetriaToolStripMenuItem1_Click);
+            this.bivariadoToolStripMenuItem.Name = "bivariadoToolStripMenuItem";
+            this.bivariadoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.C)));
+            this.bivariadoToolStripMenuItem.Size = new System.Drawing.Size(317, 24);
+            this.bivariadoToolStripMenuItem.Text = "Correlação";
+            this.bivariadoToolStripMenuItem.Click += new System.EventHandler(this.BivariadoToolStripMenuItem_Click);
             // 
             // multiGráficosToolStripMenuItem
             // 
@@ -643,8 +567,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.button7);
-            this.panel1.Controls.Add(this.button4);
+            this.panel1.Controls.Add(this.flowLayoutPanel1);
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.button12);
             this.panel1.Controls.Add(this.button13);
@@ -653,10 +576,6 @@
             this.panel1.Controls.Add(this.button6);
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.button11);
-            this.panel1.Controls.Add(this.button10);
-            this.panel1.Controls.Add(this.button9);
-            this.panel1.Controls.Add(this.button8);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.panel3);
@@ -667,8 +586,91 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 31);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 80);
+            this.panel1.Size = new System.Drawing.Size(914, 80);
             this.panel1.TabIndex = 1;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.button8);
+            this.flowLayoutPanel1.Controls.Add(this.button9);
+            this.flowLayoutPanel1.Controls.Add(this.button10);
+            this.flowLayoutPanel1.Controls.Add(this.button11);
+            this.flowLayoutPanel1.Controls.Add(this.button7);
+            this.flowLayoutPanel1.Controls.Add(this.button15);
+            this.flowLayoutPanel1.Controls.Add(this.button16);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(356, 5);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(588, 59);
+            this.flowLayoutPanel1.TabIndex = 57;
+            // 
+            // button8
+            // 
+            this.button8.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(100)))), ((int)(((byte)(53)))));
+            this.button8.FlatAppearance.BorderSize = 3;
+            this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(100)))), ((int)(((byte)(53)))));
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button8.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.Image = ((System.Drawing.Image)(resources.GetObject("button8.Image")));
+            this.button8.Location = new System.Drawing.Point(0, 0);
+            this.button8.Margin = new System.Windows.Forms.Padding(0);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(77, 54);
+            this.button8.TabIndex = 40;
+            this.button8.Tag = "Histograma";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.Button8_Click);
+            // 
+            // button9
+            // 
+            this.button9.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(100)))), ((int)(((byte)(53)))));
+            this.button9.FlatAppearance.BorderSize = 3;
+            this.button9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(100)))), ((int)(((byte)(53)))));
+            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button9.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button9.Image = ((System.Drawing.Image)(resources.GetObject("button9.Image")));
+            this.button9.Location = new System.Drawing.Point(77, 0);
+            this.button9.Margin = new System.Windows.Forms.Padding(0);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(77, 54);
+            this.button9.TabIndex = 41;
+            this.button9.Tag = "Frequência acumulada";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.Button9_Click);
+            // 
+            // button10
+            // 
+            this.button10.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(100)))), ((int)(((byte)(53)))));
+            this.button10.FlatAppearance.BorderSize = 3;
+            this.button10.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(100)))), ((int)(((byte)(53)))));
+            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button10.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button10.Image = ((System.Drawing.Image)(resources.GetObject("button10.Image")));
+            this.button10.Location = new System.Drawing.Point(154, 0);
+            this.button10.Margin = new System.Windows.Forms.Padding(0);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(77, 54);
+            this.button10.TabIndex = 42;
+            this.button10.Tag = "Diagrama de Shepard";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.Button10_Click);
+            // 
+            // button11
+            // 
+            this.button11.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(100)))), ((int)(((byte)(53)))));
+            this.button11.FlatAppearance.BorderSize = 3;
+            this.button11.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(100)))), ((int)(((byte)(53)))));
+            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button11.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button11.Image = ((System.Drawing.Image)(resources.GetObject("button11.Image")));
+            this.button11.Location = new System.Drawing.Point(231, 0);
+            this.button11.Margin = new System.Windows.Forms.Padding(0);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(77, 54);
+            this.button11.TabIndex = 43;
+            this.button11.Tag = "Diagrama de Pejrup";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.Button11_Click);
             // 
             // button7
             // 
@@ -678,30 +680,48 @@
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button7.Image = ((System.Drawing.Image)(resources.GetObject("button7.Image")));
-            this.button7.Location = new System.Drawing.Point(687, 4);
+            this.button7.Location = new System.Drawing.Point(308, 0);
+            this.button7.Margin = new System.Windows.Forms.Padding(0);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(77, 54);
             this.button7.TabIndex = 54;
-            this.button7.Tag = "Diagrama de Folk";
+            this.button7.Tag = "Diagrama de Folk (Sedimentos finos)";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.Button7_Click);
             // 
-            // button4
+            // button15
             // 
-            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(100)))), ((int)(((byte)(53)))));
-            this.button4.FlatAppearance.BorderSize = 3;
-            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(100)))), ((int)(((byte)(53)))));
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(763, 4);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(23, 54);
-            this.button4.TabIndex = 53;
-            this.button4.Tag = "Diagrama de Pejrup";
-            this.button4.Text = "+";
-            this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.Button4_Click);
+            this.button15.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(100)))), ((int)(((byte)(53)))));
+            this.button15.FlatAppearance.BorderSize = 3;
+            this.button15.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(100)))), ((int)(((byte)(53)))));
+            this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button15.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button15.Image = ((System.Drawing.Image)(resources.GetObject("button15.Image")));
+            this.button15.Location = new System.Drawing.Point(385, 0);
+            this.button15.Margin = new System.Windows.Forms.Padding(0);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(77, 54);
+            this.button15.TabIndex = 55;
+            this.button15.Tag = "Diagrama de Folk (Sedimentos Grosseiros)";
+            this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.Button15_Click);
+            // 
+            // button16
+            // 
+            this.button16.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(100)))), ((int)(((byte)(53)))));
+            this.button16.FlatAppearance.BorderSize = 3;
+            this.button16.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(100)))), ((int)(((byte)(53)))));
+            this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button16.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button16.Image = ((System.Drawing.Image)(resources.GetObject("button16.Image")));
+            this.button16.Location = new System.Drawing.Point(462, 0);
+            this.button16.Margin = new System.Windows.Forms.Padding(0);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(77, 54);
+            this.button16.TabIndex = 56;
+            this.button16.Tag = "Gráficos de Correlação";
+            this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.Button16_Click);
             // 
             // panel4
             // 
@@ -772,9 +792,9 @@
             this.button6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
             this.button6.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button6.Location = new System.Drawing.Point(276, 5);
+            this.button6.Location = new System.Drawing.Point(263, 5);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(100, 60);
+            this.button6.Size = new System.Drawing.Size(85, 60);
             this.button6.TabIndex = 46;
             this.button6.Tag = "Processar todas as amostras selecionadas";
             this.button6.Text = "Proc. Várias";
@@ -837,7 +857,7 @@
             this.button5.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button5.Location = new System.Drawing.Point(179, 4);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(100, 60);
+            this.button5.Size = new System.Drawing.Size(91, 60);
             this.button5.TabIndex = 45;
             this.button5.Tag = "Processar amostra selecionada";
             this.button5.Text = "Proc. Selec...";
@@ -849,80 +869,16 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(595, 66);
+            this.label3.Location = new System.Drawing.Point(604, 66);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 13);
             this.label3.TabIndex = 44;
             this.label3.Text = "Gráficos";
             // 
-            // button11
-            // 
-            this.button11.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(100)))), ((int)(((byte)(53)))));
-            this.button11.FlatAppearance.BorderSize = 3;
-            this.button11.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(100)))), ((int)(((byte)(53)))));
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.Image = ((System.Drawing.Image)(resources.GetObject("button11.Image")));
-            this.button11.Location = new System.Drawing.Point(611, 4);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(77, 54);
-            this.button11.TabIndex = 43;
-            this.button11.Tag = "Diagrama de Pejrup";
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.Button11_Click);
-            // 
-            // button10
-            // 
-            this.button10.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(100)))), ((int)(((byte)(53)))));
-            this.button10.FlatAppearance.BorderSize = 3;
-            this.button10.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(100)))), ((int)(((byte)(53)))));
-            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.Image = ((System.Drawing.Image)(resources.GetObject("button10.Image")));
-            this.button10.Location = new System.Drawing.Point(535, 4);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(77, 54);
-            this.button10.TabIndex = 42;
-            this.button10.Tag = "Diagrama de Shepard";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.Button10_Click);
-            // 
-            // button9
-            // 
-            this.button9.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(100)))), ((int)(((byte)(53)))));
-            this.button9.FlatAppearance.BorderSize = 3;
-            this.button9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(100)))), ((int)(((byte)(53)))));
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Image = ((System.Drawing.Image)(resources.GetObject("button9.Image")));
-            this.button9.Location = new System.Drawing.Point(459, 4);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(77, 54);
-            this.button9.TabIndex = 41;
-            this.button9.Tag = "Frequência acumulada";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.Button9_Click);
-            // 
-            // button8
-            // 
-            this.button8.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(100)))), ((int)(((byte)(53)))));
-            this.button8.FlatAppearance.BorderSize = 3;
-            this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(100)))), ((int)(((byte)(53)))));
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Image = ((System.Drawing.Image)(resources.GetObject("button8.Image")));
-            this.button8.Location = new System.Drawing.Point(383, 4);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(77, 54);
-            this.button8.TabIndex = 40;
-            this.button8.Tag = "Histograma";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.Button8_Click);
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.LightGray;
-            this.panel2.Location = new System.Drawing.Point(376, 2);
+            this.panel2.Location = new System.Drawing.Point(348, 2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(2, 75);
             this.panel2.TabIndex = 33;
@@ -931,7 +887,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(250, 66);
+            this.label2.Location = new System.Drawing.Point(239, 66);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 39;
@@ -1014,8 +970,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.defaultView);
             this.splitContainer1.Panel2.Controls.Add(this.dataGridView);
             this.splitContainer1.Panel2.Padding = new System.Windows.Forms.Padding(3, 10, 10, 10);
-            this.splitContainer1.Size = new System.Drawing.Size(800, 339);
-            this.splitContainer1.SplitterDistance = 188;
+            this.splitContainer1.Size = new System.Drawing.Size(914, 339);
+            this.splitContainer1.SplitterDistance = 213;
             this.splitContainer1.TabIndex = 2;
             // 
             // treeView
@@ -1024,7 +980,7 @@
             this.treeView.HotTracking = true;
             this.treeView.Location = new System.Drawing.Point(10, 10);
             this.treeView.Name = "treeView";
-            this.treeView.Size = new System.Drawing.Size(175, 319);
+            this.treeView.Size = new System.Drawing.Size(200, 319);
             this.treeView.TabIndex = 0;
             this.treeView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.TreeView_NodeMouseClick);
             // 
@@ -1040,7 +996,7 @@
             this.defaultView.Name = "defaultView";
             this.defaultView.ReadOnly = true;
             this.defaultView.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.defaultView.Size = new System.Drawing.Size(595, 150);
+            this.defaultView.Size = new System.Drawing.Size(684, 150);
             this.defaultView.TabIndex = 1;
             this.defaultView.Text = resources.GetString("defaultView.Text");
             // 
@@ -1090,8 +1046,9 @@
             this.dataGridView.Location = new System.Drawing.Point(3, 10);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(595, 257);
+            this.dataGridView.Size = new System.Drawing.Size(684, 257);
             this.dataGridView.TabIndex = 0;
+            this.dataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_CellDoubleClick);
             // 
             // Id
             // 
@@ -1343,110 +1300,54 @@
             // contextMenuStrip3
             // 
             this.contextMenuStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.médiaXSelecionamentoToolStripMenuItem,
-            this.médiaXAssimetriaToolStripMenuItem,
-            this.médiaXCurtoseToolStripMenuItem,
-            this.selecionamentoXMédiaToolStripMenuItem,
-            this.selecionamentoXAssimetriaToolStripMenuItem,
-            this.selecionamentoXCurtoseToolStripMenuItem,
-            this.assimetriaXMédiaToolStripMenuItem,
-            this.assimetriaXSelecionamentoToolStripMenuItem,
-            this.assimetriaXCurtoseToolStripMenuItem,
-            this.curtoseXMédiaToolStripMenuItem,
-            this.curtoseXSelecionamentoToolStripMenuItem,
-            this.curtoseXAssimetriaToolStripMenuItem});
+            this.assimetriaToolStripMenuItem,
+            this.curtoseToolStripMenuItem,
+            this.médiaToolStripMenuItem,
+            this.medianaToolStripMenuItem,
+            this.selecionamentoToolStripMenuItem});
             this.contextMenuStrip3.Name = "contextMenuStrip3";
-            this.contextMenuStrip3.Size = new System.Drawing.Size(226, 268);
+            this.contextMenuStrip3.Size = new System.Drawing.Size(197, 114);
             // 
-            // médiaXSelecionamentoToolStripMenuItem
+            // curtoseToolStripMenuItem
             // 
-            this.médiaXSelecionamentoToolStripMenuItem.Name = "médiaXSelecionamentoToolStripMenuItem";
-            this.médiaXSelecionamentoToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
-            this.médiaXSelecionamentoToolStripMenuItem.Text = "Média x Selecionamento";
-            this.médiaXSelecionamentoToolStripMenuItem.Click += new System.EventHandler(this.MédiaXSelecionamentoToolStripMenuItem_Click);
+            this.curtoseToolStripMenuItem.Name = "curtoseToolStripMenuItem";
+            this.curtoseToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.U)));
+            this.curtoseToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.curtoseToolStripMenuItem.Text = "Curtose";
             // 
-            // médiaXAssimetriaToolStripMenuItem
+            // assimetriaToolStripMenuItem
             // 
-            this.médiaXAssimetriaToolStripMenuItem.Name = "médiaXAssimetriaToolStripMenuItem";
-            this.médiaXAssimetriaToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
-            this.médiaXAssimetriaToolStripMenuItem.Text = "Média x Assimetria";
-            this.médiaXAssimetriaToolStripMenuItem.Click += new System.EventHandler(this.MédiaXAssimetriaToolStripMenuItem_Click);
+            this.assimetriaToolStripMenuItem.Name = "assimetriaToolStripMenuItem";
+            this.assimetriaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.A)));
+            this.assimetriaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.assimetriaToolStripMenuItem.Text = "Assimetria";
             // 
-            // médiaXCurtoseToolStripMenuItem
+            // médiaToolStripMenuItem
             // 
-            this.médiaXCurtoseToolStripMenuItem.Name = "médiaXCurtoseToolStripMenuItem";
-            this.médiaXCurtoseToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
-            this.médiaXCurtoseToolStripMenuItem.Text = "Média x Curtose";
-            this.médiaXCurtoseToolStripMenuItem.Click += new System.EventHandler(this.MédiaXCurtoseToolStripMenuItem_Click);
+            this.médiaToolStripMenuItem.Name = "médiaToolStripMenuItem";
+            this.médiaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.M)));
+            this.médiaToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.médiaToolStripMenuItem.Text = "Média";
             // 
-            // selecionamentoXMédiaToolStripMenuItem
+            // medianaToolStripMenuItem
             // 
-            this.selecionamentoXMédiaToolStripMenuItem.Name = "selecionamentoXMédiaToolStripMenuItem";
-            this.selecionamentoXMédiaToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
-            this.selecionamentoXMédiaToolStripMenuItem.Text = "Selecionamento x Média";
-            this.selecionamentoXMédiaToolStripMenuItem.Click += new System.EventHandler(this.SelecionamentoXMédiaToolStripMenuItem_Click);
+            this.medianaToolStripMenuItem.Name = "medianaToolStripMenuItem";
+            this.medianaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.N)));
+            this.medianaToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.medianaToolStripMenuItem.Text = "Mediana";
             // 
-            // selecionamentoXAssimetriaToolStripMenuItem
+            // selecionamentoToolStripMenuItem
             // 
-            this.selecionamentoXAssimetriaToolStripMenuItem.Name = "selecionamentoXAssimetriaToolStripMenuItem";
-            this.selecionamentoXAssimetriaToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
-            this.selecionamentoXAssimetriaToolStripMenuItem.Text = "Selecionamento x Assimetria";
-            this.selecionamentoXAssimetriaToolStripMenuItem.Click += new System.EventHandler(this.SelecionamentoXAssimetriaToolStripMenuItem_Click);
-            // 
-            // selecionamentoXCurtoseToolStripMenuItem
-            // 
-            this.selecionamentoXCurtoseToolStripMenuItem.Name = "selecionamentoXCurtoseToolStripMenuItem";
-            this.selecionamentoXCurtoseToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
-            this.selecionamentoXCurtoseToolStripMenuItem.Text = "Selecionamento x Curtose";
-            this.selecionamentoXCurtoseToolStripMenuItem.Click += new System.EventHandler(this.SelecionamentoXCurtoseToolStripMenuItem_Click);
-            // 
-            // assimetriaXMédiaToolStripMenuItem
-            // 
-            this.assimetriaXMédiaToolStripMenuItem.Name = "assimetriaXMédiaToolStripMenuItem";
-            this.assimetriaXMédiaToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
-            this.assimetriaXMédiaToolStripMenuItem.Text = "Assimetria x Média";
-            this.assimetriaXMédiaToolStripMenuItem.Click += new System.EventHandler(this.AssimetriaXMédiaToolStripMenuItem_Click);
-            // 
-            // assimetriaXSelecionamentoToolStripMenuItem
-            // 
-            this.assimetriaXSelecionamentoToolStripMenuItem.Name = "assimetriaXSelecionamentoToolStripMenuItem";
-            this.assimetriaXSelecionamentoToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
-            this.assimetriaXSelecionamentoToolStripMenuItem.Text = "Assimetria x Selecionamento";
-            this.assimetriaXSelecionamentoToolStripMenuItem.Click += new System.EventHandler(this.AssimetriaXSelecionamentoToolStripMenuItem_Click);
-            // 
-            // assimetriaXCurtoseToolStripMenuItem
-            // 
-            this.assimetriaXCurtoseToolStripMenuItem.Name = "assimetriaXCurtoseToolStripMenuItem";
-            this.assimetriaXCurtoseToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
-            this.assimetriaXCurtoseToolStripMenuItem.Text = "Assimetria x Curtose";
-            this.assimetriaXCurtoseToolStripMenuItem.Click += new System.EventHandler(this.AssimetriaXCurtoseToolStripMenuItem_Click);
-            // 
-            // curtoseXMédiaToolStripMenuItem
-            // 
-            this.curtoseXMédiaToolStripMenuItem.Name = "curtoseXMédiaToolStripMenuItem";
-            this.curtoseXMédiaToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
-            this.curtoseXMédiaToolStripMenuItem.Text = "Curtose x Média";
-            this.curtoseXMédiaToolStripMenuItem.Click += new System.EventHandler(this.CurtoseXMédiaToolStripMenuItem_Click);
-            // 
-            // curtoseXSelecionamentoToolStripMenuItem
-            // 
-            this.curtoseXSelecionamentoToolStripMenuItem.Name = "curtoseXSelecionamentoToolStripMenuItem";
-            this.curtoseXSelecionamentoToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
-            this.curtoseXSelecionamentoToolStripMenuItem.Text = "Curtose x Selecionamento";
-            this.curtoseXSelecionamentoToolStripMenuItem.Click += new System.EventHandler(this.CurtoseXSelecionamentoToolStripMenuItem_Click);
-            // 
-            // curtoseXAssimetriaToolStripMenuItem
-            // 
-            this.curtoseXAssimetriaToolStripMenuItem.Name = "curtoseXAssimetriaToolStripMenuItem";
-            this.curtoseXAssimetriaToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
-            this.curtoseXAssimetriaToolStripMenuItem.Text = "Curtose x Assimetria";
-            this.curtoseXAssimetriaToolStripMenuItem.Click += new System.EventHandler(this.CurtoseXAssimetriaToolStripMenuItem_Click);
+            this.selecionamentoToolStripMenuItem.Name = "selecionamentoToolStripMenuItem";
+            this.selecionamentoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.T)));
+            this.selecionamentoToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.selecionamentoToolStripMenuItem.Text = "Selecionamento";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(914, 450);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
@@ -1461,6 +1362,7 @@
             this.contextMenuStrip1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.contextMenuStrip2.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -1544,7 +1446,6 @@
         private System.Windows.Forms.ToolStripMenuItem mcCammonB1962ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem trask1930ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem otto1939ToolStripMenuItem1;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.ToolStripMenuItem exibirAjudaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem abrirSiteToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
@@ -1581,35 +1482,23 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Peso23;
         private System.Windows.Forms.DataGridViewTextBoxColumn Peso24;
         private System.Windows.Forms.DataGridViewTextBoxColumn Peso25;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip3;
         private System.Windows.Forms.ToolStripMenuItem diagramaDeFolkToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem médiaXSelecionamentoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem médiaXAssimetriaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem médiaXCurtoseToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem selecionamentoXMédiaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem selecionamentoXAssimetriaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem selecionamentoXCurtoseToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem assimetriaXMédiaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem assimetriaXSelecionamentoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem assimetriaXCurtoseToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem curtoseXMédiaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem curtoseXSelecionamentoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem curtoseXAssimetriaToolStripMenuItem;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
-        private System.Windows.Forms.ToolStripMenuItem médiaXSelecionamentoToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem médiaXAssimetriaToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem médiaXCurtoseToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem selecionamentoXMédiaToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem selecionamentoXAssimetriaToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem selecionamentoXCurtoseToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem assimetriaXMédiaToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem assimetriaXSelecionamentoToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem assimetriaXCurtoseToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem curtoseXMédiaToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem curtoseXSelecionamentoToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem curtoseXAssimetriaToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem sobreToolStripMenuItem;
+        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.ToolStripMenuItem diagramaDeFolkGrosseirosToolStripMenuItem1;
+        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+        private System.Windows.Forms.ToolStripMenuItem bivariadoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem configuraçõesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip3;
+        private System.Windows.Forms.ToolStripMenuItem curtoseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem assimetriaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem médiaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem medianaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem selecionamentoToolStripMenuItem;
     }
 }
 

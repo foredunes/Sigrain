@@ -1,4 +1,5 @@
 ﻿using Sigrain.Classes;
+using Sigran.Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Sigrain.Forms
+namespace Sigran.Forms
 {
     public partial class SampleForm : Form
     {
@@ -87,25 +88,124 @@ namespace Sigrain.Forms
                 //Edita dados no banco de dados
                 DatabaseConnect database = new DatabaseConnect(DatabaseFile);
                 database.EditRow(sample, "Samples", textBoxId.Text);
+
+                //Atualiza a tabela da área de trabalho
+                MainForm form = (MainForm)this.Owner;
+                form.updateDataGrid(null, true);
+
+                //Limpa a janela atual
+                this.Close();
             }
             else
             {
                 //Insere dados no banco de dados
                 DatabaseConnect database = new DatabaseConnect(DatabaseFile);
                 database.Insert(sample, "Samples");
+
+                //Atualiza a tabela da área de trabalho
+                MainForm form = (MainForm)this.Owner;
+                form.updateDataGrid(null, true);
+
+                IniFile ini = new IniFile("Settings.ini");
+                if (ini.Read("FORMINSERTOPEN") == "1")
+                {
+                    textBoxAmostra.Text = "";
+                    Clear();
+                }
+                else
+                {
+                    //Limpa a janela atual
+                    this.Close();
+                }
             }
-
-            //Atualiza a tabela da área de trabalho
-            MainForm form = (MainForm)this.Owner;
-            form.updateDataGrid(null, true);
-
-            //Limpa a janela atual
-            this.Close();
         }
 
         private void SampleForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void ColarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PasteClipboard();
+        }
+
+        private void PasteClipboard()
+        {
+            try
+            {
+                string s = Clipboard.GetText();
+                string[] lines = s.Split('\n');
+                int iFail = 0, iRow = dataGridView1.CurrentCell.RowIndex;
+                int iCol = dataGridView1.CurrentCell.ColumnIndex;
+                DataGridViewCell oCell;
+                foreach (string line in lines)
+                {
+                    if (iRow < dataGridView1.RowCount && line.Length > 0)
+                    {
+                        string[] sCells = line.Split('\t');
+                        for (int i = 0; i < sCells.GetLength(0); ++i)
+                        {
+                            if (iCol + i < this.dataGridView1.ColumnCount)
+                            {
+                                oCell = dataGridView1[iCol + i, iRow];
+                                if (!oCell.ReadOnly)
+                                {
+                                    if (oCell.Value.ToString() != sCells[i])
+                                    {
+                                        oCell.Value = Convert.ChangeType(sCells[i], oCell.ValueType);
+                                        oCell.Style.BackColor = Color.LightSkyBlue;
+                                    }
+                                    else
+                                        iFail++;//only traps a fail if the data has changed and you are pasting into a read only cell
+                                }
+                            }
+                            else
+                            { break; }
+                        }
+                        iRow++;
+                    }
+                    else
+                    { break; }
+                    if (iFail > 0)
+                        MessageBox.Show(string.Format("{0} updates failed due to read only column setting", iFail));
+                }
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("The data you pasted is in the wrong format for the cell");
+                return;
+            }
+        }
+
+        private void CopiarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CopyClipboard();
+        }
+
+        private void CopyClipboard()
+        {
+            DataObject d = dataGridView1.GetClipboardContent();
+            Clipboard.SetDataObject(d);
+        }
+
+        private void LimparToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Clear();
+        }
+
+        private void Clear()
+        {
+            for (int i = 0; i < dataGridView1.Columns.Count; i++)
+            {
+                if (i > 0)
+                {
+                    for (int j = 0; j < dataGridView1.Rows.Count; j++)
+                    {
+                        dataGridView1.Rows[j].Cells[i].Value = "0";
+                    }
+                }
+            }
         }
     }
 }

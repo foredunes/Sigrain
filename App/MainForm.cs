@@ -1,7 +1,7 @@
 ﻿using ExcelDataReader;
 using Microsoft.Office.Interop.Excel;
-using Sigrain.Classes;
-using Sigrain.Forms;
+using Sigran.Classes;
+using Sigran.Forms;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -22,13 +22,13 @@ using Series = System.Windows.Forms.DataVisualization.Charting.Series;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Runtime.InteropServices;
 
-namespace Sigrain
+namespace Sigran
 {
     public partial class MainForm : Form
     {
-        public static string AppName = "Sigrain";
+        public static string AppName = "Sigran";
         public static string AppDescription = "Sistema de Informação Granulométrica";
-        public static string AppVersion = "1.0";
+        public static string AppVersion = "1.1";
         public string DatabaseFile = null;
         public string DefaultPath = null;
         public bool IsSave = false;
@@ -53,18 +53,26 @@ namespace Sigrain
             defaultView.Visible = true;
             defaultView.Dock = DockStyle.Fill;
 
-            if(dev == true)
+            IniFile ini = new IniFile("Settings.ini");
+            bool reload = (ini.Read("RELOAD") == "1") ? true : false;
+
+            if (dev == true || reload == true)
             {
                 DatabaseFile = "Teste.db";
 
+                if (reload == true)
+                    DatabaseFile = ini.Read("LASTOPENED");
 
-                DatabaseConnect database = new DatabaseConnect(DatabaseFile);
+               DatabaseConnect database = new DatabaseConnect(DatabaseFile);
                 database.CreateDatabase();
 
                 dataGridView.Visible = true;
                 defaultView.Visible = false;
 
                 this.Text = AppName + " (Teste.db)";
+
+                if (reload == true)
+                    this.Text = AppName + " (" + ini.Read("LASTOPENED") + ")";
 
                 salvarComoToolStripMenuItem.Enabled = true;
                 fecharToolStripMenuItem.Enabled = true;
@@ -114,8 +122,7 @@ namespace Sigrain
                 amostraToolStripMenuItem.Enabled = true;
                 processarToolStripMenuItem.Enabled = true;
 
-                button2.Enabled = button3.Enabled = button4.Enabled = button5.Enabled = button6.Enabled = button7.Enabled = button8.Enabled = button9.Enabled = button10.Enabled = button11.Enabled = button12.Enabled = button13.Enabled = button14.Enabled = true;
-
+                button2.Enabled = button3.Enabled = button5.Enabled = button6.Enabled = button7.Enabled = button8.Enabled = button9.Enabled = button10.Enabled = button11.Enabled = button12.Enabled = button13.Enabled = button14.Enabled = button15.Enabled = button16.Enabled = true;
             }
 
             if (DatabaseFile != null)
@@ -147,7 +154,10 @@ namespace Sigrain
                 amostraToolStripMenuItem.Enabled = true;
                 processarToolStripMenuItem.Enabled = true;
 
-                button2.Enabled = button3.Enabled = button4.Enabled = button5.Enabled = button6.Enabled = button7.Enabled = button8.Enabled = button9.Enabled = button10.Enabled = button11.Enabled = button12.Enabled = button13.Enabled = button14.Enabled = true;
+                button2.Enabled = button3.Enabled = button5.Enabled = button6.Enabled = button7.Enabled = button8.Enabled = button9.Enabled = button10.Enabled = button11.Enabled = button12.Enabled = button13.Enabled = button14.Enabled = button15.Enabled = button16.Enabled = true;
+
+                IniFile ini = new IniFile("Settings.ini");
+                ini.Write("LASTOPENED", openFileDialog1.FileName);
             }
 
             if (DatabaseFile != null)
@@ -371,7 +381,7 @@ namespace Sigrain
             amostraToolStripMenuItem.Enabled = false;
             processarToolStripMenuItem.Enabled = false;
 
-            button1.Enabled = button2.Enabled = button3.Enabled = button4.Enabled = button5.Enabled = button6.Enabled = button7.Enabled = button8.Enabled = button9.Enabled = button10.Enabled = button11.Enabled = button12.Enabled = button13.Enabled = button14.Enabled = false;
+            button1.Enabled = button2.Enabled = button3.Enabled = button5.Enabled = button6.Enabled = button7.Enabled = button8.Enabled = button9.Enabled = button10.Enabled = button11.Enabled = button12.Enabled = button13.Enabled = button14.Enabled = button15.Enabled = button16.Enabled = false;
         }
 
         private void ImportarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -540,6 +550,8 @@ namespace Sigrain
             ToolTip1.SetToolTip(this.button5, this.button5.Tag.ToString());
             ToolTip1.SetToolTip(this.button6, this.button6.Tag.ToString());
             ToolTip1.SetToolTip(this.button7, this.button7.Tag.ToString());
+            ToolTip1.SetToolTip(this.button15, this.button15.Tag.ToString());
+            ToolTip1.SetToolTip(this.button16, this.button16.Tag.ToString());
             ToolTip1.SetToolTip(this.button8, this.button8.Tag.ToString());
             ToolTip1.SetToolTip(this.button9, this.button9.Tag.ToString());
             ToolTip1.SetToolTip(this.button10, this.button10.Tag.ToString());
@@ -549,7 +561,7 @@ namespace Sigrain
             ToolTip1.SetToolTip(this.button14, this.button14.Tag.ToString());
 
             if (dev == false)
-                button1.Enabled = button2.Enabled = button3.Enabled = button4.Enabled = button5.Enabled = button6.Enabled = button7.Enabled = button8.Enabled = button9.Enabled = button10.Enabled = button11.Enabled = button12.Enabled = button13.Enabled = button14.Enabled = false;
+                button1.Enabled = button2.Enabled = button3.Enabled = button5.Enabled = button6.Enabled = button7.Enabled = button8.Enabled = button9.Enabled = button10.Enabled = button11.Enabled = button12.Enabled = button13.Enabled = button14.Enabled = button15.Enabled = button16.Enabled = false;
 
         }
 
@@ -1302,7 +1314,7 @@ namespace Sigrain
                     IsVisibleInLegend = true,
                     ChartType = SeriesChartType.Column,
                     MarkerStyle = MarkerStyle.None,
-                    BorderWidth = 1,
+                    BorderWidth = 0,
                     BorderColor = Color.White
                 };
 
@@ -1376,7 +1388,8 @@ namespace Sigrain
                         //Adiciona os dados ao gráfico
                         dataPointSeries.Points.Add(Convert.ToDouble(frequencia));
                         //Substitui os labels do eixo x
-                        string keyPhi = phi[i].ToString();
+                        string keyPhi =  phi[i].ToString();
+                        
                         CustomLabel label = new CustomLabel
                         {
                             ToPosition = c,
@@ -1509,7 +1522,9 @@ namespace Sigrain
 
                         //Serie 0
                         form.chart1.Series.Add(new Series());
-                        form.chart1.Series[r].LegendText = sample.Name;
+
+                        form.chart1.Series[r].LegendText = GetRotules(sample);
+
                         form.chart1.Series[r].ChartType = SeriesChartType.Line;
                         form.chart1.Series[r].IsValueShownAsLabel = false;
                         form.chart1.Series[r].Points.DataBindXY(x, y);
@@ -1595,6 +1610,8 @@ namespace Sigrain
                     decimal sand = 0;
                     decimal silte = 0;
                     decimal clay = 0;
+                    decimal gravel = 0;
+                    decimal sludge = 0;
 
                     if (id != null)
                     {
@@ -1628,9 +1645,11 @@ namespace Sigrain
 
                             //Obtem os valores de areia, silte e argila
                             List<decimal> frequencies = sampleTools.getFrequencies(sample);
+                            gravel = frequencies[0] + frequencies[1] + frequencies[2] + frequencies[3] + frequencies[4] + frequencies[5] + frequencies[6];
                             sand = frequencies[7] + frequencies[8] + frequencies[9] + frequencies[10] + frequencies[11] + frequencies[12] + frequencies[13] + frequencies[14] + frequencies[15] + frequencies[16];
                             silte = frequencies[17] + frequencies[18] + frequencies[19] + frequencies[20] + frequencies[21];
                             clay = frequencies[22] + frequencies[23] + frequencies[24] + frequencies[25];
+                            sludge = silte + clay;
 
                             //Preenche os dados para o gráfico
                             decimal total = sand + silte + clay;
@@ -1646,7 +1665,7 @@ namespace Sigrain
                                 decimal x3 = x1 - x2;
                                 x[r] = x3 + 10;
                                 y[r] = y1 + 10;
-                                l[r] = sample.Name;
+                                l[r] = GetRotules(sample);
                             }
 
                             if(formType == "folk")
@@ -1657,7 +1676,23 @@ namespace Sigrain
                                 decimal x3 = x1 - x2;
                                 x[r] = x3 + 10;
                                 y[r] = y1 + 10;
-                                l[r] = sample.Name;
+                                l[r] = GetRotules(sample);
+                            }
+
+                            if(formType == "folkThicks")
+                            {
+                                total = gravel + sand + sludge;
+                                decimal gravelT = (gravel / total) * 100;
+                                decimal sandT = (sand / total) * 100;
+                                decimal sludgeT = (sludge / total) * 100;
+
+                                decimal y1 = gravelT;
+                                decimal x1 = sandT;
+                                decimal x2 = y1 * (x1 - 50) / 100;
+                                decimal x3 = x1 - x2;
+                                x[r] = x3 + 10;
+                                y[r] = y1 + 10;
+                                l[r] = GetRotules(sample);
                             }
 
                             form.dataGridView1.Rows.Insert(r, sample.Name, f.decimalToString(x[r]), f.decimalToString(y[r]));
@@ -1696,6 +1731,20 @@ namespace Sigrain
                 MessageBox.Show("Erro ao acessar os dados: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        private string GetRotules(Sample sample)
+        {
+            IniFile ini = new IniFile("Settings.ini");
+            if (ini.Read("ROTULES") == "category")
+                return sample.Category;
+            if (ini.Read("ROTULES") == "description")
+                return sample.Description;
+            if (ini.Read("ROTULES") == "date")
+                return sample.Date;
+
+
+            return sample.Name;
         }
 
         private void ShepardToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1837,17 +1886,12 @@ namespace Sigrain
 
         private void ExibirAjudaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://github.com/foredunes/sigrain");
+            System.Diagnostics.Process.Start("https://github.com/foredunes/sigran");
         }
 
         private void ProcessárVáriasAmostrasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ProcessarVariasAmostras("Folk&Ward(1957)");
-        }
-
-        private void Button4_Click(object sender, EventArgs e)
-        {
-            contextMenuStrip3.Show(button4, new System.Drawing.Point(0, button4.Height));
         }
 
         private void DiagramaDeFolkToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1860,11 +1904,18 @@ namespace Sigrain
             getThernalGraphic("folk");
         }
 
-        private void GenerateBivariateChart(string abysses, string ordered)
+        private void DiagramaDeFolkGrosseirosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            getThernalGraphic("folkThicks");
+        }
+
+        public void GenerateBivariateChart(string abysses, string ordered)
         {
             string abyssesTitle = "";
             if (abysses == "mean")
                 abyssesTitle = "Média";
+            if (abysses == "median")
+                abyssesTitle = "Mediana";
             if (abysses == "selection")
                 abyssesTitle = "Selecionamento";
             if (abysses == "assimetry")
@@ -1875,6 +1926,8 @@ namespace Sigrain
             string orderedTitle = "";
             if (ordered == "mean")
                 orderedTitle = "Média";
+            if (ordered == "median")
+                orderedTitle = "Mediana";
             if (ordered == "selection")
                 orderedTitle = "Selecionamento";
             if (ordered == "assimetry")
@@ -1977,6 +2030,8 @@ namespace Sigrain
                             //Insere os valores na lista
                             if (abysses == "mean")
                                 x[r] = media;
+                            if (abysses == "median")
+                                x[r] = mediana;
                             if (abysses == "selection")
                                 x[r] = selection;
                             if (abysses == "assimetry")
@@ -1986,6 +2041,8 @@ namespace Sigrain
 
                             if (ordered == "mean")
                                 y[r] = media;
+                            if (ordered == "median")
+                                y[r] = mediana;
                             if (ordered == "selection")
                                 y[r] = selection;
                             if (ordered == "assimetry")
@@ -1993,7 +2050,7 @@ namespace Sigrain
                             if (ordered == "curtose")
                                 y[r] = curtose;
 
-                            l[r] = sample.Name;
+                            l[r] = GetRotules(sample);
 
                             form.dataGridView1.Rows.Insert(r, l[r], f.decimalToString(x[r]), f.decimalToString(y[r]));
 
@@ -2160,6 +2217,39 @@ namespace Sigrain
         {
             Abount form = new Abount();
             form.ShowDialog();
+        }
+
+        private void Button15_Click(object sender, EventArgs e)
+        {
+            DiagramaDeFolkGrosseirosToolStripMenuItem1_Click(sender, e);
+        }
+
+        private void Button16_Click(object sender, EventArgs e)
+        {
+            BivariadoToolStripMenuItem_Click(sender, e);
+        }
+
+        private void BivariadoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CorrelationOptions form = new CorrelationOptions();
+            form.ParentForm = this;
+            form.ShowDialog();
+        }
+
+        private void ConfiguraçõesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SettingsForm form = new SettingsForm();
+            form.ShowDialog();
+        }
+
+        private void DataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            EditarToolStripMenuItem1_Click(sender, e);
+        }
+
+        private void Button4_Click(object sender, EventArgs e)
+        {
+            //contextMenuStrip3.Show(button4, new System.Drawing.Point(0, button4.Height));
         }
     }
 }

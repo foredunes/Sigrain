@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
 
-namespace Sigrain.PropertyGrid
+namespace Sigran.PropertyGrid
 {
     class HistogramPropertyGrid : DefaultPropertyGrid
     {
@@ -32,6 +32,16 @@ namespace Sigrain.PropertyGrid
         {
             get { return _ColorBorderSerie; }
             set { _ColorBorderSerie = value; }
+        }
+
+        Color _ColorMaximumColumn;
+        [Category("Histograma")]
+        [DisplayName("Cor destacada")]
+        [DescriptionAttribute("Define a cor do dado de maior valor na série de dados.")]
+        public Color ColorMaximumColumn
+        {
+            get { return _ColorMaximumColumn; }
+            set { _ColorMaximumColumn = value; }
         }
 
         private String _BorderStyleSerie = null;
