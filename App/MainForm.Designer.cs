@@ -147,8 +147,8 @@
             this.Peso25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sqLiteCommandBuilder1 = new System.Data.SQLite.SQLiteCommandBuilder();
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.curtoseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.assimetriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.curtoseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.médiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.medianaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selecionamentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -1308,19 +1308,19 @@
             this.contextMenuStrip3.Name = "contextMenuStrip3";
             this.contextMenuStrip3.Size = new System.Drawing.Size(197, 114);
             // 
+            // assimetriaToolStripMenuItem
+            // 
+            this.assimetriaToolStripMenuItem.Name = "assimetriaToolStripMenuItem";
+            this.assimetriaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.A)));
+            this.assimetriaToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.assimetriaToolStripMenuItem.Text = "Assimetria";
+            // 
             // curtoseToolStripMenuItem
             // 
             this.curtoseToolStripMenuItem.Name = "curtoseToolStripMenuItem";
             this.curtoseToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.U)));
             this.curtoseToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.curtoseToolStripMenuItem.Text = "Curtose";
-            // 
-            // assimetriaToolStripMenuItem
-            // 
-            this.assimetriaToolStripMenuItem.Name = "assimetriaToolStripMenuItem";
-            this.assimetriaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.A)));
-            this.assimetriaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.assimetriaToolStripMenuItem.Text = "Assimetria";
             // 
             // médiaToolStripMenuItem
             // 
