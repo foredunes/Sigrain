@@ -1,5 +1,4 @@
-﻿using ExcelDataReader;
-using Sigrain.Classes;
+﻿using Sigrain.Classes;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -234,7 +233,7 @@ namespace Sigran.Classes
             Weight0 = Weight1 = Weight2 = Weight3 = Weight4 = Weight5 = Weight6 = Weight7 = Weight8 = Weight9 = Weight10 = Weight11 = Weight12 = Weight13 = Weight14 = Weight15 = Weight16 = Weight17 = Weight18 = Weight19 = Weight20 = Weight21 = Weight22 = Weight23 = Weight24 = Weight25 = 0;
             List<Sample> listaDados = new List<Sample>();
 
-            using (var stream = File.Open(FileName, FileMode.Open, FileAccess.Read))
+            /*using (var stream = File.Open(FileName, FileMode.Open, FileAccess.Read))
             {
                 using (var reader = ExcelReaderFactory.CreateReader(stream))
                 {
@@ -609,7 +608,7 @@ namespace Sigran.Classes
                         }
                     } while (reader.NextResult());
                 }
-            }
+            }*/
 
             return listaDados;
         }

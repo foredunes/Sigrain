@@ -106,7 +106,8 @@ namespace Sigran.Forms
                 MainForm form = (MainForm)this.Owner;
                 form.updateDataGrid(null, true);
 
-                IniFile ini = new IniFile("Settings.ini");
+                MainForm mainForm = new MainForm();
+                IniFile ini = new IniFile(mainForm.SettingsFile);
                 if (ini.Read("FORMINSERTOPEN") == "1")
                 {
                     textBoxAmostra.Text = "";

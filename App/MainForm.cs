@@ -1,6 +1,4 @@
-﻿using ExcelDataReader;
-using Microsoft.Office.Interop.Excel;
-using Sigran.Classes;
+﻿using Sigran.Classes;
 using Sigran.Forms;
 using System;
 using System.Collections.Generic;
@@ -16,10 +14,8 @@ using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-using ChartArea = Microsoft.Office.Interop.Excel.ChartArea;
 using MenuItem = System.Windows.Forms.MenuItem;
 using Series = System.Windows.Forms.DataVisualization.Charting.Series;
-using Excel = Microsoft.Office.Interop.Excel;
 using System.Runtime.InteropServices;
 
 namespace Sigran
@@ -31,8 +27,11 @@ namespace Sigran
         public static string AppVersion = "1.1";
         public string DatabaseFile = null;
         public string DefaultPath = null;
+        public string SettingsFile = Path.Combine(Environment.GetFolderPath(
+            Environment.SpecialFolder.ApplicationData), AppName + " " + AppVersion + " - Settings.ini");
         public bool IsSave = false;
         public bool dev = false;
+        public bool reload = false;
         public bool createSetupFile = false;
 
         public bool fileMenuOpened = false;
@@ -42,7 +41,6 @@ namespace Sigran
         internal static SampleTools sampleTools = new SampleTools();
 
         public TreeNodeCollection treeNode { get; }
-        
 
         public MainForm()
         {
@@ -53,8 +51,8 @@ namespace Sigran
             defaultView.Visible = true;
             defaultView.Dock = DockStyle.Fill;
 
-            IniFile ini = new IniFile("Settings.ini");
-            bool reload = (ini.Read("RELOAD") == "1") ? true : false;
+            IniFile ini = new IniFile(this.SettingsFile);
+            reload = (ini.Read("RELOAD") == "1") ? true : false;
 
             if (dev == true || reload == true)
             {
@@ -63,7 +61,7 @@ namespace Sigran
                 if (reload == true)
                     DatabaseFile = ini.Read("LASTOPENED");
 
-               DatabaseConnect database = new DatabaseConnect(DatabaseFile);
+                DatabaseConnect database = new DatabaseConnect(DatabaseFile);
                 database.CreateDatabase();
 
                 dataGridView.Visible = true;
@@ -80,15 +78,41 @@ namespace Sigran
                 exportarToolStripMenuItem.Enabled = true;
                 amostraToolStripMenuItem.Enabled = true;
                 processarToolStripMenuItem.Enabled = true;
+
+                button2.Enabled = button3.Enabled = button5.Enabled = button6.Enabled = button7.Enabled = button8.Enabled = button9.Enabled = button10.Enabled = button11.Enabled = button12.Enabled = button13.Enabled = button14.Enabled = button15.Enabled = button16.Enabled = true;
             }
 
             updateDataGrid(null, true);
+        }
 
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            //Criar Arquivo de script de setup
+            if (createSetupFile)
+            {
+                CreateSetupScriptFile.Execute();
+            }
 
-            
+            //HistogramaToolStripMenuItem_Click(sender, e);
+            System.Windows.Forms.ToolTip ToolTip1 = new System.Windows.Forms.ToolTip();
+            ToolTip1.SetToolTip(this.button1, this.button1.Tag.ToString());
+            ToolTip1.SetToolTip(this.button2, this.button2.Tag.ToString());
+            ToolTip1.SetToolTip(this.button3, this.button3.Tag.ToString());
+            ToolTip1.SetToolTip(this.button5, this.button5.Tag.ToString());
+            ToolTip1.SetToolTip(this.button6, this.button6.Tag.ToString());
+            ToolTip1.SetToolTip(this.button7, this.button7.Tag.ToString());
+            ToolTip1.SetToolTip(this.button15, this.button15.Tag.ToString());
+            ToolTip1.SetToolTip(this.button16, this.button16.Tag.ToString());
+            ToolTip1.SetToolTip(this.button8, this.button8.Tag.ToString());
+            ToolTip1.SetToolTip(this.button9, this.button9.Tag.ToString());
+            ToolTip1.SetToolTip(this.button10, this.button10.Tag.ToString());
+            ToolTip1.SetToolTip(this.button11, this.button11.Tag.ToString());
+            ToolTip1.SetToolTip(this.button12, this.button12.Tag.ToString());
+            ToolTip1.SetToolTip(this.button13, this.button13.Tag.ToString());
+            ToolTip1.SetToolTip(this.button14, this.button14.Tag.ToString());
 
-
-
+            if (dev == false && reload == false)
+                button1.Enabled = button2.Enabled = button3.Enabled = button5.Enabled = button6.Enabled = button7.Enabled = button8.Enabled = button9.Enabled = button10.Enabled = button11.Enabled = button12.Enabled = button13.Enabled = button14.Enabled = button15.Enabled = button16.Enabled = false;
 
         }
 
@@ -156,7 +180,7 @@ namespace Sigran
 
                 button2.Enabled = button3.Enabled = button5.Enabled = button6.Enabled = button7.Enabled = button8.Enabled = button9.Enabled = button10.Enabled = button11.Enabled = button12.Enabled = button13.Enabled = button14.Enabled = button15.Enabled = button16.Enabled = true;
 
-                IniFile ini = new IniFile("Settings.ini");
+                IniFile ini = new IniFile(this.SettingsFile);
                 ini.Write("LASTOPENED", openFileDialog1.FileName);
             }
 
@@ -388,7 +412,8 @@ namespace Sigran
         {
             Console.WriteLine("Importar dados...");
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.Filter = "Arquivo de banco de dados do "+AppName+" (*.db)|*.db|Arquivo de banco de dados do SAG (*.mdb)|*.mdb|Planília do Excel do SysGran (*.xls)|*.xls";
+            openFileDialog1.Filter = "Arquivo de banco de dados do "+AppName+" (*.db)|*.db|Arquivo de banco de dados do SAG (*.mdb)|*.mdb";
+            //openFileDialog1.Filter = "Arquivo de banco de dados do " + AppName + " (*.db)|*.db|Arquivo de banco de dados do SAG (*.mdb)|*.mdb|Planília do Excel do SysGran (*.xls)|*.xls";
             openFileDialog1.Title = "Importar dados externos";
             openFileDialog1.FileName = DefaultPath;
             if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -431,7 +456,7 @@ namespace Sigran
                 }
 
                 //IMPORT FROM .XLS
-                if (FileName.Contains(".xls") || FileName.Contains(".XLS"))
+                /*if (FileName.Contains(".xls") || FileName.Contains(".XLS"))
                 {
                     List<Sample> listaDados = imports.fromXlsFile(@FileName);
 
@@ -443,36 +468,7 @@ namespace Sigran
 
                         updateDataGrid(null, true);
                     }
-
-
-
-
-                    /*OleDbConnection conexao = new OleDbConnection(@"Provider = Microsoft.ACE.OLEDB.12.0; Data Source = " + FileName + "; Extended Properties ='Excel 12.0 Xml; HDR = YES';");
-                    OleDbDataAdapter adapter = new OleDbDataAdapter("select * from[Sheet1$]", conexao);
-                    DataSet ds = new DataSet();
-
-                    try
-                    {
-                        conexao.Open();
-
-                        adapter.Fill(ds);
-                        foreach (DataRow linha in ds.Tables[0].Rows)
-                        {
-                            Console.WriteLine("Nome: { 0} – Cargo: { 1} – Salario: { 2}", linha[0].ToString(),
-                        linha["cargo"].ToString(), linha[1].ToString());
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine("Erro ao acessar os dados: " + ex.Message);
-                    }
-                    finally
-                    {
-                        conexao.Close();
-
-                    }*/
-
-                }
+                }*/
 
 
                 if (resultado)
@@ -532,37 +528,6 @@ namespace Sigran
             }
 
             form.ShowDialog();
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            //Criar Arquivo de script de setup
-            if (createSetupFile)
-            {
-                CreateSetupScriptFile.Execute();
-            }
-
-            //HistogramaToolStripMenuItem_Click(sender, e);
-            System.Windows.Forms.ToolTip ToolTip1 = new System.Windows.Forms.ToolTip();
-            ToolTip1.SetToolTip(this.button1, this.button1.Tag.ToString());
-            ToolTip1.SetToolTip(this.button2, this.button2.Tag.ToString());
-            ToolTip1.SetToolTip(this.button3, this.button3.Tag.ToString());
-            ToolTip1.SetToolTip(this.button5, this.button5.Tag.ToString());
-            ToolTip1.SetToolTip(this.button6, this.button6.Tag.ToString());
-            ToolTip1.SetToolTip(this.button7, this.button7.Tag.ToString());
-            ToolTip1.SetToolTip(this.button15, this.button15.Tag.ToString());
-            ToolTip1.SetToolTip(this.button16, this.button16.Tag.ToString());
-            ToolTip1.SetToolTip(this.button8, this.button8.Tag.ToString());
-            ToolTip1.SetToolTip(this.button9, this.button9.Tag.ToString());
-            ToolTip1.SetToolTip(this.button10, this.button10.Tag.ToString());
-            ToolTip1.SetToolTip(this.button11, this.button11.Tag.ToString());
-            ToolTip1.SetToolTip(this.button12, this.button12.Tag.ToString());
-            ToolTip1.SetToolTip(this.button13, this.button13.Tag.ToString());
-            ToolTip1.SetToolTip(this.button14, this.button14.Tag.ToString());
-
-            if (dev == false)
-                button1.Enabled = button2.Enabled = button3.Enabled = button5.Enabled = button6.Enabled = button7.Enabled = button8.Enabled = button9.Enabled = button10.Enabled = button11.Enabled = button12.Enabled = button13.Enabled = button14.Enabled = button15.Enabled = button16.Enabled = false;
-
         }
 
         private void EditarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1735,14 +1700,13 @@ namespace Sigran
 
         private string GetRotules(Sample sample)
         {
-            IniFile ini = new IniFile("Settings.ini");
+            IniFile ini = new IniFile(this.SettingsFile);
             if (ini.Read("ROTULES") == "category")
                 return sample.Category;
             if (ini.Read("ROTULES") == "description")
                 return sample.Description;
             if (ini.Read("ROTULES") == "date")
                 return sample.Date;
-
 
             return sample.Name;
         }

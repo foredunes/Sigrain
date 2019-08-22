@@ -29,7 +29,8 @@ namespace Sigran.Forms
             comboBoxRotulesVariable.Items.Add("Descrição");
             comboBoxRotulesVariable.Items.Add("Data");
 
-            IniFile ini = new IniFile("Settings.ini");
+            MainForm mainForm = new MainForm();
+            IniFile ini = new IniFile(mainForm.SettingsFile);
             if (ini.Read("ROTULES") == "sample")
                 comboBoxRotulesVariable.Text = "Amostra";
             if (ini.Read("ROTULES") == "description")
@@ -65,7 +66,8 @@ namespace Sigran.Forms
 
         private void ButtonSave_Click(object sender, EventArgs e)
         {
-            IniFile ini = new IniFile("Settings.ini");
+            MainForm mainForm = new MainForm();
+            IniFile ini = new IniFile(mainForm.SettingsFile);
 
             string rotules = "";
             if (comboBoxRotulesVariable.Text == "Amostra")

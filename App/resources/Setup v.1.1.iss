@@ -36,7 +36,7 @@ Name: "portuguese"; MessagesFile: "compiler:Languages\Portuguese.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}";
 
 [Files]
-Source: "..\bin\Debug\Sigrain.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\bin\Debug\Sigran.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\bin\Debug\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 
 [Icons]

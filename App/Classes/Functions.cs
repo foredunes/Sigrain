@@ -28,7 +28,7 @@ namespace Sigran.Classes
 
         public void exportToExcel(DataGridView DGV, string FileName, bool showHeader = false)
         {
-            // Creating a Excel object.
+            /*// Creating a Excel object.
             Microsoft.Office.Interop.Excel._Application excel = new Microsoft.Office.Interop.Excel.Application();
             Microsoft.Office.Interop.Excel._Workbook workbook = excel.Workbooks.Add(Type.Missing);
             Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
@@ -82,7 +82,7 @@ namespace Sigran.Classes
                 excel.Quit();
                 workbook = null;
                 excel = null;
-            }
+            }*/
 
         }
 
@@ -98,7 +98,7 @@ namespace Sigran.Classes
                 {
                     if (i > 0)
                     {
-                        swOut.Write(",");
+                        swOut.Write(";");
                     }
                     swOut.Write(DGV.Columns[i].HeaderText);
                 }
@@ -119,7 +119,7 @@ namespace Sigran.Classes
                 {
                     if (i > 0)
                     {
-                        swOut.Write(",");
+                        swOut.Write(";");
                     }
 
                     value = dr.Cells[i].Value.ToString();
@@ -147,7 +147,7 @@ namespace Sigran.Classes
                     {
                         if (i > 0)
                         {
-                            swOut.Write("   ");
+                            swOut.Write(";");
                         }
                         swOut.Write(DGV.Columns[i].HeaderText);
                     }
@@ -168,7 +168,7 @@ namespace Sigran.Classes
                     {
                         if (i > 0)
                         {
-                            swOut.Write("   ");
+                            swOut.Write(";");
                         }
 
                         value = dr.Cells[i].Value.ToString();
@@ -187,7 +187,8 @@ namespace Sigran.Classes
         {
             //Getting the location and file name of the excel to save from user.
             SaveFileDialog saveDialog = new SaveFileDialog();
-            saveDialog.Filter = "All files (*.*)|*.*|Arquivo do Excel (*.xlsx)|*.xlsx|Texto Separado por vírgula (*.csv)|*.csv|Arquivo de texto (*.txt)|*.txt";
+            saveDialog.Filter = "Arquivo de texto (*.txt)|*.txt|Texto Separado por vírgula (*.csv)|*.csv";
+            //saveDialog.Filter = "All files (*.*)|*.*|Arquivo do Excel (*.xlsx)|*.xlsx|Texto Separado por vírgula (*.csv)|*.csv|Arquivo de texto (*.txt)|*.txt";
             saveDialog.FilterIndex = 2;
 
             if (saveDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)

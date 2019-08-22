@@ -38,8 +38,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.checkBoxOpenLast = new System.Windows.Forms.CheckBox();
             this.checkBoxFormInsertOpen = new System.Windows.Forms.CheckBox();
+            this.checkBoxOpenLast = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -155,16 +155,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Geral";
             // 
-            // checkBoxOpenLast
-            // 
-            this.checkBoxOpenLast.Dock = System.Windows.Forms.DockStyle.Top;
-            this.checkBoxOpenLast.Location = new System.Drawing.Point(3, 16);
-            this.checkBoxOpenLast.Name = "checkBoxOpenLast";
-            this.checkBoxOpenLast.Size = new System.Drawing.Size(187, 34);
-            this.checkBoxOpenLast.TabIndex = 0;
-            this.checkBoxOpenLast.Text = "Carregar ultimo arquivo aberto ao iniciar";
-            this.checkBoxOpenLast.UseVisualStyleBackColor = true;
-            // 
             // checkBoxFormInsertOpen
             // 
             this.checkBoxFormInsertOpen.Dock = System.Windows.Forms.DockStyle.Top;
@@ -175,8 +165,19 @@
             this.checkBoxFormInsertOpen.Text = "Manter janela de Inclusão de amostras aberta após inserir nova amostra";
             this.checkBoxFormInsertOpen.UseVisualStyleBackColor = true;
             // 
+            // checkBoxOpenLast
+            // 
+            this.checkBoxOpenLast.Dock = System.Windows.Forms.DockStyle.Top;
+            this.checkBoxOpenLast.Location = new System.Drawing.Point(3, 16);
+            this.checkBoxOpenLast.Name = "checkBoxOpenLast";
+            this.checkBoxOpenLast.Size = new System.Drawing.Size(187, 34);
+            this.checkBoxOpenLast.TabIndex = 0;
+            this.checkBoxOpenLast.Text = "Carregar ultimo arquivo aberto ao iniciar";
+            this.checkBoxOpenLast.UseVisualStyleBackColor = true;
+            // 
             // SettingsForm
             // 
+            this.AcceptButton = this.buttonSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(398, 250);
