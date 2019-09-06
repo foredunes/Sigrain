@@ -11,7 +11,7 @@ namespace Sigran.PropertyGrid
     class BivariatePropertyGrid : DefaultPropertyGrid
     {
         bool _ShowLabels;
-        [Category("Gráfico Bivariado")]
+        [Category("Gráfico de Correlação")]
         [Description("Caso seja Sim, exibirá os rótulos das amostras.")]
         [DisplayName("Exibir rótulos?")]
         public bool ShowLabels
@@ -21,7 +21,7 @@ namespace Sigran.PropertyGrid
         }
 
         int _MarkersSize = 1;
-        [Category("Gráfico Bivariado")]
+        [Category("Gráfico de Correlação")]
         [Description("Define o tamanho dos pontos.")]
         [DisplayName("Tamanho dos pontos")]
         public int MarkersSize
@@ -31,7 +31,7 @@ namespace Sigran.PropertyGrid
         }
 
         Color _MarkerColor;
-        [Category("Gráfico Bivariado")]
+        [Category("Gráfico de Correlação")]
         [DisplayName("Cor dos pontos")]
         [DescriptionAttribute("Cor dos pontos.")]
         public Color MarkerColor
@@ -42,7 +42,7 @@ namespace Sigran.PropertyGrid
 
 
         private String _MarkerStyle = null;
-        [Category("Gráfico Bivariado")]
+        [Category("Gráfico de Correlação")]
         [DisplayName("Estilo do ponto")]
         [Description("Define o estilo dos pontos.")]
         [TypeConverter(typeof(MarkerStyleConverter))]
@@ -69,7 +69,7 @@ namespace Sigran.PropertyGrid
         }
 
         Color _LabelColor;
-        [Category("Gráfico Bivariado")]
+        [Category("Gráfico de Correlação")]
         [DisplayName("Cor dos rótulos")]
         [DescriptionAttribute("Cor dos rótulos.")]
         public Color LabelColor

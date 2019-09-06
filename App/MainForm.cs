@@ -24,7 +24,7 @@ namespace Sigran
     {
         public static string AppName = "Sigran";
         public static string AppDescription = "Sistema de Informação Granulométrica";
-        public static string AppVersion = "1.1";
+        public static string AppVersion = "1.2";
         public string DatabaseFile = null;
         public string DefaultPath = null;
         public string SettingsFile = Path.Combine(Environment.GetFolderPath(
@@ -82,7 +82,7 @@ namespace Sigran
                 button2.Enabled = button3.Enabled = button5.Enabled = button6.Enabled = button7.Enabled = button8.Enabled = button9.Enabled = button10.Enabled = button11.Enabled = button12.Enabled = button13.Enabled = button14.Enabled = button15.Enabled = button16.Enabled = true;
             }
 
-            updateDataGrid(null, true);
+            updateDataGrid(null, null, null, true);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -151,7 +151,7 @@ namespace Sigran
 
             if (DatabaseFile != null)
             {
-                updateDataGrid(null, true);
+                updateDataGrid(null, null, null, true);
             }
         }
 
@@ -186,11 +186,11 @@ namespace Sigran
 
             if (DatabaseFile != null)
             {
-                updateDataGrid(null, true);
+                updateDataGrid(null, null, null, true);
             }
         }
 
-        public void updateDataGrid(string categoria, bool updateTree)
+        public void updateDataGrid(string amostra, string categoria, string data, bool updateTree)
         {
             if(DatabaseFile != null)
             {
@@ -204,9 +204,11 @@ namespace Sigran
                 SQLiteCommand cmd = new SQLiteCommand(sql, conn);
                 SQLiteDataReader dr = cmd.ExecuteReader();
                 List<string> listaCategorias = new List<string>();
+                List<string> listaAmostras = new List<string>();
+                List<string> listaDatas = new List<string>();
                 while (dr.Read())
                 {
-                    if (categoria == null)
+                    if (categoria == null && amostra == null && data == null)
                     {
                         this.dataGridView.Rows.Add(
                             Convert.ToInt32(dr["Id"]),
@@ -247,72 +249,173 @@ namespace Sigran
                     }
                     else
                     {
-                        if (categoria == dr["Category"].ToString())
+                        if (categoria == dr["Category"].ToString() && categoria != null)
                         {
                             this.dataGridView.Rows.Add(
-                            Convert.ToInt32(dr["Id"]),
-                            dr["Name"].ToString().Replace(".", ","),
-                            dr["Category"].ToString().Replace(".", ","),
-                            dr["Description"].ToString().Replace(".", ","),
-                            dr["Date"].ToString().Replace(".", ","),
-                            dr["Carbonates"].ToString().Replace(".", ","),
-                            dr["Latitude"].ToString().Replace(".", ","),
-                            dr["Longitude"].ToString().Replace(".", ","),
-                            dr["Weight0"].ToString().Replace(".", ","),
-                            dr["Weight1"].ToString().Replace(".", ","),
-                            dr["Weight2"].ToString().Replace(".", ","),
-                            dr["Weight3"].ToString().Replace(".", ","),
-                            dr["Weight4"].ToString().Replace(".", ","),
-                            dr["Weight5"].ToString().Replace(".", ","),
-                            dr["Weight6"].ToString().Replace(".", ","),
-                            dr["Weight7"].ToString().Replace(".", ","),
-                            dr["Weight8"].ToString().Replace(".", ","),
-                            dr["Weight9"].ToString().Replace(".", ","),
-                            dr["Weight10"].ToString().Replace(".", ","),
-                            dr["Weight11"].ToString().Replace(".", ","),
-                            dr["Weight12"].ToString().Replace(".", ","),
-                            dr["Weight13"].ToString().Replace(".", ","),
-                            dr["Weight14"].ToString().Replace(".", ","),
-                            dr["Weight15"].ToString().Replace(".", ","),
-                            dr["Weight16"].ToString().Replace(".", ","),
-                            dr["Weight17"].ToString().Replace(".", ","),
-                            dr["Weight18"].ToString().Replace(".", ","),
-                            dr["Weight19"].ToString().Replace(".", ","),
-                            dr["Weight20"].ToString().Replace(".", ","),
-                            dr["Weight21"].ToString().Replace(".", ","),
-                            dr["Weight22"].ToString().Replace(".", ","),
-                            dr["Weight23"].ToString().Replace(".", ","),
-                            dr["Weight24"].ToString().Replace(".", ","),
-                            dr["Weight25"].ToString()
-                        );
+                                Convert.ToInt32(dr["Id"]),
+                                dr["Name"].ToString().Replace(".", ","),
+                                dr["Category"].ToString().Replace(".", ","),
+                                dr["Description"].ToString().Replace(".", ","),
+                                dr["Date"].ToString().Replace(".", ","),
+                                dr["Carbonates"].ToString().Replace(".", ","),
+                                dr["Latitude"].ToString().Replace(".", ","),
+                                dr["Longitude"].ToString().Replace(".", ","),
+                                dr["Weight0"].ToString().Replace(".", ","),
+                                dr["Weight1"].ToString().Replace(".", ","),
+                                dr["Weight2"].ToString().Replace(".", ","),
+                                dr["Weight3"].ToString().Replace(".", ","),
+                                dr["Weight4"].ToString().Replace(".", ","),
+                                dr["Weight5"].ToString().Replace(".", ","),
+                                dr["Weight6"].ToString().Replace(".", ","),
+                                dr["Weight7"].ToString().Replace(".", ","),
+                                dr["Weight8"].ToString().Replace(".", ","),
+                                dr["Weight9"].ToString().Replace(".", ","),
+                                dr["Weight10"].ToString().Replace(".", ","),
+                                dr["Weight11"].ToString().Replace(".", ","),
+                                dr["Weight12"].ToString().Replace(".", ","),
+                                dr["Weight13"].ToString().Replace(".", ","),
+                                dr["Weight14"].ToString().Replace(".", ","),
+                                dr["Weight15"].ToString().Replace(".", ","),
+                                dr["Weight16"].ToString().Replace(".", ","),
+                                dr["Weight17"].ToString().Replace(".", ","),
+                                dr["Weight18"].ToString().Replace(".", ","),
+                                dr["Weight19"].ToString().Replace(".", ","),
+                                dr["Weight20"].ToString().Replace(".", ","),
+                                dr["Weight21"].ToString().Replace(".", ","),
+                                dr["Weight22"].ToString().Replace(".", ","),
+                                dr["Weight23"].ToString().Replace(".", ","),
+                                dr["Weight24"].ToString().Replace(".", ","),
+                                dr["Weight25"].ToString()
+                            );
+                        }
+
+                        if (amostra == dr["Name"].ToString() && amostra != null)
+                        {
+                            this.dataGridView.Rows.Add(
+                                Convert.ToInt32(dr["Id"]),
+                                dr["Name"].ToString().Replace(".", ","),
+                                dr["Category"].ToString().Replace(".", ","),
+                                dr["Description"].ToString().Replace(".", ","),
+                                dr["Date"].ToString().Replace(".", ","),
+                                dr["Carbonates"].ToString().Replace(".", ","),
+                                dr["Latitude"].ToString().Replace(".", ","),
+                                dr["Longitude"].ToString().Replace(".", ","),
+                                dr["Weight0"].ToString().Replace(".", ","),
+                                dr["Weight1"].ToString().Replace(".", ","),
+                                dr["Weight2"].ToString().Replace(".", ","),
+                                dr["Weight3"].ToString().Replace(".", ","),
+                                dr["Weight4"].ToString().Replace(".", ","),
+                                dr["Weight5"].ToString().Replace(".", ","),
+                                dr["Weight6"].ToString().Replace(".", ","),
+                                dr["Weight7"].ToString().Replace(".", ","),
+                                dr["Weight8"].ToString().Replace(".", ","),
+                                dr["Weight9"].ToString().Replace(".", ","),
+                                dr["Weight10"].ToString().Replace(".", ","),
+                                dr["Weight11"].ToString().Replace(".", ","),
+                                dr["Weight12"].ToString().Replace(".", ","),
+                                dr["Weight13"].ToString().Replace(".", ","),
+                                dr["Weight14"].ToString().Replace(".", ","),
+                                dr["Weight15"].ToString().Replace(".", ","),
+                                dr["Weight16"].ToString().Replace(".", ","),
+                                dr["Weight17"].ToString().Replace(".", ","),
+                                dr["Weight18"].ToString().Replace(".", ","),
+                                dr["Weight19"].ToString().Replace(".", ","),
+                                dr["Weight20"].ToString().Replace(".", ","),
+                                dr["Weight21"].ToString().Replace(".", ","),
+                                dr["Weight22"].ToString().Replace(".", ","),
+                                dr["Weight23"].ToString().Replace(".", ","),
+                                dr["Weight24"].ToString().Replace(".", ","),
+                                dr["Weight25"].ToString()
+                            );
+                        }
+
+                        if (data == dr["Date"].ToString() && data != null)
+                        {
+                            this.dataGridView.Rows.Add(
+                                Convert.ToInt32(dr["Id"]),
+                                dr["Name"].ToString().Replace(".", ","),
+                                dr["Category"].ToString().Replace(".", ","),
+                                dr["Description"].ToString().Replace(".", ","),
+                                dr["Date"].ToString().Replace(".", ","),
+                                dr["Carbonates"].ToString().Replace(".", ","),
+                                dr["Latitude"].ToString().Replace(".", ","),
+                                dr["Longitude"].ToString().Replace(".", ","),
+                                dr["Weight0"].ToString().Replace(".", ","),
+                                dr["Weight1"].ToString().Replace(".", ","),
+                                dr["Weight2"].ToString().Replace(".", ","),
+                                dr["Weight3"].ToString().Replace(".", ","),
+                                dr["Weight4"].ToString().Replace(".", ","),
+                                dr["Weight5"].ToString().Replace(".", ","),
+                                dr["Weight6"].ToString().Replace(".", ","),
+                                dr["Weight7"].ToString().Replace(".", ","),
+                                dr["Weight8"].ToString().Replace(".", ","),
+                                dr["Weight9"].ToString().Replace(".", ","),
+                                dr["Weight10"].ToString().Replace(".", ","),
+                                dr["Weight11"].ToString().Replace(".", ","),
+                                dr["Weight12"].ToString().Replace(".", ","),
+                                dr["Weight13"].ToString().Replace(".", ","),
+                                dr["Weight14"].ToString().Replace(".", ","),
+                                dr["Weight15"].ToString().Replace(".", ","),
+                                dr["Weight16"].ToString().Replace(".", ","),
+                                dr["Weight17"].ToString().Replace(".", ","),
+                                dr["Weight18"].ToString().Replace(".", ","),
+                                dr["Weight19"].ToString().Replace(".", ","),
+                                dr["Weight20"].ToString().Replace(".", ","),
+                                dr["Weight21"].ToString().Replace(".", ","),
+                                dr["Weight22"].ToString().Replace(".", ","),
+                                dr["Weight23"].ToString().Replace(".", ","),
+                                dr["Weight24"].ToString().Replace(".", ","),
+                                dr["Weight25"].ToString()
+                            );
                         }
                     }
 
                     if (!listaCategorias.Contains(dr["Category"].ToString()) && dr["Category"].ToString() != "")
-                    {
                         listaCategorias.Add(dr["Category"].ToString());
-                    }
+
+                    if (!listaAmostras.Contains(dr["Name"].ToString()) && dr["Name"].ToString() != "")
+                        listaAmostras.Add(dr["Name"].ToString());
+
+                    if (!listaDatas.Contains(dr["Date"].ToString()) && dr["Date"].ToString() != "")
+                        listaDatas.Add(dr["Date"].ToString());
 
                 }
 
                 conn.Close();
 
                 listaCategorias = listaCategorias.OrderBy(q => q).ToList();
+                listaAmostras = listaAmostras.OrderBy(q => q).ToList();
+                listaDatas = listaDatas.OrderBy(q => q).ToList();
 
                 if (updateTree == true)
                 {
                     //Tree
+
+                    //Amostras
                     TreeNodeCollection treeNode = treeView.Nodes;
                     treeNode.Clear();
                     treeNode.Add("Amostras", "Amostras");
                     treeNode["Amostras"].Nodes.Add(new TreeNode("Todas"));
-                    //treeNode.Add("Resultados", "Resultados");
-
                     treeView.ExpandAll();
-
-                    foreach (string i in listaCategorias)
+                    foreach (string i in listaAmostras)
                     {
                         treeNode["Amostras"].Nodes.Add(new TreeNode(i));
+                    }
+
+                    //Categorias
+                    treeNode.Add("Categorias", "Categorias");
+                    treeNode["Categorias"].Nodes.Add(new TreeNode("Todas"));
+                    foreach (string i in listaCategorias)
+                    {
+                        treeNode["Categorias"].Nodes.Add(new TreeNode(i));
+                    }
+
+                    //Datas
+                    treeNode.Add("Datas", "Datas");
+                    treeNode["Datas"].Nodes.Add(new TreeNode("Todas"));
+                    foreach (string i in listaDatas)
+                    {
+                        treeNode["Datas"].Nodes.Add(new TreeNode(i));
                     }
                 }
             }
@@ -380,7 +483,7 @@ namespace Sigran
                 processarToolStripMenuItem.Enabled = true;
 
                 //Atualiza a área de trabalho
-                updateDataGrid(null, true);
+                updateDataGrid(null, null, null, true);
             }
         }
 
@@ -435,7 +538,7 @@ namespace Sigran
                         DatabaseConnect database = new DatabaseConnect(DatabaseFile);
                         resultado = database.Insert(dados, "Samples", false);
 
-                        updateDataGrid(null, true);
+                        updateDataGrid(null, null, null, true);
                     }
                 }
 
@@ -450,7 +553,7 @@ namespace Sigran
                         DatabaseConnect database = new DatabaseConnect(DatabaseFile);
                         resultado = database.Insert(dados, "Samples", false);
 
-                        updateDataGrid(null, true);
+                        updateDataGrid(null, null, null, true);
                     }
 
                 }
@@ -484,7 +587,7 @@ namespace Sigran
 
             if (DatabaseFile != null)
             {
-                updateDataGrid(null, true);
+                updateDataGrid(null, null, null, true);
             }
         }
 
@@ -639,9 +742,9 @@ namespace Sigran
                     SQLiteDataReader dr = cmd.ExecuteReader();
                     conn.Close();
                     MessageBox.Show("Registro excluído com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    
+
                     //Atualiza a área de trabalho
-                    updateDataGrid(null, true);
+                    updateDataGrid(null, null, null, true);
                 }
             }
 
@@ -672,14 +775,38 @@ namespace Sigran
                 {
                     if (nodeSelected != "Todas" || nodeSelected != "Amostras")
                     {
-                        updateDataGrid(nodeSelected, false);
+                        updateDataGrid(nodeSelected, null, null, false);
                     }
                     if (nodeSelected == "Todas" || nodeSelected == "Amostras")
                     {
-                        updateDataGrid(null, false);
+                        updateDataGrid(null, null, null, false);
                     }
                 }
-                
+
+                if (e.Node.Parent.Text == "Categorias")
+                {
+                    if (nodeSelected != "Todas" || nodeSelected != "Categorias")
+                    {
+                        updateDataGrid(null, nodeSelected, null, false);
+                    }
+                    if (nodeSelected == "Todas" || nodeSelected == "Categorias")
+                    {
+                        updateDataGrid(null, null, null, false);
+                    }
+                }
+
+                if (e.Node.Parent.Text == "Datas")
+                {
+                    if (nodeSelected != "Todas" || nodeSelected != "Datas")
+                    {
+                        updateDataGrid(null, null, nodeSelected, false);
+                    }
+                    if (nodeSelected == "Todas" || nodeSelected == "Datas")
+                    {
+                        updateDataGrid(null, null, null, false);
+                    }
+                }
+
             }
         }
 
@@ -879,12 +1006,13 @@ namespace Sigran
                     List<decimal> statisticsTask = sampleTools.getStatisticsByMehtod("Trask(1930)", sample);
                     List<decimal> statisticsOtto = sampleTools.getStatisticsByMehtod("Otto(1939)", sample);
                     form.dataGridView1.Rows.Insert(43, "ESTATÍSTICAS");
-                    form.dataGridView1.Rows.Insert(44, "REFERÊNCIA",        "Média",                                "Mediana",                              "Selecionamento",                       "Assimetria",                           "Custose");
-                    form.dataGridView1.Rows.Insert(45, "Folk&Ward(1957)",   f.decimalToString(statisticsFolk[0]),   f.decimalToString(statisticsFolk[1]),   f.decimalToString(statisticsFolk[2]),   f.decimalToString(statisticsFolk[3]),   f.decimalToString(statisticsFolk[4]));
+                    form.dataGridView1.Rows.Insert(44, "Média",                                "Mediana",                              "Selecionamento",                       "Assimetria",                           "Custose");
+                    form.dataGridView1.Rows.Insert(45, f.decimalToString(statisticsFolk[0]),   f.decimalToString(statisticsFolk[1]),   f.decimalToString(statisticsFolk[2]),   f.decimalToString(statisticsFolk[3]),   f.decimalToString(statisticsFolk[4]));
                     /*form.dataGridView1.Rows.Insert(46, "McCammonA(1962)",   f.decimalToString(statisticsMca[0]),    f.decimalToString(statisticsMca[1]),    f.decimalToString(statisticsMca[2]),    f.decimalToString(statisticsMca[3]),    f.decimalToString(statisticsMca[4]));
                     form.dataGridView1.Rows.Insert(47, "McCammonB(1962)",   f.decimalToString(statisticsMcb[0]),    f.decimalToString(statisticsMcb[1]),    f.decimalToString(statisticsMcb[2]),    f.decimalToString(statisticsMcb[3]),    f.decimalToString(statisticsMcb[4]));
                     form.dataGridView1.Rows.Insert(48, "Trask(1930)",       f.decimalToString(statisticsTask[0]),   f.decimalToString(statisticsTask[1]),   f.decimalToString(statisticsTask[2]),   f.decimalToString(statisticsTask[3]),   f.decimalToString(statisticsTask[4]));
                     form.dataGridView1.Rows.Insert(49, "Otto(1939)",        f.decimalToString(statisticsOtto[0]),   f.decimalToString(statisticsOtto[1]),   f.decimalToString(statisticsOtto[2]),   f.decimalToString(statisticsOtto[3]),   f.decimalToString(statisticsOtto[4]));*/
+
 
                     //Constroi a tabela de classificação
                     List<decimal> frequencies = sampleTools.getFrequencies(sample);
@@ -915,8 +1043,8 @@ namespace Sigran
                         );
 
                     form.dataGridView1.Rows.Insert(57, "CLASSIFICAÇÃO VERBAL");
-                    form.dataGridView1.Rows.Insert(58, "REFERÊNCIA", "Classificação pela média",                                        "Selecionamento",                                               "Assimetria", "Custose");
-                    form.dataGridView1.Rows.Insert(59, "Folk&Ward(1957)", sampleTools.getPhiClassificationSimple(statisticsFolk[0]),    sampleTools.getClassificationBySelection(statisticsFolk[2]),    sampleTools.getClassificationByAssimetry(statisticsFolk[3]), sampleTools.getClassificationByCurtose(statisticsFolk[4]));
+                    form.dataGridView1.Rows.Insert(58, "Classificação pela média",                                        "Selecionamento",                                               "Assimetria", "Custose");
+                    form.dataGridView1.Rows.Insert(59, sampleTools.getPhiClassificationSimple(statisticsFolk[0]),    sampleTools.getClassificationBySelection(statisticsFolk[2]),    sampleTools.getClassificationByAssimetry(statisticsFolk[3]), sampleTools.getClassificationByCurtose(statisticsFolk[4]));
                     /*form.dataGridView1.Rows.Insert(60, "McCammonA(1962)", sampleTools.getPhiClassificationSimple(statisticsMca[0]),     sampleTools.getClassificationBySelection(statisticsMca[2]),     sampleTools.getClassificationByAssimetry(statisticsMca[3]), sampleTools.getClassificationByCurtose(statisticsMca[4]));
                     form.dataGridView1.Rows.Insert(61, "McCammonB(1962)", sampleTools.getPhiClassificationSimple(statisticsMcb[0]),     sampleTools.getClassificationBySelection(statisticsMcb[2]),     sampleTools.getClassificationByAssimetry(statisticsMcb[3]), sampleTools.getClassificationByCurtose(statisticsMcb[4]));
                     form.dataGridView1.Rows.Insert(62, "Trask(1930)",     sampleTools.getPhiClassificationSimple(statisticsTask[0]),    sampleTools.getClassificationBySelection(statisticsTask[2]),    sampleTools.getClassificationByAssimetry(statisticsTask[3]), sampleTools.getClassificationByCurtose(statisticsTask[4]));
@@ -937,17 +1065,26 @@ namespace Sigran
                         r++;
                     }
 
-
-                    form.dataGridView1.Rows.Insert(61, "CLASSIFICAÇÃO DE LARSONNEUR");
-                    form.dataGridView1.Rows.Insert(62, "REFERÊNCIA", "Sigla", "Classificação Verbal", /*"%Coquinas", "%Rodolitos",*/ "%Seixos", "%Granulos", "%Areias", "%Lama");
-
                     decimal coquinas = 0;
                     decimal rodolitos = 0;
                     decimal seixos = sample.Weight0 + sample.Weight1 + sample.Weight2 + sample.Weight3 + sample.Weight4;
                     decimal granulos = sample.Weight5 + sample.Weight6;
-                    decimal sand = sample.Weight7 + sample.Weight8 + sample.Weight9 + sample.Weight10 + sample.Weight11 + sample.Weight12 + sample.Weight13 + sample.Weight14;
-                    decimal lama = sample.Weight15 + sample.Weight16 + sample.Weight17 + sample.Weight18 + sample.Weight19 + sample.Weight20 + sample.Weight21 + sample.Weight22 + sample.Weight23 + sample.Weight24 + sample.Weight25;
+                    decimal sand = sample.Weight7 + sample.Weight8 + sample.Weight9 + sample.Weight10 + sample.Weight11 + sample.Weight12 + sample.Weight13 + sample.Weight14 + sample.Weight15 + sample.Weight16;
+                    decimal lama = sample.Weight17 + sample.Weight18 + sample.Weight19 + sample.Weight20 + sample.Weight21 + sample.Weight22 + sample.Weight23 + sample.Weight24 + sample.Weight25;
 
+                    //FOLK
+
+                    string siglaFolk = sampleTools.getClassificationFolk("sigla", sample);
+                    string classificationFolk = sampleTools.getClassificationFolk("classification", sample);
+
+                    form.dataGridView1.Rows.Insert(61, "CLASSIFICAÇÃO DE FOLK");
+                    form.dataGridView1.Rows.Insert(62, "REFERÊNCIA", "Sigla", "Classificação Verbal", /*"%Coquinas", "%Rodolitos",*/ "");
+                    form.dataGridView1.Rows.Insert(63, "Folk&Ward(1957)", siglaFolk, classificationFolk);
+
+
+
+
+                    //Larsonneur
                     decimal median = statisticsFolk[1];
                     decimal carbonatosP = sample.Carbonates;
                     decimal coquinasP = (100 * coquinas) / WeightTotal;
@@ -962,11 +1099,12 @@ namespace Sigran
                     decimal p025a05P = (100 * (sample.Weight11 + sample.Weight12)) / WeightTotal;
                     decimal p005a025P = (100 * (sample.Weight13 + sample.Weight14)) / WeightTotal;
 
-                    string sigla = sampleTools.getClassificationLarsonneur("sigla", sample);
-                    string classification = sampleTools.getClassificationLarsonneur("classification", sample);
+                    string siglaLarsonneur = sampleTools.getClassificationLarsonneur("sigla", sample);
+                    string classificationLarsonneur = sampleTools.getClassificationLarsonneur("classification", sample);
 
-
-                    form.dataGridView1.Rows.Insert(63, "Larsonneur(1977)/Dias(1996)", sigla, classification, /*f.decimalToString(coquinasP), f.decimalToString(rodolitosP),*/ f.decimalToString(seixosP), f.decimalToString(granulosP), f.decimalToString(sandP), f.decimalToString(lamaP));
+                    form.dataGridView1.Rows.Insert(65, "CLASSIFICAÇÃO DE LARSONNEUR");
+                    form.dataGridView1.Rows.Insert(66, "REFERÊNCIA", "Sigla", "Classificação Verbal", /*"%Coquinas", "%Rodolitos",*/ "%Seixos", "%Granulos", "%Areias", "%Lama");
+                    form.dataGridView1.Rows.Insert(67, "Larsonneur(1977)/Dias(1996)", siglaLarsonneur, classificationLarsonneur, /*f.decimalToString(coquinasP), f.decimalToString(rodolitosP),*/ f.decimalToString(seixosP), f.decimalToString(granulosP), f.decimalToString(sandP), f.decimalToString(lamaP));
                 }
 
                 //Exibe o form
@@ -1682,9 +1820,9 @@ namespace Sigran
                 }
 
                 //Exibe o form
-                if (selectedRowCount > 100)
+                if (selectedRowCount > 1000)
                 {
-                    MessageBox.Show("Não é possível processar mais de 100 amostras por vez.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Não é possível processar mais de 1000 amostras por vez.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {

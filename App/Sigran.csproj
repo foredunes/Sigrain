@@ -215,7 +215,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo64x64.ico" />
+    <None Include="resources\sherpard-bg.jpg" />
     <None Include="resources\logo400x100.png" />
+    <None Include="resources\Folk-bg.jpg" />
+    <None Include="resources\Folk-coarse-bg.jpg" />
+    <None Include="resources\pejrup-bg.jpg" />
     <Content Include="resources\Setup.iss" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

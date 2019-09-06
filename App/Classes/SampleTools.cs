@@ -82,7 +82,7 @@ namespace Sigran.Classes
         public List<string> getPhiClassifications(String method)
         {
             List<string> phiClassification = new List<string>();
-            if(method == "Wentworth(1922)")
+            if (method == "Wentworth(1922)")
             {
                 phiClassification.Add("Seixo");
                 phiClassification.Add("Seixo");
@@ -187,7 +187,7 @@ namespace Sigran.Classes
             {
                 classification = "Seixo";
             }
-            if (phi<=0 && phi > -1m)
+            if (phi <= 0 && phi > -1m)
             {
                 classification = "Areia muito grossa";
             }
@@ -222,7 +222,7 @@ namespace Sigran.Classes
         public string getClassificationBySelection(decimal selection)
         {
             string r = "";
-            if(selection < 0.35m)
+            if (selection < 0.35m)
             {
                 r = "Muito bem selecionado";
             }
@@ -282,27 +282,27 @@ namespace Sigran.Classes
             string r = "";
             if (curtose < 1.7m)
             {
-                r = "Muito plasticústica";
+                r = "Muito plasticúrtica";
             }
             if (curtose > 1.7m && curtose <= 2.55m)
             {
-                r = "Plasticústica";
+                r = "Plasticúrtica";
             }
             if (curtose > 2.55m && curtose <= 3.7m)
             {
-                r = "Mesocústica";
+                r = "Mesocúrtica";
             }
             if (curtose > 3.7m && curtose <= 7.4m)
             {
-                r = "Leptocústica";
+                r = "Leptocúrtica";
             }
             if (curtose > 7.4m && curtose <= 15m)
             {
-                r = "Muito leptocústica";
+                r = "Muito leptocúrtica";
             }
             if (curtose > 15m)
             {
-                r = "Extremamente leptocústica";
+                r = "Extremamente leptocúrtica";
             }
 
             return r;
@@ -383,7 +383,7 @@ namespace Sigran.Classes
 
             for (int i = 0; i < 26; i++)
             {
-                decimal midPoint = (phiKeys[i] + oldPoint)/2;
+                decimal midPoint = (phiKeys[i] + oldPoint) / 2;
                 ph1MidPoints.Add(midPoint);
                 oldPoint = phiKeys[i];
             }
@@ -449,7 +449,7 @@ namespace Sigran.Classes
 
                 mediana = phiClassPrev + ((((totalFrequencies / 2) - frequencyAccClassPrev) * (phiClass - phiClassPrev)) / frequencyClass);
             }
-            
+
             return mediana;
         }
 
@@ -511,31 +511,38 @@ namespace Sigran.Classes
             List<decimal> percentis = getPercentis(sample);
             decimal media = 0;
             decimal selection = 0;
-            if (method == "Folk&Ward(1957)")
+            /*if (method == "Folk&Ward(1957)")
             {
                 media = (percentis[16] + percentis[50] + percentis[84]) / 3;
                 selection = ((percentis[84] - percentis[16]) / 4) + ((percentis[95] - percentis[5]) / 6.6m);
             }
             if (method == "McCammonA(1962)")
             {
+                Console.WriteLine("foi aqui2");
                 media = (percentis[10] + percentis[30] + percentis[50] + percentis[70] + percentis[90]) / 5;
                 selection = (percentis[85] + percentis[95] - percentis[5] - percentis[15]) / 5.4m;
             }
             if (method == "McCammonB(1962)")
             {
+                Console.WriteLine("foi aqui3");
                 media = (percentis[5] + percentis[15] + percentis[25] + percentis[35] + percentis[45] + percentis[55] + percentis[65] + percentis[75] + percentis[85] + percentis[95]) / 10m;
                 selection = (percentis[70] + percentis[80] + percentis[90] + percentis[97] - percentis[3] - percentis[10] - percentis[20] - percentis[30]) / 9.1m;
             }
             if (method == "Trask(1930)")
             {
+                Console.WriteLine("foi aqui4");
                 media = percentis[50];
                 selection = (percentis[75] - percentis[25]) / 1.35m;
             }
             if (method == "Otto(1939)")
             {
+                Console.WriteLine("foi aqui 5");
                 media = (percentis[16] + percentis[84]) / 2;
                 selection = (percentis[84] - percentis[16]) / 2;
-            }
+            }*/
+
+            media = (percentis[16] + percentis[50] + percentis[84]) / 3;
+            selection = ((percentis[84] - percentis[16]) / 4) + ((percentis[95] - percentis[5]) / 6.6m);
 
             decimal assimetry = (
                                     (percentis[16] + percentis[84] - (2 * percentis[50])) /
@@ -546,7 +553,7 @@ namespace Sigran.Classes
                                     (2 * (percentis[95] - percentis[5]))
                                 );
 
-            decimal curtose = (percentis[95] - percentis[5]) / 
+            decimal curtose = (percentis[95] - percentis[5]) /
                               (2.44m * (percentis[75] - percentis[25]));
 
             statistics.Add(media);
@@ -563,9 +570,9 @@ namespace Sigran.Classes
 
             for (int i = 0; i < 100; i++)
             {
-                Console.WriteLine(i+"###"+getPercentis(sample)[i]);
+                Console.WriteLine(i + "###" + getPercentis(sample)[i]);
             }
-            Console.WriteLine("***"+ getMediana(sample));
+            Console.WriteLine("***" + getMediana(sample));
 
             /*Decimal totalWeight = getTotalWeight(sample);
 
@@ -591,6 +598,15 @@ namespace Sigran.Classes
             return new Decimal();
         }
 
+        public string getClassificationFolkEWard(Sample sample)
+        {
+            string classification = "";
+
+
+
+            return classification;
+        }
+
         public string getClassificationLarsonneur(string r, Sample sample)
         {
             List<decimal> statisticsFolk = getStatisticsByMehtod("Folk&Ward(1957)", sample);
@@ -600,10 +616,10 @@ namespace Sigran.Classes
             decimal rodolitos = 0;
             decimal seixos = sample.Weight0 + sample.Weight1 + sample.Weight2 + sample.Weight3 + sample.Weight4;
             decimal granulos = sample.Weight5 + sample.Weight6;
-            decimal sand = sample.Weight7 + sample.Weight8 + sample.Weight9 + sample.Weight10 + sample.Weight11 + sample.Weight12 + sample.Weight13 + sample.Weight14;
-            decimal lama = sample.Weight15 + sample.Weight16 + sample.Weight17 + sample.Weight18 + sample.Weight19 + sample.Weight20 + sample.Weight21 + sample.Weight22 + sample.Weight23 + sample.Weight24 + sample.Weight25;
+            decimal sand = sample.Weight7 + sample.Weight8 + sample.Weight9 + sample.Weight10 + sample.Weight11 + sample.Weight12 + sample.Weight13 + sample.Weight14 + sample.Weight15 + sample.Weight16;
+            decimal lama = sample.Weight17 + sample.Weight18 + sample.Weight19 + sample.Weight20 + sample.Weight21 + sample.Weight22 + sample.Weight23 + sample.Weight24 + sample.Weight25;
 
-            decimal median = statisticsFolk[1];
+            decimal median = getPhiForMedianClass(sample);
             decimal carbonatosP = sample.Carbonates;
             decimal coquinasP = (100 * coquinas) / WeightTotal;
             decimal rodolitosP = (100 * rodolitos) / WeightTotal;
@@ -612,6 +628,15 @@ namespace Sigran.Classes
             decimal sandP = (100 * sand) / WeightTotal;
             decimal lamaP = (100 * lama) / WeightTotal;
             decimal scrP = 100m - sandP - lamaP;
+
+
+            Console.WriteLine("-----");
+            Console.WriteLine(seixosP);
+            Console.WriteLine(granulosP);
+            Console.WriteLine(sandP);
+            Console.WriteLine(lamaP);
+            Console.WriteLine(WeightTotal);
+            Console.WriteLine("-----");
 
             decimal p05a20P = (100 * (sample.Weight7 + sample.Weight8 + sample.Weight9 + sample.Weight10)) / WeightTotal;
             decimal p025a05P = (100 * (sample.Weight11 + sample.Weight12)) / WeightTotal;
@@ -623,398 +648,550 @@ namespace Sigran.Classes
 
             if (carbonatosP < 30m)
             {
-                if (lamaP < 15m)
+                if (lamaP < 15m || scrP > 50m)
                 {
-                    if (scrP > 50m)
+                    //coluna1
+                    if (scrP > 70m)
                     {
-                        if (scrP > 70m)
+                        sigla = "SL1a";
+                        classification = "Cascalho litoclástico";
+                        classId = 1;
+                    }
+                    else
+                    {
+                        sigla = "SL1b";
+                        classification = "Cascalho litoclástico";
+                        classId = 2;
+                    }
+
+                }
+                else if (lamaP < 15m || scrP < 50m)
+                {
+                    if(median < 2m)
+                    {
+                        //coluna2
+                        if (scrP > 15m)
                         {
-                            sigla = "SL1a";
-                            classification = "cascalho litoclástico";
-                            classId = 1;
+                            sigla = "GL1a";
+                            classification = "Grânulos litoclásticos com cascalho";
+                            classId = 3;
                         }
                         else
                         {
-                            sigla = "SL1b";
-                            classification = "cascalho litoclástico";
-                            classId = 2;
+                            sigla = "GL1b";
+                            classification = "Grânulos litoclásticos";
+                            classId = 4;
                         }
                     }
                     else
                     {
-                        if (median > 2m)
+                        //coluna3
+                        if (seixosP + granulosP > 15m)
                         {
-                            if (scrP > 15m)
+                            if (scrP > granulosP)
                             {
-                                sigla = "GL1a";
-                                classification = "grânulos litoclásticos com cascalho";
-                                classId = 3;
+                                sigla = "AL1a";
+                                classification = "Areia litoclástica com cascalho";
+                                classId = 5;
                             }
                             else
                             {
-                                sigla = "GL1b";
-                                classification = "grânulos litoclásticos";
-                                classId = 4;
+                                sigla = "AL1b";
+                                classification = "Areia litoclástica com grânulos";
+                                classId = 6;
                             }
                         }
                         else
                         {
-                            if (seixosP + granulosP > 15m)
+                            if (p05a20P > p025a05P && p05a20P > p005a025P)
                             {
-                                if (scrP > granulosP)
-                                {
-                                    sigla = "AL1a";
-                                    classification = "areia litoclástica com cascalho";
-                                    classId = 5;
-                                }
-                                else
-                                {
-                                    sigla = "AL1b";
-                                    classification = "areia litoclástica com grânulos";
-                                    classId = 6;
-                                }
+                                sigla = "AL1c";
+                                classification = "Areia litoclástica grossa a muito grossa";
+                                classId = 7;
+                            }
+                            else if (p025a05P > p05a20P && p025a05P > p005a025P)
+                            {
+                                sigla = "AL1d";
+                                classification = "Areia litoclástica média";
+                                classId = 8;
                             }
                             else
                             {
-                                if (p05a20P > p025a05P && p05a20P > p005a025P)
-                                {
-                                    sigla = "AL1c";
-                                    classification = "areia litoclástica grossa a muito grossa";
-                                    classId = 7;
-                                }
-                                else if (p025a05P > p05a20P && p025a05P > p005a025P)
-                                {
-                                    sigla = "AL1d";
-                                    classification = "areia litoclástica média";
-                                    classId = 8;
-                                }
-                                else
-                                {
-                                    sigla = "AL1e";
-                                    classification = "areia litoclástica fina a muito fina";
-                                    classId = 9;
-                                }
+                                sigla = "AL1e";
+                                classification = "Areia litoclástica fina a muito fina";
+                                classId = 9;
                             }
                         }
                     }
                 }
-                else
+                else if (lamaP > 15m)
                 {
+                    //coluna4
                     if (lamaP < 25m)
                     {
                         sigla = "LL1a";
-                        classification = "lama terrígena arenosa";
+                        classification = "Lama terrígena arenosa";
                         classId = 10;
                     }
                     else if (lamaP >= 25m && lamaP < 75)
                     {
                         sigla = "LL1b";
-                        classification = "lama terrígena arenosa";
+                        classification = "Lama terrígena arenosa";
                         classId = 11;
                     }
                     else
                     {
                         sigla = "LL1c";
-                        classification = "lama terrígena";
+                        classification = "Lama terrígena";
                         classId = 12;
                     }
                 }
             }
             else if (carbonatosP >= 30m && carbonatosP < 50m)
             {
-                if (lamaP < 15m)
+                if (lamaP < 15m || scrP > 50m)
                 {
-                    if (scrP > 50m)
+                    //coluna1
+                    if (scrP > 70m)
                     {
-                        if (scrP > 70m)
+                        sigla = "SL2a";
+                        classification = "Cascalho litobioclástico";
+                        classId = 13;
+                    }
+                    else
+                    {
+                        sigla = "SL2b";
+                        classification = "Cascalho litobioclástico";
+                        classId = 14;
+                    }
+
+                }
+                else if (lamaP < 15m || scrP < 50m)
+                {
+                    if (median < 2m)
+                    {
+                        //coluna2
+                        if (scrP > 15m)
                         {
-                            sigla = "SL2a";
-                            classification = "cascalho litobioclástico";
-                            classId = 13;
+                            sigla = "GL2a";
+                            classification = "Grânulos litobioclásticos com cascalho";
+                            classId = 15;
                         }
                         else
                         {
-                            sigla = "SL2b";
-                            classification = "cascalho litobioclástico";
-                            classId = 14;
+                            sigla = "GL2b";
+                            classification = "Grânulos litobioclásticos";
+                            classId = 16;
                         }
                     }
                     else
                     {
-                        if (median > 2m)
+                        //coluna3
+                        if (seixosP + granulosP > 15m)
                         {
-                            if (scrP > 15m)
+                            if (scrP > granulosP)
                             {
-                                sigla = "GL2a";
-                                classification = "grânulos litobioclásticos com cascalho";
-                                classId = 15;
+                                sigla = "AL2a";
+                                classification = "Areia litobioclástica com cascalho";
+                                classId = 17;
                             }
                             else
                             {
-                                sigla = "GL2b";
-                                classification = "grânulos litobioclásticos";
-                                classId = 16;
+                                sigla = "AL2b";
+                                classification = "Areia litobioclástica com grânulos";
+                                classId = 18;
                             }
                         }
                         else
                         {
-                            if (seixosP + granulosP > 15m)
+                            if (p05a20P > p025a05P && p05a20P > p005a025P)
                             {
-                                if (scrP > granulosP)
-                                {
-                                    sigla = "AL2a";
-                                    classification = "areia litobioclástica com cascalho";
-                                    classId = 17;
-                                }
-                                else
-                                {
-                                    sigla = "AL2b";
-                                    classification = "areia litobioclástica com grânulos";
-                                    classId = 18;
-                                }
+                                sigla = "AL2c";
+                                classification = "Areia litobioclástica grossa a muito grossa";
+                                classId = 19;
+                            }
+                            else if (p025a05P > p05a20P && p025a05P > p005a025P)
+                            {
+                                sigla = "AL2d";
+                                classification = "Areia litobioclástica média";
+                                classId = 20;
                             }
                             else
                             {
-                                if (p05a20P > p025a05P && p05a20P > p005a025P)
-                                {
-                                    sigla = "AL2c";
-                                    classification = "areia litobioclástica grossa a muito grossa";
-                                    classId = 19;
-                                }
-                                else if (p025a05P > p05a20P && p025a05P > p005a025P)
-                                {
-                                    sigla = "AL2d";
-                                    classification = "areia litobioclástica média";
-                                    classId = 20;
-                                }
-                                else
-                                {
-                                    sigla = "AL2e";
-                                    classification = "areia litobioclástica fina a muito fina";
-                                    classId = 21;
-                                }
+                                sigla = "AL2e";
+                                classification = "Areia litobioclástica fina a muito fina";
+                                classId = 21;
                             }
                         }
                     }
                 }
-                else
+                else if (lamaP > 15m)
                 {
+                    //coluna4
                     if (lamaP < 25m)
                     {
                         sigla = "LL2a";
-                        classification = "marga arenosa";
+                        classification = "Marga arenosa";
                         classId = 22;
                     }
                     else if (lamaP >= 25m && lamaP < 75)
                     {
                         sigla = "LL2b";
-                        classification = "marga arenosa";
+                        classification = "Marga arenosa";
                         classId = 23;
                     }
                     else
                     {
                         sigla = "LL2c";
-                        classification = "marga";
+                        classification = "Marga";
                         classId = 24;
                     }
                 }
             }
             else if (carbonatosP >= 50 && carbonatosP < 70m)
             {
-                if (lamaP < 15m)
+                if (lamaP < 15m || scrP > 50m)
                 {
-                    if (scrP > 50m)
+                    //coluna1
+                    if (scrP > 70m)
                     {
-                        if (scrP > 70m)
+                        sigla = "CB1a";
+                        classification = "Coquina/rodolito com litoclásticos";
+                        classId = 25;
+                    }
+                    else
+                    {
+                        sigla = "CB1b";
+                        classification = "Cascallho biolitoclástico";
+                        classId = 26;
+                    }
+                }
+                else if (lamaP < 15m || scrP < 50m)
+                {
+                    if (median < 2m)
+                    {
+                        //coluna2
+                        if (scrP > 15m)
                         {
-                            sigla = "CB1a";
-                            classification = "coquina/rodolito com litoclásticos";
-                            classId = 25;
+                            sigla = "GB1a";
+                            classification = "Grânulos biolitoclásticos com cascalho";
+                            classId = 27;
                         }
                         else
                         {
-                            sigla = "CB1b";
-                            classification = "cascallho biolitoclástico";
-                            classId = 26;
+                            sigla = "GB1b";
+                            classification = "Grânulos biolitoclásticos";
+                            classId = 28;
                         }
                     }
                     else
                     {
-                        if (median > 2m)
+                        //coluna3
+                        if (seixosP + granulosP > 15m)
                         {
-                            if (scrP > 15m)
+                            if (scrP > granulosP)
                             {
-                                sigla = "GB1a";
-                                classification = "grânulos biolitoclásticos com cascalho";
-                                classId = 27;
+                                sigla = "AB1a";
+                                classification = "Areia biolitoclástica com cascalho";
+                                classId = 29;
                             }
                             else
                             {
-                                sigla = "GB1b";
-                                classification = "grânulos biolitoclásticos";
-                                classId = 28;
+                                sigla = "AB1b";
+                                classification = "Areia biolitoclástica com grânulos";
+                                classId = 30;
                             }
                         }
                         else
                         {
-                            if (seixosP + granulosP > 15m)
+                            if (p05a20P > p025a05P && p05a20P > p005a025P)
                             {
-                                if (scrP > granulosP)
-                                {
-                                    sigla = "AB1a";
-                                    classification = "areia biolitoclástica com cascalho";
-                                    classId = 29;
-                                }
-                                else
-                                {
-                                    sigla = "AB1b";
-                                    classification = "areia biolitoclástica com grânulos";
-                                    classId = 30;
-                                }
+                                sigla = "AB1c";
+                                classification = "Areia biolitoclástica grossa a muito grossa";
+                                classId = 31;
+                            }
+                            else if (p025a05P > p05a20P && p025a05P > p005a025P)
+                            {
+                                sigla = "AB1d";
+                                classification = "Areia biolitoclástica média";
+                                classId = 32;
                             }
                             else
                             {
-                                if (p05a20P > p025a05P && p05a20P > p005a025P)
-                                {
-                                    sigla = "AB1c";
-                                    classification = "areia biolitoclástica grossa a muito grossa";
-                                    classId = 31;
-                                }
-                                else if (p025a05P > p05a20P && p025a05P > p005a025P)
-                                {
-                                    sigla = "AB1d";
-                                    classification = "areia biolitoclástica média";
-                                    classId = 32;
-                                }
-                                else
-                                {
-                                    sigla = "AB1e";
-                                    classification = "areia biolitoclástica fina a muito fina";
-                                    classId = 33;
-                                }
+                                sigla = "AB1e";
+                                classification = "Areia biolitoclástica fina a muito fina";
+                                classId = 33;
                             }
                         }
                     }
                 }
-                else
+                else if (lamaP > 15m)
                 {
+                    //coluna4
                     if (lamaP < 25m)
                     {
                         sigla = "LB1a";
-                        classification = "marga calcárea arenosa";
+                        classification = "Marga calcárea arenosa";
                         classId = 34;
                     }
                     else if (lamaP >= 25m && lamaP < 75)
                     {
                         sigla = "LB1b";
-                        classification = "marga calcárea arenosa";
+                        classification = "Marga calcárea arenosa";
                         classId = 35;
                     }
                     else
                     {
                         sigla = "LB1c";
-                        classification = "marga calcárea";
+                        classification = "Marga calcárea";
                         classId = 36;
                     }
                 }
             }
             else
             {
-                if (lamaP < 15m)
+                if (lamaP < 15m || scrP > 50m)
                 {
-                    if (scrP > 50m)
+                    //coluna1
+                    if (scrP > 70m)
                     {
-                        if (scrP > 70m)
+                        sigla = "CB2a";
+                        classification = "Coquina/rodolito";
+                        classId = 37;
+                    }
+                    else
+                    {
+                        sigla = "CB2b";
+                        classification = "Cascallho bioclástico";
+                        classId = 38;
+                    }
+
+                }
+                else if (lamaP < 15m || scrP < 50m)
+                {
+                    if (median < 2m)
+                    {
+                        //coluna2
+                        if (scrP > 15m)
                         {
-                            sigla = "CB2a";
-                            classification = "coquina/rodolito";
-                            classId = 37;
+                            sigla = "GB2a";
+                            classification = "Grânulo bioclástico conchífero ou com rodolitos";
+                            classId = 39;
                         }
                         else
                         {
-                            sigla = "CB2b";
-                            classification = "cascallho bioclástico";
-                            classId = 38;
+                            sigla = "GB2b";
+                            classification = "Grânulos bioclásticos";
+                            classId = 40;
                         }
                     }
                     else
                     {
-                        if (median > 2m)
+                        //coluna3
+                        if (seixosP + granulosP > 15m)
                         {
-                            if (scrP > 15m)
+                            if (scrP > granulosP)
                             {
-                                sigla = "GB2a";
-                                classification = "grânulo bioclástico conchífero ou com rodolitos";
-                                classId = 39;
+                                sigla = "AB2a";
+                                classification = "Areia bioclástica com nódulos ou conchas";
+                                classId = 41;
                             }
                             else
                             {
-                                sigla = "GB2b";
-                                classification = "grânulos bioclásticos";
-                                classId = 40;
+                                sigla = "AB2b";
+                                classification = "Areia bioclástica com grânulos";
+                                classId = 42;
                             }
                         }
                         else
                         {
-                            if (seixosP + granulosP > 15m)
+                            if (p05a20P > p025a05P && p05a20P > p005a025P)
                             {
-                                if (scrP > granulosP)
-                                {
-                                    sigla = "AB2a";
-                                    classification = "areia bioclástica com nódulos ou conchas";
-                                    classId = 41;
-                                }
-                                else
-                                {
-                                    sigla = "AB2b";
-                                    classification = "areia bioclástica com grânulos";
-                                    classId = 42;
-                                }
+                                sigla = "AB2c";
+                                classification = "Areia bioclástica grossa a muito grossa";
+                                classId = 43;
+                            }
+                            else if (p025a05P > p05a20P && p025a05P > p005a025P)
+                            {
+                                sigla = "AB2d";
+                                classification = "Areia bioclástica média";
+                                classId = 44;
                             }
                             else
                             {
-                                if (p05a20P > p025a05P && p05a20P > p005a025P)
-                                {
-                                    sigla = "AB2c";
-                                    classification = "areia bioclástica grossa a muito grossa";
-                                    classId = 43;
-                                }
-                                else if (p025a05P > p05a20P && p025a05P > p005a025P)
-                                {
-                                    sigla = "AB2d";
-                                    classification = "areia bioclástica média";
-                                    classId = 44;
-                                }
-                                else
-                                {
-                                    sigla = "AB2e";
-                                    classification = "areia bioclástica fina a muito fina";
-                                    classId = 45;
-                                }
+                                sigla = "AB2e";
+                                classification = "Areia bioclástica fina a muito fina";
+                                classId = 45;
                             }
                         }
                     }
                 }
-                else
+                else if (lamaP > 15m)
                 {
+                    //coluna4
                     if (lamaP < 25m)
                     {
                         sigla = "LB2a";
-                        classification = "areia bioclástica lamosa";
+                        classification = "Areia bioclástica lamosa";
                         classId = 46;
                     }
                     else if (lamaP >= 25m && lamaP < 75)
                     {
                         sigla = "LB2b";
-                        classification = "vasa calcárea arenosa";
+                        classification = "Vasa calcárea arenosa";
                         classId = 47;
                     }
                     else
                     {
                         sigla = "LB2c";
-                        classification = "vasa calcárea";
+                        classification = "Vasa calcárea";
                         classId = 48;
                     }
+                }
+            }
+
+            if (r == "sigla")
+            {
+                return sigla;
+            }
+            else
+            {
+                return classification;
+            }
+
+        }
+
+        public decimal getPhiForMedianClass(Sample sample)
+        {
+            decimal frequencyMediana = getTotalFrequencies(sample) / 2;
+
+            List<decimal> FrequenciesAcc = getFrequenciesAcc(sample);
+            List<decimal> phiKeys = getPhiKeys();
+
+            int classMediana = 0;
+
+            for (int i = 0; i < 26; i++)
+            {
+                if (frequencyMediana <= FrequenciesAcc[i] && frequencyMediana > FrequenciesAcc[i - 1])
+                {
+                    classMediana = i;
+                }
+            }
+
+            decimal phiClass = 0;
+
+            if (classMediana > 0)
+            {
+                phiClass = phiKeys[classMediana];
+            }
+
+            return phiClass;
+        }
+
+        public string getClassificationFolk(string r, Sample sample)
+        {
+            List<decimal> statisticsFolk = getStatisticsByMehtod("Folk&Ward(1957)", sample);
+            decimal WeightTotal = getTotalWeight(sample);
+
+            decimal seixos = sample.Weight0 + sample.Weight1 + sample.Weight2 + sample.Weight3 + sample.Weight4;
+            decimal granulos = sample.Weight5 + sample.Weight6;
+            decimal sand = sample.Weight7 + sample.Weight8 + sample.Weight9 + sample.Weight10 + sample.Weight11 + sample.Weight12 + sample.Weight13 + sample.Weight14;
+            decimal lama = sample.Weight15 + sample.Weight16 + sample.Weight17 + sample.Weight18 + sample.Weight19 + sample.Weight20 + sample.Weight21 + sample.Weight22 + sample.Weight23 + sample.Weight24 + sample.Weight25;
+            decimal gravel = seixos + granulos;
+
+            decimal sandP = (100 * sand) / WeightTotal;
+            decimal lamaP = (100 * lama) / WeightTotal;
+            decimal gravelP = (100 * gravel) / WeightTotal;
+
+            string sigla = "";
+            string classification = "";
+            int classId = 0;
+
+            //all gravel
+            if(gravelP > 80)
+            {
+                //C - cascalho
+                sigla = "C";
+                classification = "Cascalho";
+                classId = 1;
+            }
+            else if(gravelP <= 80 && gravel > 30)
+            {
+                if(lamaP < 10)
+                {
+                    //Ca - cascalho arenoso
+                    sigla = "Ca";
+                    classification = "Cascalho arenoso";
+                    classId = 2;
+                }
+                else if (lamaP >= 10 && lamaP < 50)
+                {
+                    //Cal - cascalho areno-lodoso
+                    sigla = "Cal";
+                    classification = "Cascalho areno-lamacento";
+                    classId = 3;
+                }
+                else
+                {
+                    //Cl - cascalho lodoso
+                    sigla = "Cl";
+                    classification = "Cascalho lamacento";
+                    classId = 4;
+                }
+            }
+            else if (gravelP <= 30 && gravel > 5)
+            {
+                if (lamaP < 10)
+                {
+                    //Ac - Areia cascalhenta
+                    sigla = "Ac";
+                    classification = "Areia cascalhenta";
+                    classId = 5;
+                }
+                else if (lamaP >= 10 && lamaP < 50)
+                {
+                    //Alc - areia lodo-cascalhenta
+                    sigla = "Alc";
+                    classification = "Areia lamosa-cascalhenta";
+                    classId = 6;
+                }
+                else
+                {
+                    //Lc - lodo cascalhento
+                    sigla = "Lc";
+                    classification = "Lama cascalhenta";
+                    classId = 7;
+                }
+            }
+            else
+            {
+                if (lamaP < 10)
+                {
+                    //A(c) - areia ligeiramente cascalhenta
+                    sigla = "A(c)";
+                    classification = "Areia ligeiramente cascalhenta";
+                    classId = 8;
+                }
+                else if (lamaP >= 10 && lamaP < 50)
+                {
+                    //Al(c) - areia lodos ligeiramente cascalhenta
+                    sigla = "Al(c)";
+                    classification = "Areia lamacenta ligeiramente cascalhenta";
+                    classId = 9;
+                }
+                else if (lamaP >= 50 && lamaP < 90)
+                {
+                    //La(c) - lodo arenoso ligeiramente cascalhento
+                    sigla = "La(c)";
+                    classification = "Lama arenoso ligeiramente cascalhenta";
+                    classId = 10;
+                }
+                else
+                {
+                    //L(c) - lodo ligeiramente cascalhento
+                    sigla = "L(c)";
+                    classification = "Lama ligeiramente cascalhenta";
+                    classId = 11;
                 }
             }
 
@@ -1026,12 +1203,6 @@ namespace Sigran.Classes
             {
                 return classification;
             }
-
         }
-
-
-
-
-
     }
 }

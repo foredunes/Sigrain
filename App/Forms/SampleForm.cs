@@ -91,7 +91,7 @@ namespace Sigran.Forms
 
                 //Atualiza a tabela da área de trabalho
                 MainForm form = (MainForm)this.Owner;
-                form.updateDataGrid(null, true);
+                form.updateDataGrid(null, null, null, true);
 
                 //Limpa a janela atual
                 this.Close();
@@ -104,7 +104,7 @@ namespace Sigran.Forms
 
                 //Atualiza a tabela da área de trabalho
                 MainForm form = (MainForm)this.Owner;
-                form.updateDataGrid(null, true);
+                form.updateDataGrid(null, null, null, true);
 
                 MainForm mainForm = new MainForm();
                 IniFile ini = new IniFile(mainForm.SettingsFile);
@@ -123,6 +123,7 @@ namespace Sigran.Forms
 
         private void SampleForm_Load(object sender, EventArgs e)
         {
+
 
         }
 

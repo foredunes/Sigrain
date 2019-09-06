@@ -63,6 +63,26 @@ namespace Sigran.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Folk_bg {
+            get {
+                object obj = ResourceManager.GetObject("Folk_bg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Folk_coarse_bg {
+            get {
+                object obj = ResourceManager.GetObject("Folk_coarse_bg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap logo {
             get {
                 object obj = ResourceManager.GetObject("logo", resourceCulture);
@@ -76,6 +96,26 @@ namespace Sigran.Properties {
         internal static System.Drawing.Bitmap logo400x100 {
             get {
                 object obj = ResourceManager.GetObject("logo400x100", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Pejrup_bg {
+            get {
+                object obj = ResourceManager.GetObject("Pejrup_bg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Sherpard_bg {
+            get {
+                object obj = ResourceManager.GetObject("Sherpard_bg", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

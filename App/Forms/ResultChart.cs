@@ -16,7 +16,8 @@ namespace Sigran.Forms
         Functions f = new Functions();
 
         public string Type = "";
-        public List<string> TempLabels;
+
+        public List<string> TempLabels = new List<string>();
 
         public ResultChart()
         {
@@ -125,6 +126,33 @@ namespace Sigran.Forms
                     chart1.Series[s].MarkerColor = chart1.Series[s].BorderColor;
                 }
 
+                for(int t=0; t<chart1.ChartAreas.Count; t++)
+                {
+                    if(t>0)
+                    {
+                        chart1.ChartAreas[t].AxisX.LineColor =
+                        chart1.ChartAreas[t].AxisX.InterlacedColor =
+                        chart1.ChartAreas[t].AxisX.TitleForeColor =
+                        chart1.ChartAreas[t].AxisX.MajorGrid.LineColor =
+                        chart1.ChartAreas[t].AxisX.MinorGrid.LineColor =
+                        chart1.ChartAreas[t].AxisX.LabelStyle.ForeColor =
+                        Color.Transparent;
+
+                        chart1.ChartAreas[t].AxisY.LineColor =
+                        chart1.ChartAreas[t].AxisY.InterlacedColor =
+                        chart1.ChartAreas[t].AxisY.TitleForeColor =
+                        chart1.ChartAreas[t].AxisY.MajorGrid.LineColor =
+                        chart1.ChartAreas[t].AxisY.MinorGrid.LineColor =
+                        chart1.ChartAreas[t].AxisY.LabelStyle.ForeColor =
+                        Color.Transparent;
+
+                        chart1.ChartAreas[t].AxisY.LabelStyle.Enabled = false;
+                        chart1.ChartAreas[t].AxisX.LabelStyle.Enabled = false;
+                        chart1.ChartAreas[t].AxisY.Enabled =
+                        chart1.ChartAreas[t].AxisX.Enabled = AxisEnabled.False;
+                    }
+                }
+
                 chart1.Legends[0].Title = "Legenda";
             }
 
@@ -157,7 +185,7 @@ namespace Sigran.Forms
                 //Configurações da janela
                 Text = Text + " - Diagrama de Sherpard";
                 //Background imagem
-                chart1.ChartAreas[0].BackImage = @"resources\sherpard-bg.jpg";
+                chart1.ChartAreas[0].BackImage = "Sherpard_bg";
             }
 
             if (Type == "pejrup")
@@ -165,7 +193,7 @@ namespace Sigran.Forms
                 //Configurações da janela
                 Text = Text + " - Diagrama de Pejrup";
                 //Background imagem
-                chart1.ChartAreas[0].BackImage = @"resources\pejrup-bg.jpg";
+                chart1.ChartAreas[0].BackImage = "Pejrup_bg";
             }
 
             if (Type == "folk")
@@ -173,7 +201,7 @@ namespace Sigran.Forms
                 //Configurações da janela
                 Text = Text + " - Diagrama de Folk";
                 //Background imagem
-                chart1.ChartAreas[0].BackImage = @"resources\folk-bg.jpg";
+                chart1.ChartAreas[0].BackImage = "Folk_bg";
             }
 
             if (Type == "folkThicks")
@@ -181,7 +209,7 @@ namespace Sigran.Forms
                 //Configurações da janela
                 Text = Text + " - Diagrama de Folk";
                 //Background imagem
-                chart1.ChartAreas[0].BackImage = @"resources\folk-grosseiros-bg.jpg";
+                chart1.ChartAreas[0].BackImage = "Folk_coarse_bg";
             }
 
             if (Type == "sherpard" || Type == "pejrup" || Type == "folk" || Type == "folkThicks")
@@ -238,7 +266,7 @@ namespace Sigran.Forms
             if (Type == "bivariate")
             {
                 //Configurações da janela
-                Text = Text + " - Bivariado";
+                Text = Text + " - Correlação";
 
                 chart1.ChartAreas[0].AxisY.IntervalAutoMode = IntervalAutoMode.FixedCount;
 
@@ -582,6 +610,10 @@ namespace Sigran.Forms
                 if(chart1.Series[0].Points[0].LabelForeColor != Color.Transparent)
                 {
                     pg.ShowLabels = true;
+                    for (int i = 0; i < chart1.Series[0].Points.Count; i++)
+                    {
+                        TempLabels.Add(chart1.Series[0].Points[i].Label);
+                    }
                 }
                 else
                 {
@@ -664,6 +696,10 @@ namespace Sigran.Forms
                 if (chart1.Series[0].Points[0].LabelForeColor != Color.Transparent)
                 {
                     pg.ShowLabels = true;
+                    for (int i = 0; i < chart1.Series[0].Points.Count; i++)
+                    {
+                        TempLabels.Add(chart1.Series[0].Points[i].Label);
+                    }
                 }
                 else
                 {
@@ -730,6 +766,7 @@ namespace Sigran.Forms
                 chart1.ChartAreas[0].AxisX.MajorGrid.Interval = pg.IntervalAxisX;
                 chart1.ChartAreas[0].AxisX.MinorTickMark.Enabled = pg.SubdivisionsAxisX;
                 chart1.ChartAreas[0].AxisX.LineColor = pg.ColorAxisX;
+                chart1.ChartAreas[0].AxisX.LabelStyle.ForeColor = pg.ColorAxisX;
                 chart1.ChartAreas[0].AxisX.MajorTickMark.LineColor = pg.ColorAxisX;
                 chart1.ChartAreas[0].AxisX.MinorTickMark.LineColor = pg.ColorAxisX;
                 chart1.ChartAreas[0].AxisX.MajorGrid.Enabled = pg.GridAxisX;
@@ -743,6 +780,7 @@ namespace Sigran.Forms
                 chart1.ChartAreas[0].AxisY.MajorGrid.Interval = pg.IntervalAxisY;
                 chart1.ChartAreas[0].AxisY.MinorTickMark.Enabled = pg.SubdivisionsAxisY;
                 chart1.ChartAreas[0].AxisY.LineColor = pg.ColorAxisY;
+                chart1.ChartAreas[0].AxisY.LabelStyle.ForeColor = pg.ColorAxisY;
                 chart1.ChartAreas[0].AxisY.MajorTickMark.LineColor = pg.ColorAxisY;
                 chart1.ChartAreas[0].AxisY.MinorTickMark.LineColor = pg.ColorAxisY;
                 chart1.ChartAreas[0].AxisY.MajorGrid.Enabled = pg.GridAxisY;
@@ -802,6 +840,7 @@ namespace Sigran.Forms
                 chart1.ChartAreas[0].AxisX.MajorGrid.Interval = pg.IntervalAxisX;
                 chart1.ChartAreas[0].AxisX.MinorTickMark.Enabled = pg.SubdivisionsAxisX;
                 chart1.ChartAreas[0].AxisX.LineColor = pg.ColorAxisX;
+                chart1.ChartAreas[0].AxisX.LabelStyle.ForeColor = pg.ColorAxisX;
                 chart1.ChartAreas[0].AxisX.MajorTickMark.LineColor = pg.ColorAxisX;
                 chart1.ChartAreas[0].AxisX.MinorTickMark.LineColor = pg.ColorAxisX;
                 chart1.ChartAreas[0].AxisX.MajorGrid.Enabled = pg.GridAxisX;
@@ -815,6 +854,7 @@ namespace Sigran.Forms
                 chart1.ChartAreas[0].AxisY.MajorGrid.Interval = pg.IntervalAxisY;
                 chart1.ChartAreas[0].AxisY.MinorTickMark.Enabled = pg.SubdivisionsAxisY;
                 chart1.ChartAreas[0].AxisY.LineColor = pg.ColorAxisY;
+                chart1.ChartAreas[0].AxisY.LabelStyle.ForeColor = pg.ColorAxisY;
                 chart1.ChartAreas[0].AxisY.MajorTickMark.LineColor = pg.ColorAxisY;
                 chart1.ChartAreas[0].AxisY.MinorTickMark.LineColor = pg.ColorAxisY;
                 chart1.ChartAreas[0].AxisY.MajorGrid.Enabled = pg.GridAxisY;
@@ -931,19 +971,22 @@ namespace Sigran.Forms
                 {
                     for (int i = 0; i < chart1.Series[0].Points.Count; i++)
                     {
+                        chart1.Series[0].Points[i].Label = TempLabels[i];
                         chart1.Series[0].Points[i].LabelForeColor = pg.LabelColor;
                     }
-
+                    TempLabels = new List<string>();
+                    for (int i = 0; i < chart1.Series[0].Points.Count; i++)
+                    {
+                        TempLabels.Add(chart1.Series[0].Points[i].Label);
+                    }
                 }
                 else
                 {
-                    TempLabels = new List<string>();
                     for (int i = 0; i < chart1.Series[0].Points.Count; i++)
                     {
                         chart1.Series[0].Points[i].LabelForeColor = Color.Transparent;
                         chart1.Series[0].Points[i].Label = "";
                     }
-
                 }
             }
 
@@ -969,6 +1012,7 @@ namespace Sigran.Forms
                 chart1.ChartAreas[0].AxisX.MajorGrid.Interval = pg.IntervalAxisX;
                 chart1.ChartAreas[0].AxisX.MinorTickMark.Enabled = pg.SubdivisionsAxisX;
                 chart1.ChartAreas[0].AxisX.LineColor = pg.ColorAxisX;
+                chart1.ChartAreas[0].AxisX.LabelStyle.ForeColor = pg.ColorAxisX;
                 chart1.ChartAreas[0].AxisX.MajorTickMark.LineColor = pg.ColorAxisX;
                 chart1.ChartAreas[0].AxisX.MinorTickMark.LineColor = pg.ColorAxisX;
                 chart1.ChartAreas[0].AxisX.MajorGrid.Enabled = pg.GridAxisX;
@@ -982,6 +1026,7 @@ namespace Sigran.Forms
                 chart1.ChartAreas[0].AxisY.MajorGrid.Interval = pg.IntervalAxisY;
                 chart1.ChartAreas[0].AxisY.MinorTickMark.Enabled = pg.SubdivisionsAxisY;
                 chart1.ChartAreas[0].AxisY.LineColor = pg.ColorAxisY;
+                chart1.ChartAreas[0].AxisY.LabelStyle.ForeColor = pg.ColorAxisY;
                 chart1.ChartAreas[0].AxisY.MajorTickMark.LineColor = pg.ColorAxisY;
                 chart1.ChartAreas[0].AxisY.MinorTickMark.LineColor = pg.ColorAxisY;
                 chart1.ChartAreas[0].AxisY.MajorGrid.Enabled = pg.GridAxisY;
@@ -1035,19 +1080,22 @@ namespace Sigran.Forms
                 {
                     for (int i = 0; i < chart1.Series[0].Points.Count; i++)
                     {
+                        chart1.Series[0].Points[i].Label = TempLabels[i];
                         chart1.Series[0].Points[i].LabelForeColor = pg.LabelColor;
                     }
-
+                    TempLabels = new List<string>();
+                    for (int i = 0; i < chart1.Series[0].Points.Count; i++)
+                    {
+                        TempLabels.Add(chart1.Series[0].Points[i].Label);
+                    }
                 }
                 else
                 {
-                    TempLabels = new List<string>();
                     for (int i = 0; i < chart1.Series[0].Points.Count; i++)
                     {
                         chart1.Series[0].Points[i].LabelForeColor = Color.Transparent;
                         chart1.Series[0].Points[i].Label = "";
                     }
-
                 }
             }
         }
