@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Sigran.PropertyGrid
 {
-    class BivariatePropertyGrid : DefaultPropertyGrid
+    class CorrelationPropertyGrid : DefaultPropertyGrid
     {
         bool _ShowLabels;
         [Category("Gráfico de Correlação")]

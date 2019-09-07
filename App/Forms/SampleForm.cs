@@ -23,14 +23,14 @@ namespace Sigran.Forms
             dateTimePickerData.CustomFormat = "dd/MM/yyyy";
             dateTimePickerData.Format = DateTimePickerFormat.Custom;
 
-            this.AcceptButton = buttonSalvar;
+            this.AcceptButton = buttonSave;
         }
 
         private void DataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
-                this.labelPeso.Text = this.dataGridView1.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDecimal(i.Cells["Pesos"].Value.ToString().Replace(".", ","))).ToString("N2");
+                this.labelWeight.Text = this.dataGridView1.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDecimal(i.Cells["Pesos"].Value.ToString().Replace(".", ","))).ToString("N2");
             }
             catch
             {
@@ -38,21 +38,21 @@ namespace Sigran.Forms
             }
         }
 
-        private void ButtonCanelar_Click(object sender, EventArgs e)
+        private void ButtonCancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void ButtonSalvar_Click(object sender, EventArgs e)
+        private void ButtonSave_Click(object sender, EventArgs e)
         {
             //Constroi o objeto
             Sample sample = new Sample();
-            sample.Name = textBoxAmostra.Text;
-            sample.Category = comboBoxCategoria.Text;
-            sample.Description = textBoxDescricao.Text;
+            sample.Name = textBoxName.Text;
+            sample.Category = comboBoxCategory.Text;
+            sample.Description = textBoxDescription.Text;
             sample.Date = dateTimePickerData.Text;
 
-            sample.Carbonates = numericUpDownCarbonato.Value;
+            sample.Carbonates = numericUpDownCarbonates.Value;
             sample.Latitude = numericUpDownLatitude.Value;
             sample.Longitude = numericUpDownLongitude.Value;
 
@@ -83,7 +83,7 @@ namespace Sigran.Forms
             sample.Weight24 = Convert.ToDecimal(dataGridView1.Rows[24].Cells["Pesos"].Value.ToString().Replace(".", ","));
             sample.Weight25 = Convert.ToDecimal(dataGridView1.Rows[25].Cells["Pesos"].Value.ToString().Replace(".", ","));
 
-            if(buttonSalvar.Text == "Editar")
+            if(buttonSave.Text == "Editar")
             {
                 //Edita dados no banco de dados
                 DatabaseConnect database = new DatabaseConnect(DatabaseFile);
@@ -110,7 +110,7 @@ namespace Sigran.Forms
                 IniFile ini = new IniFile(mainForm.SettingsFile);
                 if (ini.Read("FORMINSERTOPEN") == "1")
                 {
-                    textBoxAmostra.Text = "";
+                    textBoxName.Text = "";
                     Clear();
                 }
                 else
@@ -124,10 +124,14 @@ namespace Sigran.Forms
         private void SampleForm_Load(object sender, EventArgs e)
         {
 
-
+            for (int j = 0; j < dataGridView1.Rows.Count; j++)
+            {
+                if(dataGridView1.Rows[j].Cells[1].Value.Equals("0"))
+                    dataGridView1.Rows[j].Cells[1].Value = "0.000";
+            }
         }
 
-        private void ColarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void PasteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             PasteClipboard();
         }
@@ -180,7 +184,7 @@ namespace Sigran.Forms
             }
         }
 
-        private void CopiarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CopyClipboard();
         }
@@ -191,7 +195,7 @@ namespace Sigran.Forms
             Clipboard.SetDataObject(d);
         }
 
-        private void LimparToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ClearToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Clear();
         }
@@ -204,7 +208,7 @@ namespace Sigran.Forms
                 {
                     for (int j = 0; j < dataGridView1.Rows.Count; j++)
                     {
-                        dataGridView1.Rows[j].Cells[i].Value = "0";
+                        dataGridView1.Rows[j].Cells[i].Value = "0.000";
                     }
                 }
             }

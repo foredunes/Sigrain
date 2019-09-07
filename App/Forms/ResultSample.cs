@@ -15,8 +15,6 @@ namespace Sigran.Forms
 {
     public partial class ResultSample : Form
     {
-        internal static Functions f = new Functions();
-
         public ResultSample()
         {
             InitializeComponent();
@@ -27,14 +25,14 @@ namespace Sigran.Forms
 
         }
 
-        private void CopiarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DataObject dataObj = dataGridView1.GetClipboardContent();
             if (dataObj != null)
                 Clipboard.SetDataObject(dataObj);
         }
 
-        private void CopiarTodaATabelaToolStripMenuItem_Click(object sender, EventArgs e)
+        private void CopyAllTableToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CopyDataGridViewToClipboard(dataGridView1, false, true);
         }
@@ -84,7 +82,7 @@ namespace Sigran.Forms
         private void ExportarPlanilhaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             NoNullDataGrid();
-            f.exportDatagridToFile(dataGridView1);
+            Exports.DatagridToFile(dataGridView1);
         }
 
         private void NoNullDataGrid()
@@ -102,16 +100,6 @@ namespace Sigran.Forms
         private void SairToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void CopiarToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            CopiarToolStripMenuItem_Click(sender, e);
-        }
-
-        private void CopiarTodaATabelaToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            CopiarTodaATabelaToolStripMenuItem_Click(sender, e);
         }
     }
 }

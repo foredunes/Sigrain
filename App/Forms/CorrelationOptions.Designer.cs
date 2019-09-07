@@ -108,7 +108,7 @@
             this.Name = "CorrelationOptions";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gráfico de Correlação";
-            this.Load += new System.EventHandler(this.BivariateOptions_Load);
+            this.Load += new System.EventHandler(this.CorrelationOptions_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -13,7 +13,6 @@ namespace Sigran.Forms
     public partial class ResultChart : Form
     {
         SampleTools sampleTools = new SampleTools();
-        Functions f = new Functions();
 
         public string Type = "";
 
@@ -28,7 +27,7 @@ namespace Sigran.Forms
         private void ResultChart_Load(object sender, EventArgs e)
         {
             if (Type == "histogram")
-                editarLegendaToolStripMenuItem.Visible = false;
+                editarLegendToolStripMenuItem.Visible = false;
 
             splitContainer1.Panel1Collapsed = true;
             propertyGrid1.Dock = dataGridView1.Dock = DockStyle.Fill;
@@ -242,28 +241,9 @@ namespace Sigran.Forms
                 chart1.Dock = DockStyle.None;
                 chart1.Width = Convert.ToInt32(splitContainer1.Height * 1.4);
                 chart1.Height = splitContainer1.Height;
-
-                /*//Legenda personalizada
-                RectangleAnnotation RA = new RectangleAnnotation();
-                RA.IsSizeAlwaysRelative = false;
-                RA.Width = 25;
-                RA.Height = 1;
-                RA.Bottom = 0;
-                RA.X = 65;
-                RA.Y = 10;
-                RA.Text = "Legenda\n1.Vida";
-                RA.LineWidth = 0;
-                RA.BackColor = Color.Transparent;
-                RA.ForeColor = Color.Black;
-                RA.Font = new System.Drawing.Font("Arial", 12f);
-                RA.Alignment = ContentAlignment.MiddleLeft;
-                RA.LineColor = Color.Black;
-                RA.LineWidth = 1;
-                chart1.Annotations.Add(RA);*/
-
             }
 
-            if (Type == "bivariate")
+            if (Type == "correlation")
             {
                 //Configurações da janela
                 Text = Text + " - Correlação";
@@ -367,14 +347,13 @@ namespace Sigran.Forms
             }
         }
 
-        private void SairToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void SalvarGráficoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SaveChartToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("Salvando gráfico como...");
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
 
             saveFileDialog1.Filter = "All files (*.*)|*.*|JPEG (*.jpg,*.jpeg,*.jpe)|*.jpg,*.jpeg,*.jpe|PNG (*.png)|*.png|Bitmap (*.bmp)|*.bmp|GIF (*.gif)|*.gif|TIFF (*.tiff)|*.tiff";
@@ -416,40 +395,40 @@ namespace Sigran.Forms
 
         }
 
-        private void DadosToolStripMenuItem_Click(object sender, EventArgs e)
+        private void DataTableToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (splitContainer1.Panel1Collapsed)
             {
                 splitContainer1.Panel1Collapsed = false;
-                dadosToolStripMenuItem.Font = new System.Drawing.Font(dadosToolStripMenuItem.Font.FontFamily, dadosToolStripMenuItem.Font.Size, FontStyle.Bold);
+                dataTableToolStripMenuItem.Font = new System.Drawing.Font(dataTableToolStripMenuItem.Font.FontFamily, dataTableToolStripMenuItem.Font.Size, FontStyle.Bold);
             }
             else
             {
                 splitContainer1.Panel1Collapsed = true;
-                dadosToolStripMenuItem.Font = new System.Drawing.Font(dadosToolStripMenuItem.Font.FontFamily, dadosToolStripMenuItem.Font.Size, FontStyle.Regular);
+                dataTableToolStripMenuItem.Font = new System.Drawing.Font(dataTableToolStripMenuItem.Font.FontFamily, dataTableToolStripMenuItem.Font.Size, FontStyle.Regular);
             }
             dataGridView1.Visible = true;
             propertyGrid1.Visible = false;
 
-            editarToolStripMenuItem.Font = new System.Drawing.Font(editarToolStripMenuItem.Font.FontFamily, editarToolStripMenuItem.Font.Size, FontStyle.Regular);
+            editToolStripMenuItem.Font = new System.Drawing.Font(editToolStripMenuItem.Font.FontFamily, editToolStripMenuItem.Font.Size, FontStyle.Regular);
         }
 
-        private void EditarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void EditToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (splitContainer1.Panel1Collapsed)
             {
                 splitContainer1.Panel1Collapsed = false;
-                editarToolStripMenuItem.Font = new System.Drawing.Font(editarToolStripMenuItem.Font.FontFamily, editarToolStripMenuItem.Font.Size, FontStyle.Bold);
+                editToolStripMenuItem.Font = new System.Drawing.Font(editToolStripMenuItem.Font.FontFamily, editToolStripMenuItem.Font.Size, FontStyle.Bold);
             }
             else
             {
                 splitContainer1.Panel1Collapsed = true;
-                editarToolStripMenuItem.Font = new System.Drawing.Font(editarToolStripMenuItem.Font.FontFamily, editarToolStripMenuItem.Font.Size, FontStyle.Regular);
+                editToolStripMenuItem.Font = new System.Drawing.Font(editToolStripMenuItem.Font.FontFamily, editToolStripMenuItem.Font.Size, FontStyle.Regular);
             }
             dataGridView1.Visible = false;
             propertyGrid1.Visible = true;
 
-            dadosToolStripMenuItem.Font = new System.Drawing.Font(dadosToolStripMenuItem.Font.FontFamily, dadosToolStripMenuItem.Font.Size, FontStyle.Regular);
+            dataTableToolStripMenuItem.Font = new System.Drawing.Font(dataTableToolStripMenuItem.Font.FontFamily, dataTableToolStripMenuItem.Font.Size, FontStyle.Regular);
 
             //CARREGA PROPRIEDADES NO PROPERTGRID1
             if (Type == "histogram")
@@ -654,9 +633,9 @@ namespace Sigran.Forms
                 propertyGrid1.SelectedObject = pg;
             }
 
-            if (Type == "bivariate")
+            if (Type == "correlation")
             {
-                BivariatePropertyGrid pg = new BivariatePropertyGrid();
+                CorrelationPropertyGrid pg = new CorrelationPropertyGrid();
                 pg.Title = chart1.Titles[0].Text;
                 pg.TitleFont = chart1.Titles[0].Font;
                 pg.BackgroundColor = chart1.BackColor;
@@ -990,9 +969,9 @@ namespace Sigran.Forms
                 }
             }
 
-            if (Type == "bivariate")
+            if (Type == "correlation")
             {
-                BivariatePropertyGrid pg = (BivariatePropertyGrid)propertyGrid1.SelectedObject;
+                CorrelationPropertyGrid pg = (CorrelationPropertyGrid)propertyGrid1.SelectedObject;
                 chart1.Titles[0].Text = pg.Title;
                 chart1.Titles[0].Font = pg.TitleFont;
                 chart1.BackColor = pg.BackgroundColor;
@@ -1100,12 +1079,12 @@ namespace Sigran.Forms
             }
         }
 
-        private void CopiarCélulasSelecionadasToolStripMenuItem_Click(object sender, EventArgs e)
+        private void CopyCellsSelectedsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CopyDataGridViewToClipboard(dataGridView1, false);
         }
 
-        private void CopiarTodasAsCélulasToolStripMenuItem_Click(object sender, EventArgs e)
+        private void CopyAllCellsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CopyDataGridViewToClipboard(dataGridView1, true, true);
         }
@@ -1152,12 +1131,12 @@ namespace Sigran.Forms
             }
         }
 
-        private void SalvarTabelaDeDadosToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SaveDataTableToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            f.exportDatagridToFile(dataGridView1, true);
+            Exports.DatagridToFile(dataGridView1, true);
         }
 
-        private void EditarLegendaToolStripMenuItem_Click(object sender, EventArgs e)
+        private void EditLegendToolStripMenuItem_Click(object sender, EventArgs e)
         {
             chart1.ApplyPaletteColors();
             EditLegend form = new EditLegend();

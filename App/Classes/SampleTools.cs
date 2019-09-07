@@ -44,7 +44,6 @@ namespace Sigran.Classes
             return phiKey;
         }
 
-
         public List<decimal> getDmmKeys()
         {
             List<decimal> dmmKey = new List<decimal>();
@@ -101,11 +100,11 @@ namespace Sigran.Classes
                 phiClassification.Add("Areia fina");
                 phiClassification.Add("Areia muito fina");
                 phiClassification.Add("Areia muito fina");
-                phiClassification.Add("Silte grosso");
-                phiClassification.Add("Silte grosso");
-                phiClassification.Add("Silte médio");
-                phiClassification.Add("Silte fino");
-                phiClassification.Add("Silte muito fino");
+                phiClassification.Add("silt grosso");
+                phiClassification.Add("silt grosso");
+                phiClassification.Add("silt médio");
+                phiClassification.Add("silt fino");
+                phiClassification.Add("silt muito fino");
                 phiClassification.Add("Argila grossa");
                 phiClassification.Add("Argila ultra-grossa");
                 phiClassification.Add("Argila ultra-grossa");
@@ -132,12 +131,12 @@ namespace Sigran.Classes
                 phiClassification.Add("Areia fina");
                 phiClassification.Add("Areia muito fina");
                 phiClassification.Add("Areia muito fina");
-                phiClassification.Add("Silte grosso");
-                phiClassification.Add("Silte grosso");
-                phiClassification.Add("Silte grosso");
-                phiClassification.Add("Silte médio");
-                phiClassification.Add("Silte fino");
-                phiClassification.Add("Silte muito fino");
+                phiClassification.Add("silt grosso");
+                phiClassification.Add("silt grosso");
+                phiClassification.Add("silt grosso");
+                phiClassification.Add("silt médio");
+                phiClassification.Add("silt fino");
+                phiClassification.Add("silt muito fino");
                 phiClassification.Add("Argila");
                 phiClassification.Add("Argila");
                 phiClassification.Add("Argila");
@@ -163,12 +162,12 @@ namespace Sigran.Classes
                 phiClassification.Add("Areia fina");
                 phiClassification.Add("Areia muito fina");
                 phiClassification.Add("Areia muito fina");
-                phiClassification.Add("Silte grosso");
-                phiClassification.Add("Silte grosso");
-                phiClassification.Add("Silte grosso");
-                phiClassification.Add("Silte médio");
-                phiClassification.Add("Silte fino");
-                phiClassification.Add("Silte muito fino");
+                phiClassification.Add("silt grosso");
+                phiClassification.Add("silt grosso");
+                phiClassification.Add("silt grosso");
+                phiClassification.Add("silt médio");
+                phiClassification.Add("silt fino");
+                phiClassification.Add("silt muito fino");
                 phiClassification.Add("Argila");
                 phiClassification.Add("Argila");
                 phiClassification.Add("Argila");
@@ -209,7 +208,7 @@ namespace Sigran.Classes
             }
             if (phi <= 9 && phi > 4)
             {
-                classification = "Silte";
+                classification = "silt";
             }
             if (phi > 9)
             {
@@ -277,30 +276,30 @@ namespace Sigran.Classes
             return r;
         }
 
-        public string getClassificationByCurtose(decimal curtose)
+        public string getClassificationByKurtosis(decimal kurtosis)
         {
             string r = "";
-            if (curtose < 1.7m)
+            if (kurtosis < 1.7m)
             {
                 r = "Muito plasticúrtica";
             }
-            if (curtose > 1.7m && curtose <= 2.55m)
+            if (kurtosis > 1.7m && kurtosis <= 2.55m)
             {
                 r = "Plasticúrtica";
             }
-            if (curtose > 2.55m && curtose <= 3.7m)
+            if (kurtosis > 2.55m && kurtosis <= 3.7m)
             {
                 r = "Mesocúrtica";
             }
-            if (curtose > 3.7m && curtose <= 7.4m)
+            if (kurtosis > 3.7m && kurtosis <= 7.4m)
             {
                 r = "Leptocúrtica";
             }
-            if (curtose > 7.4m && curtose <= 15m)
+            if (kurtosis > 7.4m && kurtosis <= 15m)
             {
                 r = "Muito leptocúrtica";
             }
-            if (curtose > 15m)
+            if (kurtosis > 15m)
             {
                 r = "Extremamente leptocúrtica";
             }
@@ -419,56 +418,56 @@ namespace Sigran.Classes
             return media;
         }
 
-        public decimal getMediana(Sample sample)
+        public decimal getMedian(Sample sample)
         {
-            decimal frequencyMediana = getTotalFrequencies(sample) / 2;
+            decimal frequencyMedian = getTotalFrequencies(sample) / 2;
 
             List<decimal> FrequenciesAcc = getFrequenciesAcc(sample);
             List<decimal> phiKeys = getPhiKeys();
             List<decimal> frequencies = getFrequencies(sample);
 
-            int classMediana = 0;
+            int classMedian = 0;
 
             for (int i = 0; i < 26; i++)
             {
-                if (frequencyMediana <= FrequenciesAcc[i] && frequencyMediana > FrequenciesAcc[i - 1])
+                if (frequencyMedian <= FrequenciesAcc[i] && frequencyMedian > FrequenciesAcc[i - 1])
                 {
-                    classMediana = i;
+                    classMedian = i;
                 }
             }
 
-            decimal mediana = 0;
+            decimal median = 0;
 
-            if (classMediana > 0)
+            if (classMedian > 0)
             {
-                decimal phiClass = phiKeys[classMediana];
-                decimal frequencyClass = frequencies[classMediana];
-                decimal phiClassPrev = phiKeys[classMediana - 1];
-                decimal frequencyAccClassPrev = FrequenciesAcc[classMediana - 1];
+                decimal phiClass = phiKeys[classMedian];
+                decimal frequencyClass = frequencies[classMedian];
+                decimal phiClassPrev = phiKeys[classMedian - 1];
+                decimal frequencyAccClassPrev = FrequenciesAcc[classMedian - 1];
                 decimal totalFrequencies = getTotalFrequencies(sample);
 
-                mediana = phiClassPrev + ((((totalFrequencies / 2) - frequencyAccClassPrev) * (phiClass - phiClassPrev)) / frequencyClass);
+                median = phiClassPrev + ((((totalFrequencies / 2) - frequencyAccClassPrev) * (phiClass - phiClassPrev)) / frequencyClass);
             }
 
-            return mediana;
+            return median;
         }
 
-        public List<decimal> getPercentis(Sample sample)
+        public List<decimal> getPercentiles(Sample sample)
         {
-            List<decimal> percentis = new List<decimal>();
+            List<decimal> percentiles = new List<decimal>();
 
             List<decimal> FrequenciesAcc = getFrequenciesAcc(sample);
             List<decimal> phiKeys = getPhiKeys();
             List<decimal> frequencies = getFrequencies(sample);
 
-            percentis.Add(0);
+            percentiles.Add(0);
 
             //Faz o loop nos quartis
             for (int k = 1; k < 100; k++)
             {
                 //Obtem a frequencia do quartil
                 decimal totalFrequencies = getTotalFrequencies(sample);
-                decimal frequencyPercentil = (totalFrequencies / 100) * k;
+                decimal frequencyPercentiles = (totalFrequencies / 100) * k;
 
                 //Obtem a classe do quartil
                 int classQuartil = 0;
@@ -476,7 +475,7 @@ namespace Sigran.Classes
                 {
                     try
                     {
-                        if (frequencyPercentil <= FrequenciesAcc[i] && frequencyPercentil > FrequenciesAcc[i - 1])
+                        if (frequencyPercentiles <= FrequenciesAcc[i] && frequencyPercentiles > FrequenciesAcc[i - 1])
                         {
                             classQuartil = i;
                         }
@@ -499,112 +498,41 @@ namespace Sigran.Classes
                     quartil = ((((k * (totalFrequencies / 100)) - frequencyAccClassPrev) * (phiClass - phiClassPrev)) / frequencyClass) + phiClassPrev;
                 }
 
-                percentis.Add(quartil);
+                percentiles.Add(quartil);
             }
 
-            return percentis;
+            return percentiles;
         }
 
         public List<decimal> getStatisticsByMehtod(string method, Sample sample)
         {
             List<decimal> statistics = new List<decimal>();
-            List<decimal> percentis = getPercentis(sample);
+            List<decimal> percentiles = getPercentiles(sample);
             decimal media = 0;
             decimal selection = 0;
-            /*if (method == "Folk&Ward(1957)")
-            {
-                media = (percentis[16] + percentis[50] + percentis[84]) / 3;
-                selection = ((percentis[84] - percentis[16]) / 4) + ((percentis[95] - percentis[5]) / 6.6m);
-            }
-            if (method == "McCammonA(1962)")
-            {
-                Console.WriteLine("foi aqui2");
-                media = (percentis[10] + percentis[30] + percentis[50] + percentis[70] + percentis[90]) / 5;
-                selection = (percentis[85] + percentis[95] - percentis[5] - percentis[15]) / 5.4m;
-            }
-            if (method == "McCammonB(1962)")
-            {
-                Console.WriteLine("foi aqui3");
-                media = (percentis[5] + percentis[15] + percentis[25] + percentis[35] + percentis[45] + percentis[55] + percentis[65] + percentis[75] + percentis[85] + percentis[95]) / 10m;
-                selection = (percentis[70] + percentis[80] + percentis[90] + percentis[97] - percentis[3] - percentis[10] - percentis[20] - percentis[30]) / 9.1m;
-            }
-            if (method == "Trask(1930)")
-            {
-                Console.WriteLine("foi aqui4");
-                media = percentis[50];
-                selection = (percentis[75] - percentis[25]) / 1.35m;
-            }
-            if (method == "Otto(1939)")
-            {
-                Console.WriteLine("foi aqui 5");
-                media = (percentis[16] + percentis[84]) / 2;
-                selection = (percentis[84] - percentis[16]) / 2;
-            }*/
-
-            media = (percentis[16] + percentis[50] + percentis[84]) / 3;
-            selection = ((percentis[84] - percentis[16]) / 4) + ((percentis[95] - percentis[5]) / 6.6m);
+            
+            media = (percentiles[16] + percentiles[50] + percentiles[84]) / 3;
+            selection = ((percentiles[84] - percentiles[16]) / 4) + ((percentiles[95] - percentiles[5]) / 6.6m);
 
             decimal assimetry = (
-                                    (percentis[16] + percentis[84] - (2 * percentis[50])) /
-                                    (2 * (percentis[84] - percentis[16]))
+                                    (percentiles[16] + percentiles[84] - (2 * percentiles[50])) /
+                                    (2 * (percentiles[84] - percentiles[16]))
                                 ) +
                                 (
-                                    (percentis[5] + percentis[95] - (2 * percentis[50])) /
-                                    (2 * (percentis[95] - percentis[5]))
+                                    (percentiles[5] + percentiles[95] - (2 * percentiles[50])) /
+                                    (2 * (percentiles[95] - percentiles[5]))
                                 );
 
-            decimal curtose = (percentis[95] - percentis[5]) /
-                              (2.44m * (percentis[75] - percentis[25]));
+            decimal kurtosis = (percentiles[95] - percentiles[5]) /
+                              (2.44m * (percentiles[75] - percentiles[25]));
 
             statistics.Add(media);
-            statistics.Add(percentis[50]);
+            statistics.Add(percentiles[50]);
             statistics.Add(selection);
             statistics.Add(assimetry);
-            statistics.Add(curtose);
+            statistics.Add(kurtosis);
 
             return statistics;
-        }
-
-        public decimal getStatistics(Sample sample)
-        {
-
-            for (int i = 0; i < 100; i++)
-            {
-                Console.WriteLine(i + "###" + getPercentis(sample)[i]);
-            }
-            Console.WriteLine("***" + getMediana(sample));
-
-            /*Decimal totalWeight = getTotalWeight(sample);
-
-            List<decimal> frequenciesAcc = new List<decimal>();
-
-            decimal oldFrequency = 0;
-
-            for (int i = 0; i < 26; i++)
-            {
-                PropertyInfo pinfo = typeof(Sample).GetProperty("Weight" + i);
-                decimal weight = (decimal)pinfo.GetValue(sample);
-                decimal frequency = ((weight / totalWeight) * 100) + oldFrequency;
-                frequenciesAcc.Add(frequency);
-                oldFrequency = frequency;
-            }
-
-            for (int i = 0; i < 26; i++)
-            {
-                Console.WriteLine(frequenciesAcc[i]);
-            }*/
-
-
-            return new Decimal();
-        }
-
-        public string getClassificationFolkEWard(Sample sample)
-        {
-            string classification = "";
-
-
-
-            return classification;
         }
 
         public string getClassificationLarsonneur(string r, Sample sample)
@@ -613,30 +541,21 @@ namespace Sigran.Classes
             decimal WeightTotal = getTotalWeight(sample);
 
             decimal coquinas = 0;
-            decimal rodolitos = 0;
+            decimal rhodoliths = 0;
             decimal seixos = sample.Weight0 + sample.Weight1 + sample.Weight2 + sample.Weight3 + sample.Weight4;
-            decimal granulos = sample.Weight5 + sample.Weight6;
+            decimal granules = sample.Weight5 + sample.Weight6;
             decimal sand = sample.Weight7 + sample.Weight8 + sample.Weight9 + sample.Weight10 + sample.Weight11 + sample.Weight12 + sample.Weight13 + sample.Weight14 + sample.Weight15 + sample.Weight16;
-            decimal lama = sample.Weight17 + sample.Weight18 + sample.Weight19 + sample.Weight20 + sample.Weight21 + sample.Weight22 + sample.Weight23 + sample.Weight24 + sample.Weight25;
+            decimal sludge = sample.Weight17 + sample.Weight18 + sample.Weight19 + sample.Weight20 + sample.Weight21 + sample.Weight22 + sample.Weight23 + sample.Weight24 + sample.Weight25;
 
             decimal median = getPhiForMedianClass(sample);
             decimal carbonatosP = sample.Carbonates;
             decimal coquinasP = (100 * coquinas) / WeightTotal;
-            decimal rodolitosP = (100 * rodolitos) / WeightTotal;
+            decimal rhodolithsP = (100 * rhodoliths) / WeightTotal;
             decimal seixosP = (100 * seixos) / WeightTotal;
-            decimal granulosP = (100 * granulos) / WeightTotal;
+            decimal granulesP = (100 * granules) / WeightTotal;
             decimal sandP = (100 * sand) / WeightTotal;
-            decimal lamaP = (100 * lama) / WeightTotal;
-            decimal scrP = 100m - sandP - lamaP;
-
-
-            Console.WriteLine("-----");
-            Console.WriteLine(seixosP);
-            Console.WriteLine(granulosP);
-            Console.WriteLine(sandP);
-            Console.WriteLine(lamaP);
-            Console.WriteLine(WeightTotal);
-            Console.WriteLine("-----");
+            decimal sludgeP = (100 * sludge) / WeightTotal;
+            decimal scrP = 100m - sandP - sludgeP;
 
             decimal p05a20P = (100 * (sample.Weight7 + sample.Weight8 + sample.Weight9 + sample.Weight10)) / WeightTotal;
             decimal p025a05P = (100 * (sample.Weight11 + sample.Weight12)) / WeightTotal;
@@ -648,7 +567,7 @@ namespace Sigran.Classes
 
             if (carbonatosP < 30m)
             {
-                if (lamaP < 15m || scrP > 50m)
+                if (sludgeP < 15m || scrP > 50m)
                 {
                     //coluna1
                     if (scrP > 70m)
@@ -665,7 +584,7 @@ namespace Sigran.Classes
                     }
 
                 }
-                else if (lamaP < 15m || scrP < 50m)
+                else if (sludgeP < 15m || scrP < 50m)
                 {
                     if(median < 2m)
                     {
@@ -686,9 +605,9 @@ namespace Sigran.Classes
                     else
                     {
                         //coluna3
-                        if (seixosP + granulosP > 15m)
+                        if (seixosP + granulesP > 15m)
                         {
-                            if (scrP > granulosP)
+                            if (scrP > granulesP)
                             {
                                 sigla = "AL1a";
                                 classification = "Areia litoclástica com cascalho";
@@ -724,32 +643,32 @@ namespace Sigran.Classes
                         }
                     }
                 }
-                else if (lamaP > 15m)
+                else if (sludgeP > 15m)
                 {
                     //coluna4
-                    if (lamaP < 25m)
+                    if (sludgeP < 25m)
                     {
                         sigla = "LL1a";
-                        classification = "Lama terrígena arenosa";
+                        classification = "sludge terrígena arenosa";
                         classId = 10;
                     }
-                    else if (lamaP >= 25m && lamaP < 75)
+                    else if (sludgeP >= 25m && sludgeP < 75)
                     {
                         sigla = "LL1b";
-                        classification = "Lama terrígena arenosa";
+                        classification = "sludge terrígena arenosa";
                         classId = 11;
                     }
                     else
                     {
                         sigla = "LL1c";
-                        classification = "Lama terrígena";
+                        classification = "sludge terrígena";
                         classId = 12;
                     }
                 }
             }
             else if (carbonatosP >= 30m && carbonatosP < 50m)
             {
-                if (lamaP < 15m || scrP > 50m)
+                if (sludgeP < 15m || scrP > 50m)
                 {
                     //coluna1
                     if (scrP > 70m)
@@ -766,7 +685,7 @@ namespace Sigran.Classes
                     }
 
                 }
-                else if (lamaP < 15m || scrP < 50m)
+                else if (sludgeP < 15m || scrP < 50m)
                 {
                     if (median < 2m)
                     {
@@ -787,9 +706,9 @@ namespace Sigran.Classes
                     else
                     {
                         //coluna3
-                        if (seixosP + granulosP > 15m)
+                        if (seixosP + granulesP > 15m)
                         {
-                            if (scrP > granulosP)
+                            if (scrP > granulesP)
                             {
                                 sigla = "AL2a";
                                 classification = "Areia litobioclástica com cascalho";
@@ -825,16 +744,16 @@ namespace Sigran.Classes
                         }
                     }
                 }
-                else if (lamaP > 15m)
+                else if (sludgeP > 15m)
                 {
                     //coluna4
-                    if (lamaP < 25m)
+                    if (sludgeP < 25m)
                     {
                         sigla = "LL2a";
                         classification = "Marga arenosa";
                         classId = 22;
                     }
-                    else if (lamaP >= 25m && lamaP < 75)
+                    else if (sludgeP >= 25m && sludgeP < 75)
                     {
                         sigla = "LL2b";
                         classification = "Marga arenosa";
@@ -850,7 +769,7 @@ namespace Sigran.Classes
             }
             else if (carbonatosP >= 50 && carbonatosP < 70m)
             {
-                if (lamaP < 15m || scrP > 50m)
+                if (sludgeP < 15m || scrP > 50m)
                 {
                     //coluna1
                     if (scrP > 70m)
@@ -866,7 +785,7 @@ namespace Sigran.Classes
                         classId = 26;
                     }
                 }
-                else if (lamaP < 15m || scrP < 50m)
+                else if (sludgeP < 15m || scrP < 50m)
                 {
                     if (median < 2m)
                     {
@@ -887,9 +806,9 @@ namespace Sigran.Classes
                     else
                     {
                         //coluna3
-                        if (seixosP + granulosP > 15m)
+                        if (seixosP + granulesP > 15m)
                         {
-                            if (scrP > granulosP)
+                            if (scrP > granulesP)
                             {
                                 sigla = "AB1a";
                                 classification = "Areia biolitoclástica com cascalho";
@@ -925,16 +844,16 @@ namespace Sigran.Classes
                         }
                     }
                 }
-                else if (lamaP > 15m)
+                else if (sludgeP > 15m)
                 {
                     //coluna4
-                    if (lamaP < 25m)
+                    if (sludgeP < 25m)
                     {
                         sigla = "LB1a";
                         classification = "Marga calcárea arenosa";
                         classId = 34;
                     }
-                    else if (lamaP >= 25m && lamaP < 75)
+                    else if (sludgeP >= 25m && sludgeP < 75)
                     {
                         sigla = "LB1b";
                         classification = "Marga calcárea arenosa";
@@ -950,7 +869,7 @@ namespace Sigran.Classes
             }
             else
             {
-                if (lamaP < 15m || scrP > 50m)
+                if (sludgeP < 15m || scrP > 50m)
                 {
                     //coluna1
                     if (scrP > 70m)
@@ -967,7 +886,7 @@ namespace Sigran.Classes
                     }
 
                 }
-                else if (lamaP < 15m || scrP < 50m)
+                else if (sludgeP < 15m || scrP < 50m)
                 {
                     if (median < 2m)
                     {
@@ -975,7 +894,7 @@ namespace Sigran.Classes
                         if (scrP > 15m)
                         {
                             sigla = "GB2a";
-                            classification = "Grânulo bioclástico conchífero ou com rodolitos";
+                            classification = "Grânulo bioclástico conchífero ou com rhodoliths";
                             classId = 39;
                         }
                         else
@@ -988,9 +907,9 @@ namespace Sigran.Classes
                     else
                     {
                         //coluna3
-                        if (seixosP + granulosP > 15m)
+                        if (seixosP + granulesP > 15m)
                         {
-                            if (scrP > granulosP)
+                            if (scrP > granulesP)
                             {
                                 sigla = "AB2a";
                                 classification = "Areia bioclástica com nódulos ou conchas";
@@ -1026,16 +945,16 @@ namespace Sigran.Classes
                         }
                     }
                 }
-                else if (lamaP > 15m)
+                else if (sludgeP > 15m)
                 {
                     //coluna4
-                    if (lamaP < 25m)
+                    if (sludgeP < 25m)
                     {
                         sigla = "LB2a";
                         classification = "Areia bioclástica lamosa";
                         classId = 46;
                     }
-                    else if (lamaP >= 25m && lamaP < 75)
+                    else if (sludgeP >= 25m && sludgeP < 75)
                     {
                         sigla = "LB2b";
                         classification = "Vasa calcárea arenosa";
@@ -1068,21 +987,21 @@ namespace Sigran.Classes
             List<decimal> FrequenciesAcc = getFrequenciesAcc(sample);
             List<decimal> phiKeys = getPhiKeys();
 
-            int classMediana = 0;
+            int classMedian = 0;
 
             for (int i = 0; i < 26; i++)
             {
                 if (frequencyMediana <= FrequenciesAcc[i] && frequencyMediana > FrequenciesAcc[i - 1])
                 {
-                    classMediana = i;
+                    classMedian = i;
                 }
             }
 
             decimal phiClass = 0;
 
-            if (classMediana > 0)
+            if (classMedian > 0)
             {
-                phiClass = phiKeys[classMediana];
+                phiClass = phiKeys[classMedian];
             }
 
             return phiClass;
@@ -1094,105 +1013,196 @@ namespace Sigran.Classes
             decimal WeightTotal = getTotalWeight(sample);
 
             decimal seixos = sample.Weight0 + sample.Weight1 + sample.Weight2 + sample.Weight3 + sample.Weight4;
-            decimal granulos = sample.Weight5 + sample.Weight6;
-            decimal sand = sample.Weight7 + sample.Weight8 + sample.Weight9 + sample.Weight10 + sample.Weight11 + sample.Weight12 + sample.Weight13 + sample.Weight14;
-            decimal lama = sample.Weight15 + sample.Weight16 + sample.Weight17 + sample.Weight18 + sample.Weight19 + sample.Weight20 + sample.Weight21 + sample.Weight22 + sample.Weight23 + sample.Weight24 + sample.Weight25;
-            decimal gravel = seixos + granulos;
+            decimal granules = sample.Weight5 + sample.Weight6;
+            decimal sand = sample.Weight7 + sample.Weight8 + sample.Weight9 + sample.Weight10 + sample.Weight11 + sample.Weight12 + sample.Weight13 + sample.Weight14 + sample.Weight15 + sample.Weight16;
+            decimal sludge = sample.Weight17 + sample.Weight18 + sample.Weight19 + sample.Weight20 + sample.Weight21 + sample.Weight22 + sample.Weight23 + sample.Weight24 + sample.Weight25;
+            decimal gravel = seixos + granules;
+            decimal clay = sample.Weight17 + sample.Weight18 + sample.Weight19 + sample.Weight20 + sample.Weight21;
+            decimal silt = sample.Weight22 + sample.Weight23 + sample.Weight24 + sample.Weight25;
 
             decimal sandP = (100 * sand) / WeightTotal;
-            decimal lamaP = (100 * lama) / WeightTotal;
+            decimal sludgeP = (100 * sludge) / WeightTotal;
             decimal gravelP = (100 * gravel) / WeightTotal;
+            decimal clayP = (100 * clay) / WeightTotal;
+            decimal siltP = (100 * silt) / WeightTotal;
 
             string sigla = "";
             string classification = "";
             int classId = 0;
 
             //all gravel
-            if(gravelP > 80)
+            if(gravelP > 0)
             {
-                //C - cascalho
-                sigla = "C";
-                classification = "Cascalho";
-                classId = 1;
-            }
-            else if(gravelP <= 80 && gravel > 30)
-            {
-                if(lamaP < 10)
+                if (gravelP > 80)
                 {
-                    //Ca - cascalho arenoso
-                    sigla = "Ca";
-                    classification = "Cascalho arenoso";
-                    classId = 2;
+                    //C - cascalho
+                    sigla = "C";
+                    classification = "Cascalho";
+                    classId = 1;
                 }
-                else if (lamaP >= 10 && lamaP < 50)
+                else if (gravelP <= 80 && gravelP > 30)
                 {
-                    //Cal - cascalho areno-lodoso
-                    sigla = "Cal";
-                    classification = "Cascalho areno-lamacento";
-                    classId = 3;
+                    if (sludgeP < 10)
+                    {
+                        //Ca - cascalho arenoso
+                        sigla = "Ca";
+                        classification = "Cascalho arenoso";
+                        classId = 2;
+                    }
+                    else if (sludgeP >= 10 && sludgeP < 50)
+                    {
+                        //Cal - cascalho areno-lodoso
+                        sigla = "Cal";
+                        classification = "Cascalho areno-lamoso";
+                        classId = 3;
+                    }
+                    else
+                    {
+                        //Cl - cascalho lodoso
+                        sigla = "Cl";
+                        classification = "Cascalho lamoso";
+                        classId = 4;
+                    }
+                }
+                else if (gravelP <= 30 && gravel > 5)
+                {
+                    if (sludgeP < 10)
+                    {
+                        //Ac - Areia cascalhenta
+                        sigla = "Ac";
+                        classification = "Areia com cascalho";
+                        classId = 5;
+                    }
+                    else if (sludgeP >= 10 && sludgeP < 50)
+                    {
+                        //Alc - areia lodo-cascalhenta
+                        sigla = "Alc";
+                        classification = "Areia lamosa com cascalho";
+                        classId = 6;
+                    }
+                    else
+                    {
+                        //Lc - lodo cascalhento
+                        sigla = "Lc";
+                        classification = "sludge com cascalho";
+                        classId = 7;
+                    }
                 }
                 else
                 {
-                    //Cl - cascalho lodoso
-                    sigla = "Cl";
-                    classification = "Cascalho lamacento";
-                    classId = 4;
+                    if (sludgeP < 10)
+                    {
+                        //A(c) - areia ligeiramente cascalhenta
+                        sigla = "A(c)";
+                        classification = "Areia com cascalho esparso";
+                        classId = 8;
+                    }
+                    else if (sludgeP >= 10 && sludgeP < 50)
+                    {
+                        //Al(c) - areia lodos ligeiramente cascalhenta
+                        sigla = "Al(c)";
+                        classification = "Areia lamosa com cascalho esparso";
+                        classId = 9;
+                    }
+                    else if (sludgeP >= 50 && sludgeP < 90)
+                    {
+                        //La(c) - lodo arenoso ligeiramente cascalhento
+                        sigla = "La(c)";
+                        classification = "sludge arenosa com cascalho esparso";
+                        classId = 10;
+                    }
+                    else
+                    {
+                        //L(c) - lodo ligeiramente cascalhento
+                        sigla = "L(c)";
+                        classification = "sludge com cascalho esparso";
+                        classId = 11;
+                    }
                 }
-            }
-            else if (gravelP <= 30 && gravel > 5)
-            {
-                if (lamaP < 10)
-                {
-                    //Ac - Areia cascalhenta
-                    sigla = "Ac";
-                    classification = "Areia cascalhenta";
-                    classId = 5;
-                }
-                else if (lamaP >= 10 && lamaP < 50)
-                {
-                    //Alc - areia lodo-cascalhenta
-                    sigla = "Alc";
-                    classification = "Areia lamosa-cascalhenta";
-                    classId = 6;
-                }
-                else
-                {
-                    //Lc - lodo cascalhento
-                    sigla = "Lc";
-                    classification = "Lama cascalhenta";
-                    classId = 7;
-                }
+                classification = classification + " (Sedimentos grosseiros)";
             }
             else
             {
-                if (lamaP < 10)
+                if(sandP > 90)
                 {
-                    //A(c) - areia ligeiramente cascalhenta
-                    sigla = "A(c)";
-                    classification = "Areia ligeiramente cascalhenta";
-                    classId = 8;
+                    //A - Areia
+                    sigla = "A";
+                    classification = "Areia";
+                    classId = 1;
                 }
-                else if (lamaP >= 10 && lamaP < 50)
+                else if(sandP <= 90 && sandP > 50)
                 {
-                    //Al(c) - areia lodos ligeiramente cascalhenta
-                    sigla = "Al(c)";
-                    classification = "Areia lamacenta ligeiramente cascalhenta";
-                    classId = 9;
+                    if (siltP < 33)
+                    {
+                        //Aa - Areia argilosa
+                        sigla = "Aa";
+                        classification = "Areia argilosa";
+                        classId = 1;
+                    }
+                    else if (siltP >= 33 && siltP < 66)
+                    {
+                        //Al - Areia lamosa
+                        sigla = "Al";
+                        classification = "Areia lamosa";
+                        classId = 1;
+                    }
+                    else
+                    {
+                        //As - Areia com silt
+                        sigla = "As";
+                        classification = "Areia com silt";
+                        classId = 1;
+                    }
                 }
-                else if (lamaP >= 50 && lamaP < 90)
+                else if (sandP <= 50 && sandP > 10)
                 {
-                    //La(c) - lodo arenoso ligeiramente cascalhento
-                    sigla = "La(c)";
-                    classification = "Lama arenoso ligeiramente cascalhenta";
-                    classId = 10;
+                    if (siltP < 33)
+                    {
+                        //A'a - Argila arenosa
+                        sigla = "A'a";
+                        classification = "Argila arenosa";
+                        classId = 1;
+                    }
+                    else if (siltP >= 33 && siltP < 66)
+                    {
+                        //La - sludge arenosa
+                        sigla = "La";
+                        classification = "sludge arenosa";
+                        classId = 1;
+                    }
+                    else
+                    {
+                        //Sa - silt arenoso
+                        sigla = "Sa";
+                        classification = "silt arenoso";
+                        classId = 1;
+                    }
                 }
                 else
                 {
-                    //L(c) - lodo ligeiramente cascalhento
-                    sigla = "L(c)";
-                    classification = "Lama ligeiramente cascalhenta";
-                    classId = 11;
+                    if (siltP < 33)
+                    {
+                        //A'a - Argila arenosa
+                        sigla = "A'";
+                        classification = "Argila";
+                        classId = 1;
+                    }
+                    else if (siltP >= 33 && siltP < 66)
+                    {
+                        //L - sludge
+                        sigla = "L";
+                        classification = "sludge";
+                        classId = 1;
+                    }
+                    else
+                    {
+                        //S - silt
+                        sigla = "S";
+                        classification = "silt";
+                        classId = 1;
+                    }
                 }
+                classification = classification + " (Sedimentos finos)";
             }
 
             if(r == "sigla")

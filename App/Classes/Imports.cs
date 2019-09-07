@@ -16,7 +16,7 @@ namespace Sigran.Classes
     {
         public List<Sample> fromMdbFile(string FileName)
         {
-            List<Sample> listaDados = new List<Sample>();
+            List<Sample> dataList = new List<Sample>();
             //Carrega dados da tabela Dados
             string connectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + FileName;
             string strSQL = "SELECT * FROM Dados";
@@ -51,7 +51,7 @@ namespace Sigran.Classes
                                 dados.Longitude = Convert.ToDecimal(reader["Longitude"].ToString().Replace(".", ","));
                             }
 
-                            listaDados.Add(dados);
+                            dataList.Add(dados);
                         }
                     }
                 }
@@ -73,140 +73,139 @@ namespace Sigran.Classes
                     {
                         while (reader.Read())
                         {
-                            Console.WriteLine(reader["Amostra"].ToString() + reader["Indice"].ToString() + reader["Weight"].ToString());
                             int i = 0;
-                            foreach (var dados in listaDados)
+                            foreach (var dados in dataList)
                             {
-                                if (listaDados[i].Name == reader["Amostra"].ToString())
+                                if (dataList[i].Name == reader["Amostra"].ToString())
                                 {
                                     if (reader["Indice"].ToString() == "1")
                                     {
-                                        listaDados[i].Weight0 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
+                                        dataList[i].Weight0 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "2")
                                     {
-                                        listaDados[i].Weight1 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
+                                        dataList[i].Weight1 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "3")
                                     {
-                                        listaDados[i].Weight2 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
+                                        dataList[i].Weight2 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "4")
                                     {
-                                        listaDados[i].Weight3 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
+                                        dataList[i].Weight3 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "5")
                                     {
-                                        listaDados[i].Weight4 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
+                                        dataList[i].Weight4 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "6")
                                     {
-                                        listaDados[i].Weight5 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
+                                        dataList[i].Weight5 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "7")
                                     {
-                                        listaDados[i].Weight6 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
+                                        dataList[i].Weight6 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "8")
                                     {
-                                        listaDados[i].Weight7 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
+                                        dataList[i].Weight7 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "9")
                                     {
-                                        listaDados[i].Weight8 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
+                                        dataList[i].Weight8 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "10")
                                     {
-                                        listaDados[i].Weight9 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
+                                        dataList[i].Weight9 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "11")
                                     {
-                                        listaDados[i].Weight10 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
+                                        dataList[i].Weight10 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "12")
                                     {
-                                        listaDados[i].Weight11 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
+                                        dataList[i].Weight11 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "13")
                                     {
-                                        listaDados[i].Weight12 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
+                                        dataList[i].Weight12 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "14")
                                     {
-                                        listaDados[i].Weight13 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
+                                        dataList[i].Weight13 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "15")
                                     {
-                                        listaDados[i].Weight14 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
+                                        dataList[i].Weight14 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "16")
                                     {
-                                        listaDados[i].Weight15 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
+                                        dataList[i].Weight15 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "17")
                                     {
-                                        listaDados[i].Weight16 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
+                                        dataList[i].Weight16 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "18")
                                     {
-                                        listaDados[i].Weight17 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
+                                        dataList[i].Weight17 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "19")
                                     {
-                                        listaDados[i].Weight18 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
+                                        dataList[i].Weight18 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "20")
                                     {
-                                        listaDados[i].Weight19 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
+                                        dataList[i].Weight19 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "21")
                                     {
-                                        listaDados[i].Weight20 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
+                                        dataList[i].Weight20 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "22")
                                     {
-                                        listaDados[i].Weight21 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
+                                        dataList[i].Weight21 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "23")
                                     {
-                                        listaDados[i].Weight22 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
+                                        dataList[i].Weight22 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "24")
                                     {
-                                        listaDados[i].Weight23 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
+                                        dataList[i].Weight23 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "25")
                                     {
-                                        listaDados[i].Weight24 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
+                                        dataList[i].Weight24 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
 
                                     if (reader["Indice"].ToString() == "26")
                                     {
-                                        listaDados[i].Weight25 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
+                                        dataList[i].Weight25 = Convert.ToDecimal(reader["Weight"].ToString().Replace(".", ","));
                                     }
                                 }
 
@@ -224,14 +223,14 @@ namespace Sigran.Classes
                 }
             }
 
-            return listaDados;
+            return dataList;
         }
 
         public List<Sample> fromXlsFile(string FileName)
         {
             int Weight0, Weight1, Weight2, Weight3, Weight4, Weight5, Weight6, Weight7, Weight8, Weight9, Weight10, Weight11, Weight12, Weight13, Weight14, Weight15, Weight16, Weight17, Weight18, Weight19, Weight20, Weight21, Weight22, Weight23, Weight24, Weight25;
             Weight0 = Weight1 = Weight2 = Weight3 = Weight4 = Weight5 = Weight6 = Weight7 = Weight8 = Weight9 = Weight10 = Weight11 = Weight12 = Weight13 = Weight14 = Weight15 = Weight16 = Weight17 = Weight18 = Weight19 = Weight20 = Weight21 = Weight22 = Weight23 = Weight24 = Weight25 = 0;
-            List<Sample> listaDados = new List<Sample>();
+            List<Sample> dataList = new List<Sample>();
 
             /*using (var stream = File.Open(FileName, FileMode.Open, FileAccess.Read))
             {
@@ -600,7 +599,7 @@ namespace Sigran.Classes
                                     catch { }
 
 
-                                    listaDados.Add(sample);
+                                    dataList.Add(sample);
                                 }
 
                             }
@@ -610,12 +609,12 @@ namespace Sigran.Classes
                 }
             }*/
 
-            return listaDados;
+            return dataList;
         }
 
         public List<Sample> fromDbFile(string FileName)
         {
-            List<Sample> listaDados = new List<Sample>();
+            List<Sample> dataList = new List<Sample>();
 
             SampleTools sampleTools = new SampleTools();
             List<decimal> phi = sampleTools.getPhiKeys();
@@ -646,12 +645,12 @@ namespace Sigran.Classes
                     pinfo.SetValue(sample, Convert.ToDecimal(dr["Weight" + i.ToString()]));
                 }
 
-                listaDados.Add(sample);
+                dataList.Add(sample);
 
             }
             conn.Close();
 
-            return listaDados;
+            return dataList;
         }
     }
 }

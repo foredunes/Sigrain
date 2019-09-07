@@ -21,7 +21,7 @@ namespace Sigran.Forms
             InitializeComponent();
         }
 
-        private void BivariateOptions_Load(object sender, EventArgs e)
+        private void CorrelationOptions_Load(object sender, EventArgs e)
         {
             options.Add("Assimetria");
             options.Add("Curtose");
@@ -57,7 +57,7 @@ namespace Sigran.Forms
             if (comboBoxHorizontal.Text != "" && comboBoxVertical.Text != "")
             {
                 this.Close();
-                ParentForm.GenerateBivariateChart(PortugueseToEnglish(comboBoxHorizontal.Text), PortugueseToEnglish(comboBoxVertical.Text));
+                ParentForm.GenerateCorrelationChart(PortugueseToEnglish(comboBoxHorizontal.Text), PortugueseToEnglish(comboBoxVertical.Text));
             }
             else if (comboBoxHorizontal.Text == "")
             { 

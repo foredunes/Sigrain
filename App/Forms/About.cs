@@ -10,19 +10,17 @@ using System.Windows.Forms;
 
 namespace Sigran.Forms
 {
-    public partial class Abount : Form
+    public partial class About : Form
     {
-        public Abount()
+        public About()
         {
             InitializeComponent();
 
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void About_Load(object sender, EventArgs e)
         {
 
-
         }
-
     }
 }

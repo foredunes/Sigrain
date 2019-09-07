@@ -31,25 +31,25 @@
             this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.labelPeso = new System.Windows.Forms.Label();
+            this.labelWeight = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.buttonCanelar = new System.Windows.Forms.Button();
-            this.buttonSalvar = new System.Windows.Forms.Button();
+            this.buttonCancel = new System.Windows.Forms.Button();
+            this.buttonSave = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.numericUpDownLongitude = new System.Windows.Forms.NumericUpDown();
             this.labelLongitude = new System.Windows.Forms.Label();
             this.numericUpDownLatitude = new System.Windows.Forms.NumericUpDown();
             this.labelLatitude = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.numericUpDownCarbonato = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownCarbonates = new System.Windows.Forms.NumericUpDown();
             this.labelCarbonatos = new System.Windows.Forms.Label();
             this.dateTimePickerData = new System.Windows.Forms.DateTimePicker();
             this.labelData = new System.Windows.Forms.Label();
-            this.textBoxDescricao = new System.Windows.Forms.TextBox();
+            this.textBoxDescription = new System.Windows.Forms.TextBox();
             this.labelDescricao = new System.Windows.Forms.Label();
-            this.comboBoxCategoria = new System.Windows.Forms.ComboBox();
+            this.comboBoxCategory = new System.Windows.Forms.ComboBox();
             this.labelCategoria = new System.Windows.Forms.Label();
-            this.textBoxAmostra = new System.Windows.Forms.TextBox();
+            this.textBoxName = new System.Windows.Forms.TextBox();
             this.labelAmostra = new System.Windows.Forms.Label();
             this.textBoxId = new System.Windows.Forms.TextBox();
             this.labelId = new System.Windows.Forms.Label();
@@ -71,7 +71,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLongitude)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLatitude)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCarbonato)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCarbonates)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStripEdit.SuspendLayout();
             this.SuspendLayout();
@@ -102,7 +102,7 @@
             // groupBox3
             // 
             this.groupBox3.AutoSize = true;
-            this.groupBox3.Controls.Add(this.labelPeso);
+            this.groupBox3.Controls.Add(this.labelWeight);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox3.Location = new System.Drawing.Point(10, 333);
             this.groupBox3.Name = "groupBox3";
@@ -111,46 +111,46 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Peso total";
             // 
-            // labelPeso
+            // labelWeight
             // 
-            this.labelPeso.AutoSize = true;
-            this.labelPeso.Dock = System.Windows.Forms.DockStyle.Top;
-            this.labelPeso.Location = new System.Drawing.Point(3, 16);
-            this.labelPeso.Name = "labelPeso";
-            this.labelPeso.Size = new System.Drawing.Size(28, 13);
-            this.labelPeso.TabIndex = 0;
-            this.labelPeso.Text = "0.00";
+            this.labelWeight.AutoSize = true;
+            this.labelWeight.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelWeight.Location = new System.Drawing.Point(3, 16);
+            this.labelWeight.Name = "labelWeight";
+            this.labelWeight.Size = new System.Drawing.Size(28, 13);
+            this.labelWeight.TabIndex = 0;
+            this.labelWeight.Text = "0.00";
             // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoSize = true;
-            this.flowLayoutPanel1.Controls.Add(this.buttonCanelar);
-            this.flowLayoutPanel1.Controls.Add(this.buttonSalvar);
+            this.flowLayoutPanel1.Controls.Add(this.buttonCancel);
+            this.flowLayoutPanel1.Controls.Add(this.buttonSave);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(10, 411);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(185, 29);
             this.flowLayoutPanel1.TabIndex = 4;
             // 
-            // buttonCanelar
+            // buttonCancel
             // 
-            this.buttonCanelar.Location = new System.Drawing.Point(3, 3);
-            this.buttonCanelar.Name = "buttonCanelar";
-            this.buttonCanelar.Size = new System.Drawing.Size(75, 23);
-            this.buttonCanelar.TabIndex = 0;
-            this.buttonCanelar.Text = "Cancelar";
-            this.buttonCanelar.UseVisualStyleBackColor = true;
-            this.buttonCanelar.Click += new System.EventHandler(this.ButtonCanelar_Click);
+            this.buttonCancel.Location = new System.Drawing.Point(3, 3);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+            this.buttonCancel.TabIndex = 0;
+            this.buttonCancel.Text = "Cancelar";
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.ButtonCancel_Click);
             // 
-            // buttonSalvar
+            // buttonSave
             // 
-            this.buttonSalvar.Location = new System.Drawing.Point(84, 3);
-            this.buttonSalvar.Name = "buttonSalvar";
-            this.buttonSalvar.Size = new System.Drawing.Size(75, 23);
-            this.buttonSalvar.TabIndex = 1;
-            this.buttonSalvar.Text = "Salvar";
-            this.buttonSalvar.UseVisualStyleBackColor = true;
-            this.buttonSalvar.Click += new System.EventHandler(this.ButtonSalvar_Click);
+            this.buttonSave.Location = new System.Drawing.Point(84, 3);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(75, 23);
+            this.buttonSave.TabIndex = 1;
+            this.buttonSave.Text = "Salvar";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.ButtonSave_Click);
             // 
             // groupBox2
             // 
@@ -230,15 +230,15 @@
             // groupBox1
             // 
             this.groupBox1.AutoSize = true;
-            this.groupBox1.Controls.Add(this.numericUpDownCarbonato);
+            this.groupBox1.Controls.Add(this.numericUpDownCarbonates);
             this.groupBox1.Controls.Add(this.labelCarbonatos);
             this.groupBox1.Controls.Add(this.dateTimePickerData);
             this.groupBox1.Controls.Add(this.labelData);
-            this.groupBox1.Controls.Add(this.textBoxDescricao);
+            this.groupBox1.Controls.Add(this.textBoxDescription);
             this.groupBox1.Controls.Add(this.labelDescricao);
-            this.groupBox1.Controls.Add(this.comboBoxCategoria);
+            this.groupBox1.Controls.Add(this.comboBoxCategory);
             this.groupBox1.Controls.Add(this.labelCategoria);
-            this.groupBox1.Controls.Add(this.textBoxAmostra);
+            this.groupBox1.Controls.Add(this.textBoxName);
             this.groupBox1.Controls.Add(this.labelAmostra);
             this.groupBox1.Controls.Add(this.textBoxId);
             this.groupBox1.Controls.Add(this.labelId);
@@ -252,14 +252,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Identificação da amostra";
             // 
-            // numericUpDownCarbonato
+            // numericUpDownCarbonates
             // 
-            this.numericUpDownCarbonato.DecimalPlaces = 3;
-            this.numericUpDownCarbonato.Dock = System.Windows.Forms.DockStyle.Top;
-            this.numericUpDownCarbonato.Location = new System.Drawing.Point(3, 195);
-            this.numericUpDownCarbonato.Name = "numericUpDownCarbonato";
-            this.numericUpDownCarbonato.Size = new System.Drawing.Size(179, 20);
-            this.numericUpDownCarbonato.TabIndex = 16;
+            this.numericUpDownCarbonates.DecimalPlaces = 3;
+            this.numericUpDownCarbonates.Dock = System.Windows.Forms.DockStyle.Top;
+            this.numericUpDownCarbonates.Location = new System.Drawing.Point(3, 195);
+            this.numericUpDownCarbonates.Name = "numericUpDownCarbonates";
+            this.numericUpDownCarbonates.Size = new System.Drawing.Size(179, 20);
+            this.numericUpDownCarbonates.TabIndex = 16;
             // 
             // labelCarbonatos
             // 
@@ -289,13 +289,13 @@
             this.labelData.TabIndex = 13;
             this.labelData.Text = "Data";
             // 
-            // textBoxDescricao
+            // textBoxDescription
             // 
-            this.textBoxDescricao.Dock = System.Windows.Forms.DockStyle.Top;
-            this.textBoxDescricao.Location = new System.Drawing.Point(3, 129);
-            this.textBoxDescricao.Name = "textBoxDescricao";
-            this.textBoxDescricao.Size = new System.Drawing.Size(179, 20);
-            this.textBoxDescricao.TabIndex = 7;
+            this.textBoxDescription.Dock = System.Windows.Forms.DockStyle.Top;
+            this.textBoxDescription.Location = new System.Drawing.Point(3, 129);
+            this.textBoxDescription.Name = "textBoxDescription";
+            this.textBoxDescription.Size = new System.Drawing.Size(179, 20);
+            this.textBoxDescription.TabIndex = 7;
             // 
             // labelDescricao
             // 
@@ -307,14 +307,14 @@
             this.labelDescricao.TabIndex = 6;
             this.labelDescricao.Text = "Descrição";
             // 
-            // comboBoxCategoria
+            // comboBoxCategory
             // 
-            this.comboBoxCategoria.Dock = System.Windows.Forms.DockStyle.Top;
-            this.comboBoxCategoria.FormattingEnabled = true;
-            this.comboBoxCategoria.Location = new System.Drawing.Point(3, 95);
-            this.comboBoxCategoria.Name = "comboBoxCategoria";
-            this.comboBoxCategoria.Size = new System.Drawing.Size(179, 21);
-            this.comboBoxCategoria.TabIndex = 5;
+            this.comboBoxCategory.Dock = System.Windows.Forms.DockStyle.Top;
+            this.comboBoxCategory.FormattingEnabled = true;
+            this.comboBoxCategory.Location = new System.Drawing.Point(3, 95);
+            this.comboBoxCategory.Name = "comboBoxCategory";
+            this.comboBoxCategory.Size = new System.Drawing.Size(179, 21);
+            this.comboBoxCategory.TabIndex = 5;
             // 
             // labelCategoria
             // 
@@ -326,13 +326,13 @@
             this.labelCategoria.TabIndex = 4;
             this.labelCategoria.Text = "Categoria";
             // 
-            // textBoxAmostra
+            // textBoxName
             // 
-            this.textBoxAmostra.Dock = System.Windows.Forms.DockStyle.Top;
-            this.textBoxAmostra.Location = new System.Drawing.Point(3, 62);
-            this.textBoxAmostra.Name = "textBoxAmostra";
-            this.textBoxAmostra.Size = new System.Drawing.Size(179, 20);
-            this.textBoxAmostra.TabIndex = 3;
+            this.textBoxName.Dock = System.Windows.Forms.DockStyle.Top;
+            this.textBoxName.Location = new System.Drawing.Point(3, 62);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(179, 20);
+            this.textBoxName.TabIndex = 3;
             // 
             // labelAmostra
             // 
@@ -403,36 +403,36 @@
             this.toolStripSeparator1,
             this.limparToolStripMenuItem});
             this.contextMenuStripEdit.Name = "contextMenuStripEdit";
-            this.contextMenuStripEdit.Size = new System.Drawing.Size(181, 98);
+            this.contextMenuStripEdit.Size = new System.Drawing.Size(152, 76);
             // 
             // copiarToolStripMenuItem
             // 
             this.copiarToolStripMenuItem.Name = "copiarToolStripMenuItem";
             this.copiarToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copiarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.copiarToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.copiarToolStripMenuItem.Text = "Copiar";
-            this.copiarToolStripMenuItem.Click += new System.EventHandler(this.CopiarToolStripMenuItem_Click);
+            this.copiarToolStripMenuItem.Click += new System.EventHandler(this.CopyToolStripMenuItem_Click);
             // 
             // colarToolStripMenuItem
             // 
             this.colarToolStripMenuItem.Name = "colarToolStripMenuItem";
             this.colarToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.colarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.colarToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.colarToolStripMenuItem.Text = "Colar";
-            this.colarToolStripMenuItem.Click += new System.EventHandler(this.ColarToolStripMenuItem_Click);
+            this.colarToolStripMenuItem.Click += new System.EventHandler(this.PasteToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(148, 6);
             // 
             // limparToolStripMenuItem
             // 
             this.limparToolStripMenuItem.Name = "limparToolStripMenuItem";
             this.limparToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-            this.limparToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.limparToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.limparToolStripMenuItem.Text = "Limpar";
-            this.limparToolStripMenuItem.Click += new System.EventHandler(this.LimparToolStripMenuItem_Click);
+            this.limparToolStripMenuItem.Click += new System.EventHandler(this.ClearToolStripMenuItem_Click);
             // 
             // SampleForm
             // 
@@ -459,7 +459,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLatitude)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCarbonato)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCarbonates)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.contextMenuStripEdit.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -483,18 +483,18 @@
         public System.Windows.Forms.Label labelId;
         public System.Windows.Forms.NumericUpDown numericUpDownLongitude;
         public System.Windows.Forms.NumericUpDown numericUpDownLatitude;
-        public System.Windows.Forms.NumericUpDown numericUpDownCarbonato;
+        public System.Windows.Forms.NumericUpDown numericUpDownCarbonates;
         public System.Windows.Forms.DateTimePicker dateTimePickerData;
-        public System.Windows.Forms.TextBox textBoxDescricao;
-        public System.Windows.Forms.ComboBox comboBoxCategoria;
-        public System.Windows.Forms.TextBox textBoxAmostra;
+        public System.Windows.Forms.TextBox textBoxDescription;
+        public System.Windows.Forms.ComboBox comboBoxCategory;
+        public System.Windows.Forms.TextBox textBoxName;
         public System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox groupBox3;
-        public System.Windows.Forms.Label labelPeso;
+        public System.Windows.Forms.Label labelWeight;
         private System.Windows.Forms.DataGridViewTextBoxColumn Phi;
         private System.Windows.Forms.DataGridViewTextBoxColumn Pesos;
-        public System.Windows.Forms.Button buttonCanelar;
-        public System.Windows.Forms.Button buttonSalvar;
+        public System.Windows.Forms.Button buttonCancel;
+        public System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripEdit;
         private System.Windows.Forms.ToolStripMenuItem copiarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem colarToolStripMenuItem;
