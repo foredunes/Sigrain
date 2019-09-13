@@ -171,7 +171,7 @@
             // 
             // numericUpDownLongitude
             // 
-            this.numericUpDownLongitude.DecimalPlaces = 5;
+            this.numericUpDownLongitude.DecimalPlaces = 7;
             this.numericUpDownLongitude.Dock = System.Windows.Forms.DockStyle.Top;
             this.numericUpDownLongitude.Location = new System.Drawing.Point(3, 62);
             this.numericUpDownLongitude.Maximum = new decimal(new int[] {
@@ -200,7 +200,7 @@
             // 
             // numericUpDownLatitude
             // 
-            this.numericUpDownLatitude.DecimalPlaces = 5;
+            this.numericUpDownLatitude.DecimalPlaces = 7;
             this.numericUpDownLatitude.Dock = System.Windows.Forms.DockStyle.Top;
             this.numericUpDownLatitude.Location = new System.Drawing.Point(3, 29);
             this.numericUpDownLatitude.Maximum = new decimal(new int[] {
