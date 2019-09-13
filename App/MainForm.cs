@@ -56,6 +56,10 @@ namespace Sigran
             //carrega configurações
             IniFile ini = new IniFile(this.SettingsFile);
             Reload = (ini.Read("RELOAD") == "1") ? true : false;
+            if(Reload == true && File.Exists(ini.Read("LASTOPENED")) == false)
+            {
+                Reload = false;
+            };
 
             //verifica se esta no método dev ou recarrega ultimo arquivo
             if (Dev == true || Reload == true)
