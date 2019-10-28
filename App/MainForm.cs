@@ -25,7 +25,7 @@ namespace Sigran
     {
         public static string AppName = "Sigran";
         public static string AppDescription = "Sistema de Informação Granulométrica";
-        public static string AppVersion = "1.2";
+        public static string AppVersion = "1.3";
         public static string AppUrlApi = "https://api.github.com/repos/foredunes/Sigran/releases";
         public string DatabaseFile = null;
         public string DefaultPath = null;
@@ -957,7 +957,7 @@ namespace Sigran
                     List<decimal> statisticsTask = sampleTools.getStatisticsByMehtod("Trask(1930)", sample);
                     List<decimal> statisticsOtto = sampleTools.getStatisticsByMehtod("Otto(1939)", sample);
                     form.dataGridView1.Rows.Insert(43, "ESTATÍSTICAS");
-                    form.dataGridView1.Rows.Insert(44, "Média",                                "Mediana",                              "Selecionamento",                       "Assimetria",                           "Custose");
+                    form.dataGridView1.Rows.Insert(44, "Média",                                "Mediana",                              "Selecionamento",                       "Assimetria",                           "Curtose");
                     form.dataGridView1.Rows.Insert(45, Functions.DecimalToString(statisticsFolk[0]),   Functions.DecimalToString(statisticsFolk[1]),   Functions.DecimalToString(statisticsFolk[2]),   Functions.DecimalToString(statisticsFolk[3]),   Functions.DecimalToString(statisticsFolk[4]));
 
 
@@ -1021,7 +1021,7 @@ namespace Sigran
 
                     form.dataGridView1.Rows.Insert(61, "CLASSIFICAÇÃO DE FOLK");
                     form.dataGridView1.Rows.Insert(62, "REFERÊNCIA", "Sigla", "Classificação Verbal", "");
-                    form.dataGridView1.Rows.Insert(63, "Folk&Ward(1957)", siglaFolk, classificationFolk);
+                    form.dataGridView1.Rows.Insert(63, "Folk(1954)", siglaFolk, classificationFolk);
 
                     //Larsonneur
                     decimal median = statisticsFolk[1];

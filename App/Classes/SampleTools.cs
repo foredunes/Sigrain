@@ -252,25 +252,25 @@ namespace Sigran.Classes
         public string getClassificationByAssimetry(decimal assimetry)
         {
             string r = "";
-            if (assimetry < -1.3m)
+            if (assimetry <= -0.3m)
             {
-                r = "Muito negativa";
+                r = "Assimetria muito negativa";
             }
-            if (assimetry > -1.3m && assimetry <= -0.43m)
+            if (assimetry > -0.3m && assimetry <= -0.1m)
             {
-                r = "Negativa";
+                r = "Assimetria negativa";
             }
-            if (assimetry > -0.43m && assimetry <= 0.43m)
+            if (assimetry > -0.1m && assimetry <= 0.1m)
             {
                 r = "Aproximadamente simétrica";
             }
-            if (assimetry > 0.43m && assimetry <= 1.3m)
+            if (assimetry > 0.1m && assimetry <= 0.3m)
             {
-                r = "Positiva";
+                r = "Assimetria positiva";
             }
-            if (assimetry > 1.3m)
+            if (assimetry > 0.3m)
             {
-                r = "Muito positiva";
+                r = "Assimetria Muito positiva";
             }
 
             return r;
@@ -279,29 +279,29 @@ namespace Sigran.Classes
         public string getClassificationByKurtosis(decimal kurtosis)
         {
             string r = "";
-            if (kurtosis < 1.7m)
+            if (kurtosis <= 0.67m)
             {
-                r = "Muito plasticúrtica";
+                r = "Muito platicurtica";
             }
-            if (kurtosis > 1.7m && kurtosis <= 2.55m)
+            if (kurtosis > 0.67m && kurtosis <= 0.90m)
             {
-                r = "Plasticúrtica";
+                r = "platicurtica";
             }
-            if (kurtosis > 2.55m && kurtosis <= 3.7m)
+            if (kurtosis > 0.90m && kurtosis <= 1.11m)
             {
-                r = "Mesocúrtica";
+                r = "Mesocurtica";
             }
-            if (kurtosis > 3.7m && kurtosis <= 7.4m)
+            if (kurtosis > 1.11m && kurtosis <= 1.50m)
             {
-                r = "Leptocúrtica";
+                r = "Tendência a Leptocurtica";
             }
-            if (kurtosis > 7.4m && kurtosis <= 15m)
+            if (kurtosis > 1.50m && kurtosis <= 3m)
             {
-                r = "Muito leptocúrtica";
+                r = "Muito leptocurtica";
             }
-            if (kurtosis > 15m)
+            if (kurtosis > 3m)
             {
-                r = "Extremamente leptocúrtica";
+                r = "Extremamente leptocurtica";
             }
 
             return r;
@@ -1119,7 +1119,7 @@ namespace Sigran.Classes
                         classId = 11;
                     }
                 }
-                classification = classification + " (Sedimentos grosseiros)";
+                classification = classification;
             }
             else
             {
@@ -1202,7 +1202,7 @@ namespace Sigran.Classes
                         classId = 1;
                     }
                 }
-                classification = classification + " (Sedimentos finos)";
+                classification = classification;
             }
 
             if(r == "sigla")
