@@ -57,6 +57,15 @@ namespace Sigran.Forms
             {
                 checkBoxFormInsertOpen.Checked = false;
             }
+
+            if (ini.Read("NOSEARCHNEWVERSIONS") == "1")
+            {
+                checkBoxNoNotifyNews.Checked = true;
+            }
+            else
+            {
+                checkBoxNoNotifyNews.Checked = false;
+            }
         }
 
         private void ButtonCancel_Click(object sender, EventArgs e)
@@ -98,6 +107,15 @@ namespace Sigran.Forms
             else
             {
                 ini.Write("FORMINSERTOPEN", "0");
+            }
+
+            if (checkBoxNoNotifyNews.Checked)
+            {
+                ini.Write("NOSEARCHNEWVERSIONS", "1");
+            }
+            else
+            {
+                ini.Write("NOSEARCHNEWVERSIONS", "0");
             }
 
 

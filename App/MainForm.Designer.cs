@@ -68,6 +68,7 @@
             this.showHelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openSiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.searchUpdatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mostrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.inserirNovaLinhaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -459,6 +460,7 @@
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.showHelpToolStripMenuItem,
             this.openSiteToolStripMenuItem,
+            this.searchUpdatesToolStripMenuItem,
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(58, 31);
@@ -468,14 +470,14 @@
             // 
             this.showHelpToolStripMenuItem.Name = "showHelpToolStripMenuItem";
             this.showHelpToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.showHelpToolStripMenuItem.Size = new System.Drawing.Size(204, 24);
+            this.showHelpToolStripMenuItem.Size = new System.Drawing.Size(216, 24);
             this.showHelpToolStripMenuItem.Text = "Exibir Ajuda";
             this.showHelpToolStripMenuItem.Click += new System.EventHandler(this.ShowHelpToolStripMenuItem_Click);
             // 
             // openSiteToolStripMenuItem
             // 
             this.openSiteToolStripMenuItem.Name = "openSiteToolStripMenuItem";
-            this.openSiteToolStripMenuItem.Size = new System.Drawing.Size(204, 24);
+            this.openSiteToolStripMenuItem.Size = new System.Drawing.Size(216, 24);
             this.openSiteToolStripMenuItem.Text = "Abrir Site";
             this.openSiteToolStripMenuItem.Visible = false;
             // 
@@ -483,9 +485,16 @@
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.H)));
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(204, 24);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(216, 24);
             this.aboutToolStripMenuItem.Text = "Sobre";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
+            // 
+            // searchUpdatesToolStripMenuItem
+            // 
+            this.searchUpdatesToolStripMenuItem.Name = "searchUpdatesToolStripMenuItem";
+            this.searchUpdatesToolStripMenuItem.Size = new System.Drawing.Size(216, 24);
+            this.searchUpdatesToolStripMenuItem.Text = "Verificar atualizações";
+            this.searchUpdatesToolStripMenuItem.Click += new System.EventHandler(this.SearchUpdatesToolStripMenuItem_Click);
             // 
             // mostrarToolStripMenuItem
             // 
@@ -1429,6 +1438,7 @@
         private System.Windows.Forms.ToolStripMenuItem médiaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem medianaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem selecionamentoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem searchUpdatesToolStripMenuItem;
     }
 }
 

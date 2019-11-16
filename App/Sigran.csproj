@@ -47,6 +47,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Octokit, Version=0.36.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Octokit.0.36.0\lib\net45\Octokit.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -100,6 +103,12 @@
     <Compile Include="Forms\EditLegend.Designer.cs">
       <DependentUpon>EditLegend.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\NewVersionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NewVersionForm.Designer.cs">
+      <DependentUpon>NewVersionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ResultChart.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\EditLegend.resx">
       <DependentUpon>EditLegend.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NewVersionForm.resx">
+      <DependentUpon>NewVersionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ResultChart.resx">
       <DependentUpon>ResultChart.cs</DependentUpon>

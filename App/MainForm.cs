@@ -18,6 +18,10 @@ using MenuItem = System.Windows.Forms.MenuItem;
 using Series = System.Windows.Forms.DataVisualization.Charting.Series;
 using System.Runtime.InteropServices;
 using System.Net;
+using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
+using Octokit;
+using System.Threading.Tasks;
 
 namespace Sigran
 {
@@ -91,6 +95,7 @@ namespace Sigran
             }
 
             updateDataGrid(null, null, null, true);
+
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -117,7 +122,39 @@ namespace Sigran
             if (Dev == false && Reload == false)
                 button1.Enabled = button2.Enabled = button3.Enabled = button5.Enabled = button6.Enabled = button7.Enabled = button8.Enabled = button9.Enabled = button10.Enabled = button11.Enabled = button12.Enabled = button13.Enabled = button14.Enabled = button15.Enabled = button16.Enabled = false;
 
+            IniFile ini = new IniFile(this.SettingsFile);
+            if (ini.Read("NOSEARCHNEWVERSIONS") != "1")
+                SearchNewVersions();
         }
+
+
+        private async Task SearchNewVersions(bool force = false)
+        {
+            try
+            {
+                GitHubClient client = new GitHubClient(new ProductHeaderValue("sigran"));
+
+                IReadOnlyList<Release> releases = await client.Repository.Release.GetAll("foredunes", "sigran");
+                Release latest = releases[0];
+
+                if (latest.TagName != AppVersion || force == true)
+                {
+                    NewVersionForm form = new NewVersionForm();
+
+                    form.Releases = releases;
+
+                    form.LatestVersionName = latest.Name;
+                    form.LatestVersionTagName = latest.TagName;
+                    form.LatestVersionUrl = latest.HtmlUrl;
+                    form.LatestVersionUrlAsset = latest.Assets[0].BrowserDownloadUrl;
+
+                    form.ShowDialog();
+                }
+            }
+            catch { }
+
+        }
+
 
         private void NewToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1785,6 +1822,7 @@ namespace Sigran
         private void ShowHelpToolStripMenuItem_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("https://github.com/foredunes/sigran");
+            var url = "https://api.github.com/repos/foredunes/sigran/releases";
         }
 
         private void ProcessVariousSamplesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2005,5 +2043,9 @@ namespace Sigran
             form.ShowDialog();
         }
 
+        private void SearchUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SearchNewVersions(true);
+        }
     }
 }

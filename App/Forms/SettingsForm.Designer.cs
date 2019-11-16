@@ -40,6 +40,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.checkBoxFormInsertOpen = new System.Windows.Forms.CheckBox();
             this.checkBoxOpenLast = new System.Windows.Forms.CheckBox();
+            this.checkBoxNoNotifyNews = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -145,6 +146,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.checkBoxNoNotifyNews);
             this.groupBox2.Controls.Add(this.checkBoxFormInsertOpen);
             this.groupBox2.Controls.Add(this.checkBoxOpenLast);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -175,6 +177,17 @@
             this.checkBoxOpenLast.Text = "Carregar ultimo arquivo aberto ao iniciar";
             this.checkBoxOpenLast.UseVisualStyleBackColor = true;
             // 
+            // checkBoxNoNotifyNews
+            // 
+            this.checkBoxNoNotifyNews.AutoSize = true;
+            this.checkBoxNoNotifyNews.Dock = System.Windows.Forms.DockStyle.Top;
+            this.checkBoxNoNotifyNews.Location = new System.Drawing.Point(3, 95);
+            this.checkBoxNoNotifyNews.Name = "checkBoxNoNotifyNews";
+            this.checkBoxNoNotifyNews.Size = new System.Drawing.Size(187, 17);
+            this.checkBoxNoNotifyNews.TabIndex = 3;
+            this.checkBoxNoNotifyNews.Text = "Ocultar atualizações ao iniciar";
+            this.checkBoxNoNotifyNews.UseVisualStyleBackColor = true;
+            // 
             // SettingsForm
             // 
             this.AcceptButton = this.buttonSave;
@@ -195,6 +208,7 @@
             this.groupBox1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -212,5 +226,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.CheckBox checkBoxOpenLast;
         private System.Windows.Forms.CheckBox checkBoxFormInsertOpen;
+        private System.Windows.Forms.CheckBox checkBoxNoNotifyNews;
     }
 }
