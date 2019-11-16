@@ -267,9 +267,9 @@
             this.labelCarbonatos.Dock = System.Windows.Forms.DockStyle.Top;
             this.labelCarbonatos.Location = new System.Drawing.Point(3, 182);
             this.labelCarbonatos.Name = "labelCarbonatos";
-            this.labelCarbonatos.Size = new System.Drawing.Size(72, 13);
+            this.labelCarbonatos.Size = new System.Drawing.Size(113, 13);
             this.labelCarbonatos.TabIndex = 15;
-            this.labelCarbonatos.Text = "Carbonatos %";
+            this.labelCarbonatos.Text = "Carbonato de cálcio %";
             // 
             // dateTimePickerData
             // 

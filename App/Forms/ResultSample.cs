@@ -22,7 +22,7 @@ namespace Sigran.Forms
 
         private void ResultSample_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void CopyToolStripMenuItem_Click(object sender, EventArgs e)

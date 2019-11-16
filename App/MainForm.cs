@@ -905,15 +905,14 @@ namespace Sigran
                     form.dataGridView1.Rows.Insert(4, "Descrição", sample.Description.ToString());
                     form.dataGridView1.Rows.Insert(5, "Latitude", sample.Latitude.ToString("0.00000", CultureInfo.CreateSpecificCulture("PT-BR")));
                     form.dataGridView1.Rows.Insert(6, "Longitude", sample.Longitude.ToString("0.00000", CultureInfo.CreateSpecificCulture("PT-BR")));
-                    form.dataGridView1.Rows.Insert(7, "Carbonatos", sample.Carbonates.ToString("0.000", CultureInfo.CreateSpecificCulture("PT-BR")));
+                    form.dataGridView1.Rows.Insert(7, "Carbonato de cálcio", sample.Carbonates.ToString("0.000", CultureInfo.CreateSpecificCulture("PT-BR")));
 
                     //Calcula o Weight total
                     decimal WeightTotal = sampleTools.getTotalWeight(sample);
                     form.dataGridView1.Rows.Insert(8, "Peso total", WeightTotal.ToString());
 
                     //Constroi a tabela de frequencias
-                    form.dataGridView1.Rows.Insert(10, "FREQUÊNCIAS");
-                    form.dataGridView1.Rows.Insert(11, "PHI", "D(mm)", "PESO", "FREQUÊNCIA", "F. ACUMULADA", "Wentworth(1922)");
+                    form.dataGridView1.Rows.Insert(11, "PHI", "D(mm)", "PESO", "FREQUÊNCIA (%)", "F. ACUMULADA", "Wentworth(1922)");
                     Decimal frequencyAcc = 0;
                     for (int i = 0; i < phi.Count; i++)
                     {
@@ -989,8 +988,8 @@ namespace Sigran
                         Functions.DecimalToString(frequencies[22] + frequencies[23] + frequencies[24] + frequencies[25])
                         );
 
-                    form.dataGridView1.Rows.Insert(57, "CLASSIFICAÇÃO VERBAL");
-                    form.dataGridView1.Rows.Insert(58, "Classificação pela média",                                        "Selecionamento",                                               "Assimetria", "Custose");
+                    //form.dataGridView1.Rows.Insert(57, "CLASSIFICAÇÃO VERBAL");
+                    form.dataGridView1.Rows.Insert(58, "Classificação pela média",                                   "Selecionamento",                                               "Assimetria", "Custose");
                     form.dataGridView1.Rows.Insert(59, sampleTools.getPhiClassificationSimple(statisticsFolk[0]),    sampleTools.getClassificationBySelection(statisticsFolk[2]),    sampleTools.getClassificationByAssimetry(statisticsFolk[3]), sampleTools.getClassificationByKurtosis(statisticsFolk[4]));
 
                     //Limpa as céulas vazias da datagrid
@@ -1019,9 +1018,9 @@ namespace Sigran
                     string siglaFolk = sampleTools.getClassificationFolk("sigla", sample);
                     string classificationFolk = sampleTools.getClassificationFolk("classification", sample);
 
-                    form.dataGridView1.Rows.Insert(61, "CLASSIFICAÇÃO DE FOLK");
-                    form.dataGridView1.Rows.Insert(62, "REFERÊNCIA", "Sigla", "Classificação Verbal", "");
-                    form.dataGridView1.Rows.Insert(63, "Folk(1954)", siglaFolk, classificationFolk);
+                    //form.dataGridView1.Rows.Insert(61, "CLASSIFICAÇÃO DE FOLK");
+                    form.dataGridView1.Rows.Insert(62, "Classificação de Folk(1954)", "Sigla");
+                    form.dataGridView1.Rows.Insert(63, classificationFolk, siglaFolk);
 
                     //Larsonneur
                     decimal median = statisticsFolk[1];
@@ -1041,9 +1040,9 @@ namespace Sigran
                     string siglaLarsonneur = sampleTools.getClassificationLarsonneur("sigla", sample);
                     string classificationLarsonneur = sampleTools.getClassificationLarsonneur("classification", sample);
 
-                    form.dataGridView1.Rows.Insert(65, "CLASSIFICAÇÃO DE LARSONNEUR");
-                    form.dataGridView1.Rows.Insert(66, "REFERÊNCIA", "Sigla", "Classificação Verbal", "%Seixos", "%Granulos", "%Areias", "%Lama");
-                    form.dataGridView1.Rows.Insert(67, "Larsonneur(1977)/Dias(1996)", siglaLarsonneur, classificationLarsonneur, Functions.DecimalToString(gravelP), Functions.DecimalToString(granulesP), Functions.DecimalToString(sandP), Functions.DecimalToString(sludgeP));
+                    //form.dataGridView1.Rows.Insert(65, "CLASSIFICAÇÃO DE LARSONNEUR");
+                    form.dataGridView1.Rows.Insert(66, "Classificação de Larsonneur(1977)/Dias(1996)", "Sigla");
+                    form.dataGridView1.Rows.Insert(67, classificationLarsonneur, siglaLarsonneur);
                 }
 
                 //Exibe o form

@@ -100,16 +100,16 @@ namespace Sigran.Classes
                 phiClassification.Add("Areia fina");
                 phiClassification.Add("Areia muito fina");
                 phiClassification.Add("Areia muito fina");
-                phiClassification.Add("silt grosso");
-                phiClassification.Add("silt grosso");
-                phiClassification.Add("silt médio");
-                phiClassification.Add("silt fino");
-                phiClassification.Add("silt muito fino");
+                phiClassification.Add("silte grosso");
+                phiClassification.Add("silte grosso");
+                phiClassification.Add("silte médio");
+                phiClassification.Add("silte fino");
+                phiClassification.Add("silte muito fino");
+                //phiClassification.Add("Argila grossa");
                 phiClassification.Add("Argila grossa");
-                phiClassification.Add("Argila ultra-grossa");
-                phiClassification.Add("Argila ultra-grossa");
-                phiClassification.Add("Argila ultra-grossa");
-                phiClassification.Add("Argila ultra-grossa");
+                phiClassification.Add("Argila média");
+                phiClassification.Add("Argila fina");
+                phiClassification.Add("Argila muito fina");
             }
 
             if (method == "Friedman(1978)")
@@ -270,7 +270,7 @@ namespace Sigran.Classes
             }
             if (assimetry > 0.3m)
             {
-                r = "Assimetria Muito positiva";
+                r = "Assimetria muito positiva";
             }
 
             return r;
@@ -281,27 +281,27 @@ namespace Sigran.Classes
             string r = "";
             if (kurtosis <= 0.67m)
             {
-                r = "Muito platicurtica";
+                r = "Muito plasticúrtica";
             }
             if (kurtosis > 0.67m && kurtosis <= 0.90m)
             {
-                r = "platicurtica";
+                r = "plasticúrtica";
             }
             if (kurtosis > 0.90m && kurtosis <= 1.11m)
             {
-                r = "Mesocurtica";
+                r = "Mesocúrtica";
             }
             if (kurtosis > 1.11m && kurtosis <= 1.50m)
             {
-                r = "Tendência a Leptocurtica";
+                r = "Tendência a leptocúrtica";
             }
             if (kurtosis > 1.50m && kurtosis <= 3m)
             {
-                r = "Muito leptocurtica";
+                r = "Muito leptocúrtica";
             }
             if (kurtosis > 3m)
             {
-                r = "Extremamente leptocurtica";
+                r = "Extremamente leptocúrtica";
             }
 
             return r;
